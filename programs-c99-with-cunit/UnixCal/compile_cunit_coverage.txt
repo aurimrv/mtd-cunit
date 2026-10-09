@@ -1,3 +1,2 @@
-set -e
-gcc -std=c99 -w -D_GNU_SOURCE -Wno-error=implicit-function-declaration -Wno-error=implicit-int -I. -c -fprofile-arcs -ftest-coverage UnixCal.c -o UnixCal.o
-gcc -std=c99 -w -D_GNU_SOURCE -I. UnixCal.o ts_cunit/*.c -lcunit -lm -lgcov -Wl,-u,__gcov_dump -Wl,-u,__gcov_reset -o runner_cunit_coverage
+gcc -I. -w -c -fprofile-arcs -ftest-coverage UnixCal.c -o UnixCal.o
+gcc -I. -w UnixCal.o ts_cunit/*.c -lcunit -lm -lgcov -Wl,-u,__gcov_dump -Wl,-u,__gcov_reset -o runner_cov

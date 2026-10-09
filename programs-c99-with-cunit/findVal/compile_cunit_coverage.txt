@@ -1,3 +1,2 @@
-set -e
-gcc -std=c99 -w -D_GNU_SOURCE -Wno-error=implicit-function-declaration -Wno-error=implicit-int -I. -c -fprofile-arcs -ftest-coverage findVal.c -o findVal.o
-gcc -std=c99 -w -D_GNU_SOURCE -I. findVal.o ts_cunit/*.c -lcunit -lm -lgcov -Wl,-u,__gcov_dump -Wl,-u,__gcov_reset -o runner_cunit_coverage
+gcc -I. -w -c -fprofile-arcs -ftest-coverage findVal.c -o findVal.o
+gcc -I. -w findVal.o ts_cunit/*.c -lcunit -lm -lgcov -Wl,-u,__gcov_dump -Wl,-u,__gcov_reset -o runner_cov
