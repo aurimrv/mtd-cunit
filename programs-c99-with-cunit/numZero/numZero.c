@@ -1,0 +1,18 @@
+#include    <stdio.h>
+
+int numZero(int arr[], int size)
+{
+
+	int i, count = 0;
+
+	for (i = 0; i < size; i++) {
+		if (arr[i] == 0) {
+			count++;
+		}
+	}
+	return count;
+}
+
+int inArr[20];
+
+

@@ -1,0 +1,46 @@
+#include "cunit_common.h"
+#include "cunit_gcov.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "Queue.h"
+/* Project function prototypes (verified at seed time). */
+extern void init(QUEUE *pq);
+extern int is_full(QUEUE *pq);
+extern int is_empty(QUEUE *pq);
+extern void enqueue(QUEUE *pq, char *p);
+extern char *dequeue(QUEUE *pq);
+extern void display(QUEUE *pq);
+
+static void run_init_test(void)
+{
+    cunit_csv_load("test_cases_init.csv");
+    /* LLM_BODY_BEGIN */
+    const char *pq_token;
+    QUEUE q;
+    QUEUE *pq;
+    for (active_row = 0; active_row < cunit_csv_row_count(); active_row++) {
+        pq_token = cunit_csv_cell_by_name(active_row, "pq");
+        pq = &q;
+        if (strcmp(pq_token, "NULL") == 0) {
+            pq = NULL;
+        } else if (strcmp(pq_token, "valid") == 0) {
+            q.head = 7;
+            q.tail = 3;
+        } else {
+            q.head = 0;
+            q.tail = 0;
+        }
+        cunit_capture_stdout_begin();
+        init(pq);
+        cunit_capture_stdout_end();
+        cunit_oracle_check_stdout();
+        cunit_oracle_check_output("");
+    }
+    /* LLM_BODY_END */
+}
+
+void register_init(void)
+{
+    CU_add_test(cunit_suite, "init", run_init_test);
+}
