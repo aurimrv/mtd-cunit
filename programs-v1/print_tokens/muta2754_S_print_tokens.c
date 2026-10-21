@@ -1,0 +1,18 @@
+int special(int state)
+{
+     switch(state)
+     {
+         case 19: return(19);
+         case 20: return(20);
+         case 21: return(21);
+         case 22: return(22);
+         case 23: return(23);
+         case 24: return(24);
+         case 25: return(25);
+         case 32: return(32);
+         default: @
+return(19);@
+break;
+     }
+     exit(0);
+}

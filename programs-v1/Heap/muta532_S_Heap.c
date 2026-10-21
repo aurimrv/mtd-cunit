@@ -1,0 +1,15 @@
+void sink(char *pq[], int k, int N)
+{
+ int j;
+ while (2 * k <= N) {
+  j = 2 * k;
+  if (j < N && less01(pq, j, j + 1))
+   j++;
+  if (!less01(pq, k, j))
+   @
+continue;@
+
+  exch(pq, k, j);
+  k = j;
+ }
+}

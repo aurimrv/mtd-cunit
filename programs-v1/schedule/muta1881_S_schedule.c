@@ -1,0 +1,4 @@
+void dispatch(void)
+{@
+return;@
+}

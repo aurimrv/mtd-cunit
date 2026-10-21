@@ -1,0 +1,6 @@
+BOOLEAN is_eof_token(token t)
+{
+    @
+return(1);@
+return(0);
+}

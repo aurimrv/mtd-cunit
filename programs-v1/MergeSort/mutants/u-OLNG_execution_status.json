@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "program": "MergeSort",
+  "operator": "u-OLNG",
+  "session": "S_MergeSort",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-20T15:16:51.281345729+01:00",
+  "updated_at": "2026-10-20T15:17:09.181566517+01:00",
+  "mutants": [
+    {
+      "mutant_number": 610,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "merge",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Operator `u-OLNG` in function `merge`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void merge(int *list1, int list1len, int *list2, int list2len, int *temp)\\n{\\n int current1 = 0;\\n int current2 = 0;\\n int current3 = 0;\\n while @\\n(current1 < list1len && current2 < list2len)@\\n {\\n  if (list1[current1] < list2[current2])\\n   temp[current3++] = list1[current1++];\\n  else\\n   temp[current3++] = list2[current2++];\\n }\\n while (current1 < list1len)\\n  temp[current3++] = list1[current1++];\\n while '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T15:16:51.405425805+01:00",
+      "end_time": "2026-10-20T15:16:59.714151598+01:00",
+      "duration_ms": 8308.726,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T15:16:51.530222878+01:00",
+          "end_time": "2026-10-20T15:16:53.159760396+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "list1": "1,-1",
+            "list1len": "0",
+            "list2": "1,1,2",
+            "list2len": "1",
+            "temp": "1,-3,-3,-3,-3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 1: synthesized NEW inputs {'list1': '1,-1', 'list1len': '0', 'list2': '1,1,2', 'list2len': '1', 'temp': '1,-3,-3,-3,-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1629.538
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T15:16:53.444093892+01:00",
+          "end_time": "2026-10-20T15:16:54.714643711+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "list1": "1,0",
+            "list1len": "1",
+            "list2": "1,2,3",
+            "list2len": "2",
+            "temp": "1,-2,-2,-2,-2",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 2: synthesized NEW inputs {'list1': '1,0', 'list1len': '1', 'list2': '1,2,3', 'list2len': '2', 'temp': '1,-2,-2,-2,-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1270.5500000000002
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T15:16:55.001174311+01:00",
+          "end_time": "2026-10-20T15:16:56.241450094+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "list1": "2,1",
+            "list1len": "5",
+            "list2": "2,3,4",
+            "list2len": "3",
+            "temp": "2,-1,-1,-1,-1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 3: synthesized NEW inputs {'list1': '2,1', 'list1len': '5', 'list2': '2,3,4', 'list2len': '3', 'temp': '2,-1,-1,-1,-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1240.2759999999998
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T15:16:56.516593955+01:00",
+          "end_time": "2026-10-20T15:16:57.792357097+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "list1": "2,2",
+            "list1len": "3",
+            "list2": "2,4,5",
+            "list2len": "4",
+            "temp": "2,0,0,0,0",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 4: synthesized NEW inputs {'list1': '2,2', 'list1len': '3', 'list2': '2,4,5', 'list2len': '4', 'temp': '2,0,0,0,0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1275.764
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T15:16:58.078089259+01:00",
+          "end_time": "2026-10-20T15:16:59.361620418+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "list1": "1,3",
+            "list1len": "4",
+            "list2": "1,5,6",
+            "list2len": "5",
+            "temp": "1,1,1,1,1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((current1 < list1len) && (! (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 5: synthesized NEW inputs {'list1': '1,3', 'list1len': '4', 'list2': '1,5,6', 'list2len': '5', 'temp': '1,1,1,1,1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1283.531
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 611,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "merge",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Operator `u-OLNG` in function `merge`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void merge(int *list1, int list1len, int *list2, int list2len, int *temp)\\n{\\n int current1 = 0;\\n int current2 = 0;\\n int current3 = 0;\\n while @\\n(current1 < list1len && current2 < list2len)@\\n {\\n  if (list1[current1] < list2[current2])\\n   temp[current3++] = list1[current1++];\\n  else\\n   temp[current3++] = list2[current2++];\\n }\\n while (current1 < list1len)\\n  temp[current3++] = list1[current1++];\\n while '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T15:16:59.912972692+01:00",
+      "end_time": "2026-10-20T15:17:07.938297948+01:00",
+      "duration_ms": 8025.325000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T15:17:00.084826745+01:00",
+          "end_time": "2026-10-20T15:17:01.372672705+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "list1": "1,-1",
+            "list1len": "0",
+            "list2": "1,1,2",
+            "list2len": "1",
+            "temp": "1,-3,-3,-3,-3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Chose function `merge` from build-view. Iteration 1: synthesized NEW inputs {'list1': '1,-1', 'list1len': '0', 'list2': '1,1,2', 'list2len': '1', 'temp': '1,-3,-3,-3,-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1287.846
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T15:17:01.658120139+01:00",
+          "end_time": "2026-10-20T15:17:02.905049154+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "list1": "1,0",
+            "list1len": "1",
+            "list2": "1,2,3",
+            "list2len": "2",
+            "temp": "1,-2,-2,-2,-2",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Chose function `merge` from build-view. Iteration 2: synthesized NEW inputs {'list1': '1,0', 'list1len': '1', 'list2': '1,2,3', 'list2len': '2', 'temp': '1,-2,-2,-2,-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1246.9289999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T15:17:03.190188699+01:00",
+          "end_time": "2026-10-20T15:17:04.457781238+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "list1": "2,1",
+            "list1len": "5",
+            "list2": "2,3,4",
+            "list2len": "3",
+            "temp": "2,-1,-1,-1,-1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Chose function `merge` from build-view. Iteration 3: synthesized NEW inputs {'list1': '2,1', 'list1len': '5', 'list2': '2,3,4', 'list2len': '3', 'temp': '2,-1,-1,-1,-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1267.593
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T15:17:04.749166704+01:00",
+          "end_time": "2026-10-20T15:17:05.978534028+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "list1": "2,2",
+            "list1len": "3",
+            "list2": "2,4,5",
+            "list2len": "4",
+            "temp": "2,0,0,0,0",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Chose function `merge` from build-view. Iteration 4: synthesized NEW inputs {'list1': '2,2', 'list1len': '3', 'list2': '2,4,5', 'list2len': '4', 'temp': '2,0,0,0,0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1229.368
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T15:17:06.270784154+01:00",
+          "end_time": "2026-10-20T15:17:07.566657640+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "list1": "1,3",
+            "list1len": "4",
+            "list2": "1,5,6",
+            "list2len": "5",
+            "temp": "1,1,1,1,1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (current1 < list1len)) && (current2 < list2len)) )`. Chose function `merge` from build-view. Iteration 5: synthesized NEW inputs {'list1': '1,3', 'list1len': '4', 'list2': '1,5,6', 'list2len': '5', 'temp': '1,1,1,1,1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              612
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1295.873
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 612,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "merge",
+      "test_case_number": 11,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (! ((current1 < list1len) && (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 1: synthesized NEW inputs {'list1': '1,-1', 'list1len': '0', 'list2': '1,1,2', 'list2len': '1', 'temp': '1,-3,-3,-3,-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-20T15:17:08.168186419+01:00",
+      "end_time": "2026-10-20T15:17:09.179661499+01:00",
+      "duration_ms": 1011.4749999999999,
+      "number_of_iterations": 1,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T15:17:08.306275197+01:00",
+          "end_time": "2026-10-20T15:17:08.905758698+01:00",
+          "function_under_testing": "merge",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "list1": "1,-1",
+            "list1len": "0",
+            "list2": "1,1,2",
+            "list2len": "1",
+            "temp": "1,-3,-3,-3,-3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((current1 < list1len) && (current2 < list2len))) )`. Chose function `merge` from build-view. Iteration 1: synthesized NEW inputs {'list1': '1,-1', 'list1len': '0', 'list2': '1,1,2', 'list2len': '1', 'temp': '1,-3,-3,-3,-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.483
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

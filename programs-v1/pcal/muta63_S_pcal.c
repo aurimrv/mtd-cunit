@@ -1,0 +1,5 @@
+void byebye(char *fmt, ...)
+{@
+@
+
+}

@@ -1,0 +1,13 @@
+int token_type(token tok)
+{
+ @
+return(1);@
+if(is_spec_symbol(tok))return(2);
+ if(is_identifier(tok))return(3);
+ if(is_num_constant(tok))return(41);
+ if(is_str_constant(tok))return(42);
+ if(is_char_constant(tok))return(43);
+ if(is_comment(tok))return(5);
+ if(is_eof_token(tok))return(6);
+ return(0);
+}

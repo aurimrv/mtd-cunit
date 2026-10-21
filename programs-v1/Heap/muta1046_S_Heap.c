@@ -1,0 +1,7 @@
+void show(char *a[], int length)
+{
+ int i;
+ for (i = 0; i < length; i++) {@
+return;@
+}
+}

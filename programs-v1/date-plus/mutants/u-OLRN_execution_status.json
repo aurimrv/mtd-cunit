@@ -1,0 +1,3410 @@
+{
+  "schema_version": 1,
+  "program": "date-plus",
+  "operator": "u-OLRN",
+  "session": "S_date-plus",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-19T11:34:47.194537140+01:00",
+  "updated_at": "2026-10-19T11:36:08.486279609+01:00",
+  "mutants": [
+    {
+      "mutant_number": 671,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while @\\n(argc &&\\n        ((**argv == \\'.\\') ||\\n  (**a'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:34:47.317606600+01:00",
+      "end_time": "2026-10-19T11:35:00.986965113+01:00",
+      "duration_ms": 13669.359,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:34:47.439605584+01:00",
+          "end_time": "2026-10-19T11:34:47.769538387+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 1,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 329.933
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:34:48.033413853+01:00",
+          "end_time": "2026-10-19T11:34:55.198890046+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 2,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              697,
+              698,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 7165.477
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:34:55.465749446+01:00",
+          "end_time": "2026-10-19T11:34:57.471613968+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 3,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2005.8639999999998
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:34:57.732813954+01:00",
+          "end_time": "2026-10-19T11:34:59.024034348+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 4,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1291.221
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:34:59.292559754+01:00",
+          "end_time": "2026-10-19T11:35:00.642097262+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 5,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') < ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1349.538
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 672,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while @\\n(argc &&\\n        ((**argv == \\'.\\') ||\\n  (**a'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:01.183679681+01:00",
+      "end_time": "2026-10-19T11:35:07.651874511+01:00",
+      "duration_ms": 6468.195,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:01.648748714+01:00",
+          "end_time": "2026-10-19T11:35:02.000225850+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 6,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 351.477
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:02.274639339+01:00",
+          "end_time": "2026-10-19T11:35:02.624255823+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 7,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 349.616
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:02.914707013+01:00",
+          "end_time": "2026-10-19T11:35:04.194015050+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 8,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1279.308
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:04.462121622+01:00",
+          "end_time": "2026-10-19T11:35:05.749298560+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 9,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1287.177
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:06.018673341+01:00",
+          "end_time": "2026-10-19T11:35:07.309429426+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 10,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') > ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              673,
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1290.756
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 673,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') <= ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-19T11:35:07.847748375+01:00",
+      "end_time": "2026-10-19T11:35:12.222434800+01:00",
+      "duration_ms": 4374.686,
+      "number_of_iterations": 3,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:08.298495539+01:00",
+          "end_time": "2026-10-19T11:35:08.702813404+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 11,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') <= ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 404.318
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:08.993274566+01:00",
+          "end_time": "2026-10-19T11:35:10.394906202+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 12,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') <= ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1401.632
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:10.665998016+01:00",
+          "end_time": "2026-10-19T11:35:11.946899981+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 13,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') <= ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": [
+              674,
+              675,
+              676,
+              677,
+              678,
+              679,
+              680,
+              681,
+              682,
+              683,
+              685,
+              688,
+              689,
+              691,
+              692,
+              693,
+              695,
+              696,
+              697,
+              698,
+              699,
+              700
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1280.901
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 674,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:12.323977930+01:00",
+      "end_time": "2026-10-19T11:35:12.418764024+01:00",
+      "duration_ms": 94.78699999999999,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 675,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:12.511920933+01:00",
+      "end_time": "2026-10-19T11:35:12.604452919+01:00",
+      "duration_ms": 92.532,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 676,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:12.697261354+01:00",
+      "end_time": "2026-10-19T11:35:12.807097913+01:00",
+      "duration_ms": 109.836,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 677,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:12.913193911+01:00",
+      "end_time": "2026-10-19T11:35:13.007517711+01:00",
+      "duration_ms": 94.324,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 678,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:13.124028748+01:00",
+      "end_time": "2026-10-19T11:35:13.227951142+01:00",
+      "duration_ms": 103.923,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 679,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:13.327342604+01:00",
+      "end_time": "2026-10-19T11:35:13.422437792+01:00",
+      "duration_ms": 95.095,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 680,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:13.516852116+01:00",
+      "end_time": "2026-10-19T11:35:13.611116275+01:00",
+      "duration_ms": 94.264,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 681,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:13.705750385+01:00",
+      "end_time": "2026-10-19T11:35:13.798913375+01:00",
+      "duration_ms": 93.163,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 682,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:13.919925177+01:00",
+      "end_time": "2026-10-19T11:35:14.022216313+01:00",
+      "duration_ms": 102.29100000000001,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 683,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:14.115262904+01:00",
+      "end_time": "2026-10-19T11:35:14.209918462+01:00",
+      "duration_ms": 94.656,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 685,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:14.303351728+01:00",
+      "end_time": "2026-10-19T11:35:14.397800505+01:00",
+      "duration_ms": 94.44900000000001,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 688,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:14.495834018+01:00",
+      "end_time": "2026-10-19T11:35:14.590847431+01:00",
+      "duration_ms": 95.013,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 689,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:14.684646297+01:00",
+      "end_time": "2026-10-19T11:35:14.777761076+01:00",
+      "duration_ms": 93.11500000000001,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 691,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:14.869817863+01:00",
+      "end_time": "2026-10-19T11:35:14.964596349+01:00",
+      "duration_ms": 94.779,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 692,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.061024105+01:00",
+      "end_time": "2026-10-19T11:35:15.153855656+01:00",
+      "duration_ms": 92.831,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 693,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.247251966+01:00",
+      "end_time": "2026-10-19T11:35:15.341178663+01:00",
+      "duration_ms": 93.92699999999999,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 695,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.435489780+01:00",
+      "end_time": "2026-10-19T11:35:15.530086625+01:00",
+      "duration_ms": 94.597,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 696,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.623482360+01:00",
+      "end_time": "2026-10-19T11:35:15.715895154+01:00",
+      "duration_ms": 92.413,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 697,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.809480966+01:00",
+      "end_time": "2026-10-19T11:35:15.902972276+01:00",
+      "duration_ms": 93.492,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 698,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:15.996520596+01:00",
+      "end_time": "2026-10-19T11:35:16.092171189+01:00",
+      "duration_ms": 95.651,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 699,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:16.185369296+01:00",
+      "end_time": "2026-10-19T11:35:16.279207092+01:00",
+      "duration_ms": 93.83800000000001,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 700,
+      "status": "KILLED",
+      "killed_by_mutant_target": 673,
+      "function_under_testing": "incrdate",
+      "test_case_number": 13,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:16.373691168+01:00",
+      "end_time": "2026-10-19T11:35:16.471145913+01:00",
+      "duration_ms": 97.454,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 684,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 18,
+      "rationality_summary": "Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while @\\n(argc &&\\n        ((**argv == \\'.\\') ||\\n  (**a'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:16.662905456+01:00",
+      "end_time": "2026-10-19T11:35:22.764657451+01:00",
+      "duration_ms": 6101.752,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:17.508435090+01:00",
+          "end_time": "2026-10-19T11:35:17.512288652+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 14,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.853
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:17.786402335+01:00",
+          "end_time": "2026-10-19T11:35:17.790461448+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 15,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.059
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:18.071265941+01:00",
+          "end_time": "2026-10-19T11:35:19.353492602+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 16,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1282.227
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:19.629092195+01:00",
+          "end_time": "2026-10-19T11:35:20.906141399+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 17,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1277.0490000000002
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:21.175523321+01:00",
+          "end_time": "2026-10-19T11:35:22.418328598+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 18,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') > ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1242.8049999999998
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 686,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 23,
+      "rationality_summary": "Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while @\\n(argc &&\\n        ((**argv == \\'.\\') ||\\n  (**a'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:22.960534576+01:00",
+      "end_time": "2026-10-19T11:35:29.908378625+01:00",
+      "duration_ms": 6947.844,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:23.838954373+01:00",
+          "end_time": "2026-10-19T11:35:24.216442922+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 19,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 377.488
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:24.512825877+01:00",
+          "end_time": "2026-10-19T11:35:24.850625035+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 20,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 337.8
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:25.209573250+01:00",
+          "end_time": "2026-10-19T11:35:26.463587294+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 21,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1254.014
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:26.738740779+01:00",
+          "end_time": "2026-10-19T11:35:27.976836517+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 22,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1238.096
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:28.248022729+01:00",
+          "end_time": "2026-10-19T11:35:29.552136881+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 23,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') >= ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1304.114
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 687,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 28,
+      "rationality_summary": "Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while @\\n(argc &&\\n        ((**argv == \\'.\\') ||\\n  (**a'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:30.108188826+01:00",
+      "end_time": "2026-10-19T11:35:38.820828752+01:00",
+      "duration_ms": 8712.640000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:30.221011991+01:00",
+          "end_time": "2026-10-19T11:35:31.485766951+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 24,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1264.755
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:31.763970725+01:00",
+          "end_time": "2026-10-19T11:35:33.996682288+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 25,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              690,
+              694
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2232.712
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:34.271000457+01:00",
+          "end_time": "2026-10-19T11:35:35.492433340+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 26,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              690,
+              694
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1221.433
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:35.766264604+01:00",
+          "end_time": "2026-10-19T11:35:36.985022479+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 27,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              690,
+              694
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1218.758
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:37.259007611+01:00",
+          "end_time": "2026-10-19T11:35:38.467451366+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 28,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) || (((* (* argv)) >= '0') == ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              690,
+              694
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1208.444
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 690,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 31,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) > (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-19T11:35:39.019695948+01:00",
+      "end_time": "2026-10-19T11:35:41.740235603+01:00",
+      "duration_ms": 2720.54,
+      "number_of_iterations": 3,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:39.133068866+01:00",
+          "end_time": "2026-10-19T11:35:40.009007914+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 29,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) > (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 875.9390000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:40.284053401+01:00",
+          "end_time": "2026-10-19T11:35:40.617332172+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 30,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) > (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 333.279
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:40.901510031+01:00",
+          "end_time": "2026-10-19T11:35:41.482413234+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 31,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (argc && (((((* (* argv)) == '.') || ((* (* argv)) == '-')) || ((* (* argv)) == '+')) > (((* (* argv)) >= '0') && ((* (* argv)) <= '9')))) )`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": [
+              694
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 580.9029999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 694,
+      "status": "KILLED",
+      "killed_by_mutant_target": 690,
+      "function_under_testing": "incrdate",
+      "test_case_number": 31,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T11:35:41.843303804+01:00",
+      "end_time": "2026-10-19T11:35:41.939315113+01:00",
+      "duration_ms": 96.012,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 701,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 36,
+      "rationality_summary": "Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:42.128651190+01:00",
+      "end_time": "2026-10-19T11:35:46.131520716+01:00",
+      "duration_ms": 4002.8689999999997,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:42.251199616+01:00",
+          "end_time": "2026-10-19T11:35:42.577201764+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 32,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 326.002
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:42.863676733+01:00",
+          "end_time": "2026-10-19T11:35:43.191465903+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 33,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 327.789
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:43.483012358+01:00",
+          "end_time": "2026-10-19T11:35:44.076325463+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 34,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.313
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:44.344383321+01:00",
+          "end_time": "2026-10-19T11:35:44.919925540+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 35,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 575.542
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:45.199407855+01:00",
+          "end_time": "2026-10-19T11:35:45.783534217+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 36,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) < (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 584.127
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 702,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 41,
+      "rationality_summary": "Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:46.332489553+01:00",
+      "end_time": "2026-10-19T11:35:50.935775932+01:00",
+      "duration_ms": 4603.286,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:46.822338901+01:00",
+          "end_time": "2026-10-19T11:35:46.826235852+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 37,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.897
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:47.097365233+01:00",
+          "end_time": "2026-10-19T11:35:48.010226206+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 38,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 912.861
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:48.282814547+01:00",
+          "end_time": "2026-10-19T11:35:48.864698221+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 39,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.8839999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:49.137389444+01:00",
+          "end_time": "2026-10-19T11:35:49.726659825+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 40,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 589.27
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:49.997379478+01:00",
+          "end_time": "2026-10-19T11:35:50.586886264+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 41,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) > (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 589.507
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 703,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 46,
+      "rationality_summary": "Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:51.137819706+01:00",
+      "end_time": "2026-10-19T11:35:55.171669891+01:00",
+      "duration_ms": 4033.8500000000004,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:51.262104370+01:00",
+          "end_time": "2026-10-19T11:35:51.598542703+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 42,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 336.438
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:51.877203859+01:00",
+          "end_time": "2026-10-19T11:35:52.208470418+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 43,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 331.267
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:52.486055112+01:00",
+          "end_time": "2026-10-19T11:35:53.063659613+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 44,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 577.604
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:53.367257354+01:00",
+          "end_time": "2026-10-19T11:35:53.964619524+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 45,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 597.362
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:54.243695377+01:00",
+          "end_time": "2026-10-19T11:35:54.828915158+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 46,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) <= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 585.2199999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 704,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 51,
+      "rationality_summary": "Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:55.372906341+01:00",
+      "end_time": "2026-10-19T11:35:59.340752904+01:00",
+      "duration_ms": 3967.846,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:55.827652599+01:00",
+          "end_time": "2026-10-19T11:35:55.831680943+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 47,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.0280000000000005
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:35:56.111843964+01:00",
+          "end_time": "2026-10-19T11:35:56.446043600+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 48,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 334.2
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:35:56.724088087+01:00",
+          "end_time": "2026-10-19T11:35:57.292624904+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 49,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 568.5360000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:35:57.566568171+01:00",
+          "end_time": "2026-10-19T11:35:58.140919222+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 50,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 574.351
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:35:58.416980497+01:00",
+          "end_time": "2026-10-19T11:35:58.989737667+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 51,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) >= (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 572.757
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 705,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 56,
+      "rationality_summary": "Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:35:59.548708717+01:00",
+      "end_time": "2026-10-19T11:36:04.176824558+01:00",
+      "duration_ms": 4628.116,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:35:59.673986382+01:00",
+          "end_time": "2026-10-19T11:36:00.030490729+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 52,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 356.50399999999996
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:36:00.309787565+01:00",
+          "end_time": "2026-10-19T11:36:01.188791820+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 53,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 879.004
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:36:01.466363480+01:00",
+          "end_time": "2026-10-19T11:36:02.045879283+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 54,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 579.5160000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:36:02.321951707+01:00",
+          "end_time": "2026-10-19T11:36:02.921400056+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 55,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.449
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:36:03.235314325+01:00",
+          "end_time": "2026-10-19T11:36:03.816832797+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 56,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) == (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.518
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 706,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "incrdate",
+      "test_case_number": 61,
+      "rationality_summary": "Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Operator `u-OLRN` in function `incrdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int incrdate(int argc, char **argv)\\n{\\n static char *unit[] = {\\n  \"sec\", \"min\", \"hour\", \"day\", \"week\", \"mon\", \"year\", \"\"\\n };\\n static int conv[] = {\\n  1, 60, 3600, 86400, 604800, 0, 0\\n };\\n int i;\\n double value;\\n long total;\\n double monthincr = 0.0, yearincr = 0.0;\\n tloc = atol(argv[1]);\\n argc--;\\n argv++;\\n argc--;\\n argv++;\\n value = 0.0;\\n total = 0;\\n while (argc &&\\n        ((**argv == \\'.\\') ||\\n  (**arg'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:36:04.384280388+01:00",
+      "end_time": "2026-10-19T11:36:08.484403027+01:00",
+      "duration_ms": 4100.123,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:36:04.508505715+01:00",
+          "end_time": "2026-10-19T11:36:04.836705188+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 57,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "0",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '0', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 328.2
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:36:05.133296638+01:00",
+          "end_time": "2026-10-19T11:36:05.554242384+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 58,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "prog,1000_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '1', 'argv': 'prog,1000_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 420.94599999999997
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:36:05.831519907+01:00",
+          "end_time": "2026-10-19T11:36:06.405952827+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 59,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 574.433
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:36:06.687282047+01:00",
+          "end_time": "2026-10-19T11:36:07.260885185+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 60,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 573.603
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:36:07.542398983+01:00",
+          "end_time": "2026-10-19T11:36:08.116550651+01:00",
+          "function_under_testing": "incrdate",
+          "test_case_number": 61,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "argc": "2",
+            "argv": "prog,1000_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((i < 7) != (0 != strncmp(argv[0] , unit[i] , strlen(unit[i])))) ;`. Chose function `incrdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '2', 'argv': 'prog,1000_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 574.152
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

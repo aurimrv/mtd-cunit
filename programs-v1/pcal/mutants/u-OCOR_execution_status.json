@@ -1,0 +1,1732 @@
+{
+  "schema_version": 1,
+  "program": "pcal",
+  "operator": "u-OCOR",
+  "session": "S_pcal",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T23:51:35.034080123+01:00",
+  "updated_at": "2026-10-18T23:52:59.725822326+01:00",
+  "mutants": [
+    {
+      "mutant_number": 3961,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:51:35.180329956+01:00",
+      "end_time": "2026-10-18T23:51:45.443950676+01:00",
+      "duration_ms": 10263.621000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:51:35.643158953+01:00",
+          "end_time": "2026-10-18T23:51:35.990252813+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 1,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 347.094
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:51:36.257331947+01:00",
+          "end_time": "2026-10-18T23:51:38.258067002+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 2,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2000.7359999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:51:38.522471385+01:00",
+          "end_time": "2026-10-18T23:51:40.571796546+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 3,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2049.3250000000003
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:51:40.833069875+01:00",
+          "end_time": "2026-10-18T23:51:42.739167609+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 4,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1906.098
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:51:43.009554874+01:00",
+          "end_time": "2026-10-18T23:51:45.100287533+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 5,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2090.733
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3962,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:51:45.663026952+01:00",
+      "end_time": "2026-10-18T23:51:55.791027680+01:00",
+      "duration_ms": 10128.001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:51:46.106717535+01:00",
+          "end_time": "2026-10-18T23:51:46.460326630+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 6,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 353.609
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:51:46.734205531+01:00",
+          "end_time": "2026-10-18T23:51:48.700639849+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 7,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1966.434
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:51:48.958500538+01:00",
+          "end_time": "2026-10-18T23:51:50.914126758+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 8,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1955.626
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:51:51.182060571+01:00",
+          "end_time": "2026-10-18T23:51:53.131488857+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 9,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1949.4279999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:51:53.404598184+01:00",
+          "end_time": "2026-10-18T23:51:55.444253774+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 10,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned char) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2039.6550000000002
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3963,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:51:55.984840604+01:00",
+      "end_time": "2026-10-18T23:52:06.715625808+01:00",
+      "duration_ms": 10730.785,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:51:56.418935870+01:00",
+          "end_time": "2026-10-18T23:51:56.728030895+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 11,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 309.095
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:51:56.995661824+01:00",
+          "end_time": "2026-10-18T23:51:59.165828541+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 12,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2170.1670000000004
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:51:59.427490802+01:00",
+          "end_time": "2026-10-18T23:52:01.559992115+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 13,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2132.502
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:01.824450941+01:00",
+          "end_time": "2026-10-18T23:52:03.856685651+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 14,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2032.2350000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:04.117169839+01:00",
+          "end_time": "2026-10-18T23:52:06.341939013+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 15,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((float) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2224.77
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3964,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:52:06.909605152+01:00",
+      "end_time": "2026-10-18T23:52:17.145196268+01:00",
+      "duration_ms": 10235.591,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:52:07.415662897+01:00",
+          "end_time": "2026-10-18T23:52:07.769535306+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 16,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 353.873
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:52:08.039262461+01:00",
+          "end_time": "2026-10-18T23:52:10.065435278+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 17,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2026.173
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:52:10.328525038+01:00",
+          "end_time": "2026-10-18T23:52:12.280309149+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 18,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1951.7839999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:12.546306165+01:00",
+          "end_time": "2026-10-18T23:52:14.564229226+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 19,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2017.9230000000002
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:14.826908263+01:00",
+          "end_time": "2026-10-18T23:52:16.807758189+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 20,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1980.85
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3965,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:52:17.335648812+01:00",
+      "end_time": "2026-10-18T23:52:27.927352532+01:00",
+      "duration_ms": 10591.704,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:52:17.843511352+01:00",
+          "end_time": "2026-10-18T23:52:18.221680643+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 21,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 378.169
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:52:18.495150054+01:00",
+          "end_time": "2026-10-18T23:52:20.442534752+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 22,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1947.384
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:52:20.721905716+01:00",
+          "end_time": "2026-10-18T23:52:22.862867206+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 23,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2140.962
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:23.128002637+01:00",
+          "end_time": "2026-10-18T23:52:25.230887151+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 24,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2102.885
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:25.502982014+01:00",
+          "end_time": "2026-10-18T23:52:27.583456430+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 25,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((short) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2080.474
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3966,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:52:28.123190460+01:00",
+      "end_time": "2026-10-18T23:52:38.482568832+01:00",
+      "duration_ms": 10359.377999999999,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:52:28.585369894+01:00",
+          "end_time": "2026-10-18T23:52:28.928711258+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 26,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 343.342
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:52:29.224384471+01:00",
+          "end_time": "2026-10-18T23:52:31.256897052+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 27,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2032.5129999999997
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:52:31.526933340+01:00",
+          "end_time": "2026-10-18T23:52:33.712205806+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 28,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2185.272
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:33.973753000+01:00",
+          "end_time": "2026-10-18T23:52:35.940174236+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 29,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1966.421
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:36.216639618+01:00",
+          "end_time": "2026-10-18T23:52:38.145141844+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 30,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1928.502
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3967,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 35,
+      "rationality_summary": "Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:52:38.674576131+01:00",
+      "end_time": "2026-10-18T23:52:49.154582322+01:00",
+      "duration_ms": 10480.006,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:52:39.135413386+01:00",
+          "end_time": "2026-10-18T23:52:39.482206089+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 31,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 346.793
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:52:39.757846212+01:00",
+          "end_time": "2026-10-18T23:52:41.849851967+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 32,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2092.005
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:52:42.125134696+01:00",
+          "end_time": "2026-10-18T23:52:44.190798462+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 33,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2065.6639999999998
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:44.453800468+01:00",
+          "end_time": "2026-10-18T23:52:46.479490125+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 34,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2025.69
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:46.751769313+01:00",
+          "end_time": "2026-10-18T23:52:48.807320899+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 35,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((unsigned long) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2055.551
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3968,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "genmonth",
+      "test_case_number": 40,
+      "rationality_summary": "Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Operator `u-OCOR` in function `genmonth`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void genmonth(int month, int year)\\n{\\n int i, j, k;\\n int startday;\\n int numdays;\\n int weeknum = 1;\\n int week[7];\\n @\\ni = (80 - (int)strlen(monthnames[month])) / 2;@\\n\\n printf(\"%-*.*s%-s\\\\n\\\\n\", i, i, spaces, monthnames[month]);\\n numdays = daysinmonth[month] + ((month == 1) * isleapyear(year));\\n startday = dayofweek(month, 1, year);\\n printf(\"%-*.*s\",4,4,spaces);\\n printf\\n     (\"|   SUN   |   MON   |   TU'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:52:49.350987037+01:00",
+      "end_time": "2026-10-18T23:52:59.723851375+01:00",
+      "duration_ms": 10372.864,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:52:49.812726777+01:00",
+          "end_time": "2026-10-18T23:52:50.166253164+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 36,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "month": "-1",
+            "year": "2022",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 1: synthesized NEW inputs {'month': '-1', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 353.527
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:52:50.437169813+01:00",
+          "end_time": "2026-10-18T23:52:52.354542900+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 37,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "month": "0",
+            "year": "2023",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 2: synthesized NEW inputs {'month': '0', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1917.373
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:52:52.624741183+01:00",
+          "end_time": "2026-10-18T23:52:54.667250930+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 38,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "month": "10",
+            "year": "2024",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 3: synthesized NEW inputs {'month': '10', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2042.509
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:52:54.944632732+01:00",
+          "end_time": "2026-10-18T23:52:57.147478439+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 39,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "month": "2",
+            "year": "2025",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 4: synthesized NEW inputs {'month': '2', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2202.846
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:52:57.430682941+01:00",
+          "end_time": "2026-10-18T23:52:59.378443453+01:00",
+          "function_under_testing": "genmonth",
+          "test_case_number": 40,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "month": "3",
+            "year": "2026",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = ((80 - ((double) strlen(monthnames[month])) ) / 2)) ;`. Chose function `genmonth` from build-view. Iteration 5: synthesized NEW inputs {'month': '3', 'year': '2026'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1947.761
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

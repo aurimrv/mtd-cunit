@@ -65,8 +65,25 @@ static void run_makepat_test(void)
         strcpy(argbuf, arg_cell);
         char pat[100];
         int result = makepat(argbuf, start, delim, pat);
-        char out[32];
-        snprintf(out, sizeof(out), "%d", result);
+        /*
+         * Oracle must observe pat[] as well as the return index: many u-SSDL
+         * mutants delete statements that only change the encoded pattern
+         * (e.g. stclose) while leaving the same return value.
+         */
+        char out[512];
+        int pos = 0;
+        int pi;
+        pos += snprintf(out + pos, sizeof(out) - (size_t)pos, "%d#", result);
+        for (pi = 0; pi < 100; pi++) {
+            pos += snprintf(out + pos, sizeof(out) - (size_t)pos, "%02x",
+                            (unsigned char)pat[pi]);
+            if (pat[pi] == ENDSTR) {
+                break;
+            }
+            if (pos >= (int)sizeof(out) - 4) {
+                break;
+            }
+        }
         cunit_oracle_check_output(out);
     }
     /* LLM_BODY_END */

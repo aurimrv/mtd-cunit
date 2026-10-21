@@ -1,0 +1,11 @@
+int removeBottom(void)
+{
+ stack_link b = bottom;
+ bottom = bottom->above;
+ if (bottom != ((void *)0))
+  @
+UTRAP_ON_STAT();@
+
+ size--;
+ return b->data;
+}

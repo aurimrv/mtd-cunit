@@ -1,0 +1,9 @@
+void change(char *pat, char *sub)
+{
+    string line;
+    bool result;
+    result = get_line(line, 100);
+    while ((result)) {@
+return;@
+}
+}

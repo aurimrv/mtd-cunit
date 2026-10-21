@@ -1,0 +1,672 @@
+{
+  "schema_version": 1,
+  "program": "Heap",
+  "operator": "u-OLNG",
+  "session": "S_Heap",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T19:30:11.173715882+01:00",
+  "updated_at": "2026-10-18T19:30:34.569553730+01:00",
+  "mutants": [
+    {
+      "mutant_number": 474,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sink",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Operator `u-OLNG` in function `sink`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void sink(char *pq[], int k, int N)\\n{\\n int j;\\n while (2 * k <= N) {\\n  j = 2 * k;\\n  if @\\n(j < N && less01(pq, j, j + 1))@\\n\\n   j++;\\n  if (!less01(pq, k, j))\\n   break;\\n  exch(pq, k, j);\\n  k = j;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T19:30:11.298354787+01:00",
+      "end_time": "2026-10-18T19:30:19.094621505+01:00",
+      "duration_ms": 7796.267,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T19:30:11.815702575+01:00",
+          "end_time": "2026-10-18T19:30:13.898853712+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "1",
+            "N": "3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 1: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '1', 'N': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2083.151
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T19:30:14.166242432+01:00",
+          "end_time": "2026-10-18T19:30:16.109794759+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m1",
+            "k": "2",
+            "N": "4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 2: synthesized NEW inputs {'pq': 'a,b,c,d,e_m1', 'k': '2', 'N': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1943.552
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T19:30:16.430167302+01:00",
+          "end_time": "2026-10-18T19:30:16.734392554+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 3,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m2",
+            "k": "-1",
+            "N": "5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 3: synthesized NEW inputs {'pq': 'a,b,c,d,e_m2', 'k': '-1', 'N': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 304.225
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T19:30:17.027790471+01:00",
+          "end_time": "2026-10-18T19:30:17.732104388+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 4,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m3",
+            "k": "4",
+            "N": "6",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 4: synthesized NEW inputs {'pq': 'a,b,c,d,e_m3', 'k': '4', 'N': '6'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 704.314
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T19:30:18.032749737+01:00",
+          "end_time": "2026-10-18T19:30:18.702213416+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 5,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "5",
+            "N": "7",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((j < N) && (! less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 5: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '5', 'N': '7'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 669.4639999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 475,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sink",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Operator `u-OLNG` in function `sink`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void sink(char *pq[], int k, int N)\\n{\\n int j;\\n while (2 * k <= N) {\\n  j = 2 * k;\\n  if @\\n(j < N && less01(pq, j, j + 1))@\\n\\n   j++;\\n  if (!less01(pq, k, j))\\n   break;\\n  exch(pq, k, j);\\n  k = j;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T19:30:19.298985589+01:00",
+      "end_time": "2026-10-18T19:30:26.841734405+01:00",
+      "duration_ms": 7542.749,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T19:30:19.779224935+01:00",
+          "end_time": "2026-10-18T19:30:21.686092892+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 6,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "1",
+            "N": "3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Chose function `sink` from build-view. Iteration 1: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '1', 'N': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1906.868
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T19:30:21.984354120+01:00",
+          "end_time": "2026-10-18T19:30:23.928461842+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 7,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m1",
+            "k": "2",
+            "N": "4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Chose function `sink` from build-view. Iteration 2: synthesized NEW inputs {'pq': 'a,b,c,d,e_m1', 'k': '2', 'N': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1944.107
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T19:30:24.200076551+01:00",
+          "end_time": "2026-10-18T19:30:24.484243329+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 8,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m2",
+            "k": "-1",
+            "N": "5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Chose function `sink` from build-view. Iteration 3: synthesized NEW inputs {'pq': 'a,b,c,d,e_m2', 'k': '-1', 'N': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 284.16700000000003
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T19:30:24.750283014+01:00",
+          "end_time": "2026-10-18T19:30:25.452980064+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 9,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m3",
+            "k": "4",
+            "N": "6",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Chose function `sink` from build-view. Iteration 4: synthesized NEW inputs {'pq': 'a,b,c,d,e_m3', 'k': '4', 'N': '6'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 702.697
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T19:30:25.753128298+01:00",
+          "end_time": "2026-10-18T19:30:26.477719407+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 10,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "5",
+            "N": "7",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((! (j < N)) && less01(pq , j , (j + 1))) )`. Chose function `sink` from build-view. Iteration 5: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '5', 'N': '7'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 724.591
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 476,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sink",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Operator `u-OLNG` in function `sink`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void sink(char *pq[], int k, int N)\\n{\\n int j;\\n while (2 * k <= N) {\\n  j = 2 * k;\\n  if @\\n(j < N && less01(pq, j, j + 1))@\\n\\n   j++;\\n  if (!less01(pq, k, j))\\n   break;\\n  exch(pq, k, j);\\n  k = j;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T19:30:27.062877504+01:00",
+      "end_time": "2026-10-18T19:30:34.567545498+01:00",
+      "duration_ms": 7504.668,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T19:30:27.475410788+01:00",
+          "end_time": "2026-10-18T19:30:29.463378070+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 11,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "1",
+            "N": "3",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 1: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '1', 'N': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1987.9679999999998
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T19:30:29.773129823+01:00",
+          "end_time": "2026-10-18T19:30:31.752498490+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 12,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m1",
+            "k": "2",
+            "N": "4",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 2: synthesized NEW inputs {'pq': 'a,b,c,d,e_m1', 'k': '2', 'N': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1979.369
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T19:30:32.053727253+01:00",
+          "end_time": "2026-10-18T19:30:32.333226321+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 13,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m2",
+            "k": "-1",
+            "N": "5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 3: synthesized NEW inputs {'pq': 'a,b,c,d,e_m2', 'k': '-1', 'N': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 279.499
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T19:30:32.633476387+01:00",
+          "end_time": "2026-10-18T19:30:33.261215503+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 14,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m3",
+            "k": "4",
+            "N": "6",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 4: synthesized NEW inputs {'pq': 'a,b,c,d,e_m3', 'k': '4', 'N': '6'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 627.739
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T19:30:33.571824386+01:00",
+          "end_time": "2026-10-18T19:30:34.210108978+01:00",
+          "function_under_testing": "sink",
+          "test_case_number": 15,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "pq": "a,b,c,d,e_m4",
+            "k": "5",
+            "N": "7",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (! ((j < N) && less01(pq , j , (j + 1)))) )`. Chose function `sink` from build-view. Iteration 5: synthesized NEW inputs {'pq': 'a,b,c,d,e_m4', 'k': '5', 'N': '7'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.284
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

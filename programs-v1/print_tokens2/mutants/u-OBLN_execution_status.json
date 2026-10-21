@@ -1,0 +1,2962 @@
+{
+  "schema_version": 1,
+  "program": "print_tokens2",
+  "operator": "u-OBLN",
+  "session": "S_print_tokens2",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T23:34:59.187842430+01:00",
+  "updated_at": "2026-10-18T23:37:48.863670064+01:00",
+  "mutants": [
+    {
+      "mutant_number": 2067,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_token_end",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Operator `u-OBLN` in function `is_token_end`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int is_token_end(int str_com_id, char ch)\\n{ char ch1[2];\\n ch1[0]=ch;\\n ch1[1]=\\'\\\\0\\';\\n if(is_eof_token(ch1)==1)return(1);\\n if(str_com_id==1)\\n    { if@\\n(ch==\\'\"\\' | ch==\\'\\\\n\\')@\\n\\n         return(1);\\n      else\\n         return(0);\\n    }\\n if(str_com_id==2)\\n   { if(ch==\\'\\\\n\\')\\n        return(1);\\n      else\\n        return(0);\\n   }\\n if(is_spec_symbol(ch1)==1) return(1);\\n if(ch ==\\' \\' || ch==\\'\\\\n\\' || ch==59) return'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:34:59.328618178+01:00",
+      "end_time": "2026-10-18T23:35:09.844574347+01:00",
+      "duration_ms": 10515.955999999998,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:34:59.457579709+01:00",
+          "end_time": "2026-10-18T23:35:00.108500870+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "str_com_id": "-2",
+            "ch": "$_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 1: synthesized NEW inputs {'str_com_id': '-2', 'ch': '$_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 650.9209999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:35:00.387710567+01:00",
+          "end_time": "2026-10-18T23:35:01.012507457+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "str_com_id": "-1",
+            "ch": "$_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 2: synthesized NEW inputs {'str_com_id': '-1', 'ch': '$_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 624.797
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:35:01.282024984+01:00",
+          "end_time": "2026-10-18T23:35:04.867734026+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "str_com_id": "10",
+            "ch": "$_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 3: synthesized NEW inputs {'str_com_id': '10', 'ch': '$_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3585.71
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:35:05.148742574+01:00",
+          "end_time": "2026-10-18T23:35:08.567323160+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "str_com_id": "1",
+            "ch": "$_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 4: synthesized NEW inputs {'str_com_id': '1', 'ch': '$_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3418.581
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:35:08.867435956+01:00",
+          "end_time": "2026-10-18T23:35:09.499318599+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "str_com_id": "2",
+            "ch": "$_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') || (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 5: synthesized NEW inputs {'str_com_id': '2', 'ch': '$_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.8829999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 2068,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_token_end",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Operator `u-OBLN` in function `is_token_end`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int is_token_end(int str_com_id, char ch)\\n{ char ch1[2];\\n ch1[0]=ch;\\n ch1[1]=\\'\\\\0\\';\\n if(is_eof_token(ch1)==1)return(1);\\n if(str_com_id==1)\\n    { if@\\n(ch==\\'\"\\' | ch==\\'\\\\n\\')@\\n\\n         return(1);\\n      else\\n         return(0);\\n    }\\n if(str_com_id==2)\\n   { if(ch==\\'\\\\n\\')\\n        return(1);\\n      else\\n        return(0);\\n   }\\n if(is_spec_symbol(ch1)==1) return(1);\\n if(ch ==\\' \\' || ch==\\'\\\\n\\' || ch==59) return'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:35:10.042163225+01:00",
+      "end_time": "2026-10-18T23:35:20.597507715+01:00",
+      "duration_ms": 10555.344,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:35:10.183601765+01:00",
+          "end_time": "2026-10-18T23:35:10.807439819+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "str_com_id": "-2",
+            "ch": "$_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 1: synthesized NEW inputs {'str_com_id': '-2', 'ch': '$_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 623.838
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:35:11.098216980+01:00",
+          "end_time": "2026-10-18T23:35:11.718195447+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "str_com_id": "-1",
+            "ch": "$_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 2: synthesized NEW inputs {'str_com_id': '-1', 'ch': '$_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 619.9789999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:35:11.994580650+01:00",
+          "end_time": "2026-10-18T23:35:15.581163301+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "str_com_id": "10",
+            "ch": "$_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 3: synthesized NEW inputs {'str_com_id': '10', 'ch': '$_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3586.583
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:35:15.843967913+01:00",
+          "end_time": "2026-10-18T23:35:19.348190097+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "str_com_id": "1",
+            "ch": "$_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 4: synthesized NEW inputs {'str_com_id': '1', 'ch': '$_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3504.223
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:35:19.622685967+01:00",
+          "end_time": "2026-10-18T23:35:20.245347596+01:00",
+          "function_under_testing": "is_token_end",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "str_com_id": "2",
+            "ch": "$_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((ch == '\"') && (ch == '\\n')) )`. Chose function `is_token_end` from build-view. Iteration 5: synthesized NEW inputs {'str_com_id': '2', 'ch': '$_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 622.662
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3576,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_char_constant",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Operator `u-OBLN` in function `is_char_constant`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int is_char_constant(token str)\\n{\\n  if @\\n((*str)=='#' && ((*__ctype_b_loc ())[(int) ((*(str+1)))] & (unsigned short int) _ISalpha))@\\n\\n     return(1);\\n  else\\n     return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:35:20.788958191+01:00",
+      "end_time": "2026-10-18T23:35:40.724003445+01:00",
+      "duration_ms": 19935.045,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:35:20.917763233+01:00",
+          "end_time": "2026-10-18T23:35:24.440204192+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 1,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "str": "#a_m4",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': '#a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3522.4410000000003
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:35:24.755375349+01:00",
+          "end_time": "2026-10-18T23:35:28.320172862+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 2,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "str": "#a_m1",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': '#a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3564.797
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:35:28.600267162+01:00",
+          "end_time": "2026-10-18T23:35:32.553701228+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 3,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "str": "#a_m2",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': '#a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3953.434
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:35:32.903337088+01:00",
+          "end_time": "2026-10-18T23:35:36.598817957+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 4,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "str": "#a_m3",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': '#a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3695.48
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:35:36.869860437+01:00",
+          "end_time": "2026-10-18T23:35:40.366698031+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 5,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "str": "#a_m15",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] || ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': '#a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3496.8379999999997
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3577,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_char_constant",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Operator `u-OBLN` in function `is_char_constant`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int is_char_constant(token str)\\n{\\n  if @\\n((*str)=='#' && ((*__ctype_b_loc ())[(int) ((*(str+1)))] & (unsigned short int) _ISalpha))@\\n\\n     return(1);\\n  else\\n     return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:35:40.930881736+01:00",
+      "end_time": "2026-10-18T23:36:00.911616613+01:00",
+      "duration_ms": 19980.735,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:35:41.057841638+01:00",
+          "end_time": "2026-10-18T23:35:44.913710774+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 6,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "str": "#a_m4",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': '#a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3855.869
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:35:45.228187789+01:00",
+          "end_time": "2026-10-18T23:35:49.015269009+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 7,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "str": "#a_m1",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': '#a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3787.082
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:35:49.293239668+01:00",
+          "end_time": "2026-10-18T23:35:52.785938077+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 8,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "str": "#a_m2",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': '#a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3492.699
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:35:53.055409852+01:00",
+          "end_time": "2026-10-18T23:35:56.519288800+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 9,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "str": "#a_m3",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': '#a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3463.879
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:35:56.811295344+01:00",
+          "end_time": "2026-10-18T23:36:00.561598392+01:00",
+          "function_under_testing": "is_char_constant",
+          "test_case_number": 10,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "str": "#a_m15",
+            "expected_output": "1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* str) == '#') && ((* __ctype_b_loc())[((int) (* (str + 1))) ] && ((unsigned short int) _ISalpha) )) )`. Chose function `is_char_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': '#a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3750.3030000000003
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3771,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_num_constant",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Operator `u-OBLN` in function `is_num_constant`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_num_constant(token str)\\n{\\n  int i=1;\\n  if @\\n( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISdigit))@\\n\\n    {\\n    while ( *(str+i) != '\\\\0' )\\n      {\\n       if(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))\\n         i++;\\n       else\\n         return(0);\\n      }\\n    return(1);\\n    }\\n  else\\n   return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:36:01.111522024+01:00",
+      "end_time": "2026-10-18T23:36:21.320431398+01:00",
+      "duration_ms": 20208.909,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:36:01.238891850+01:00",
+          "end_time": "2026-10-18T23:36:04.951052509+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 1,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "str": "a_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': 'a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3712.161
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:36:05.272338967+01:00",
+          "end_time": "2026-10-18T23:36:08.969780638+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 2,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "str": "a_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': 'a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3697.442
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:36:09.245952852+01:00",
+          "end_time": "2026-10-18T23:36:12.943914331+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 3,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "str": "a_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': 'a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3697.962
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:36:13.219571688+01:00",
+          "end_time": "2026-10-18T23:36:16.786025488+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 4,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "str": "a_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': 'a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3566.4539999999997
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:36:17.072720604+01:00",
+          "end_time": "2026-10-18T23:36:20.957341244+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 5,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "str": "a_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': 'a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3884.621
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3772,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_num_constant",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Operator `u-OBLN` in function `is_num_constant`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_num_constant(token str)\\n{\\n  int i=1;\\n  if @\\n( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISdigit))@\\n\\n    {\\n    while ( *(str+i) != '\\\\0' )\\n      {\\n       if(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))\\n         i++;\\n       else\\n         return(0);\\n      }\\n    return(1);\\n    }\\n  else\\n   return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:36:21.538020509+01:00",
+      "end_time": "2026-10-18T23:36:40.597188206+01:00",
+      "duration_ms": 19059.167999999998,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:36:21.666961483+01:00",
+          "end_time": "2026-10-18T23:36:25.152693604+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 6,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "str": "a_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': 'a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3485.732
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:36:25.427401779+01:00",
+          "end_time": "2026-10-18T23:36:28.695037064+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 7,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "str": "a_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': 'a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3267.636
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:36:28.974019277+01:00",
+          "end_time": "2026-10-18T23:36:32.556578072+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 8,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "str": "a_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': 'a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3582.5589999999997
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:36:32.830530023+01:00",
+          "end_time": "2026-10-18T23:36:36.384864351+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 9,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "str": "a_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': 'a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3554.334
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:36:36.659397346+01:00",
+          "end_time": "2026-10-18T23:36:40.245132981+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 10,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "str": "a_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': 'a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3585.735
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3773,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_num_constant",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Operator `u-OBLN` in function `is_num_constant`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_num_constant(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISdigit))\\n    {\\n    while ( *(str+i) != '\\\\0' )\\n      {\\n       if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n         i++;\\n       else\\n         return(0);\\n      }\\n    return(1);\\n    }\\n  else\\n   return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:36:40.810252119+01:00",
+      "end_time": "2026-10-18T23:36:45.424993355+01:00",
+      "duration_ms": 4614.741,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:36:40.926669789+01:00",
+          "end_time": "2026-10-18T23:36:41.525539284+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 11,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "str": "a_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': 'a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 598.87
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:36:41.790203484+01:00",
+          "end_time": "2026-10-18T23:36:42.383811314+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 12,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "str": "a_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': 'a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.6080000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:36:42.668204764+01:00",
+          "end_time": "2026-10-18T23:36:43.277125571+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 13,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "str": "a_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': 'a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 608.921
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:36:43.554453441+01:00",
+          "end_time": "2026-10-18T23:36:44.178487643+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 14,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "str": "a_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': 'a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 624.034
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:36:44.446388047+01:00",
+          "end_time": "2026-10-18T23:36:45.058570798+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 15,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "str": "a_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': 'a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.182
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3774,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_num_constant",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Operator `u-OBLN` in function `is_num_constant`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_num_constant(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISdigit))\\n    {\\n    while ( *(str+i) != '\\\\0' )\\n      {\\n       if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n         i++;\\n       else\\n         return(0);\\n      }\\n    return(1);\\n    }\\n  else\\n   return(0);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:36:45.639958335+01:00",
+      "end_time": "2026-10-18T23:36:50.346866476+01:00",
+      "duration_ms": 4706.908,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:36:45.772346461+01:00",
+          "end_time": "2026-10-18T23:36:46.372412901+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 16,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "str": "a_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 1: synthesized NEW inputs {'str': 'a_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 600.066
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:36:46.724086494+01:00",
+          "end_time": "2026-10-18T23:36:47.315257183+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 17,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "str": "a_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 2: synthesized NEW inputs {'str': 'a_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 591.171
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:36:47.595717555+01:00",
+          "end_time": "2026-10-18T23:36:48.207326709+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 18,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "str": "a_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 3: synthesized NEW inputs {'str': 'a_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 611.6089999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:36:48.484393653+01:00",
+          "end_time": "2026-10-18T23:36:49.115460218+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 19,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "str": "a_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 4: synthesized NEW inputs {'str': 'a_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.067
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:36:49.389166456+01:00",
+          "end_time": "2026-10-18T23:36:50.002501098+01:00",
+          "function_under_testing": "is_num_constant",
+          "test_case_number": 20,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "str": "a_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) ) )`. Chose function `is_num_constant` from build-view. Iteration 5: synthesized NEW inputs {'str': 'a_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 613.3349999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4294,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if @\\n( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )@\\n\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:36:50.545848932+01:00",
+      "end_time": "2026-10-18T23:37:10.350972292+01:00",
+      "duration_ms": 19805.124,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:36:50.676361498+01:00",
+          "end_time": "2026-10-18T23:36:54.122480236+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 1,
+          "proteum_tcase_index": 41,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3446.119
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:36:54.398957543+01:00",
+          "end_time": "2026-10-18T23:36:57.866577685+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 2,
+          "proteum_tcase_index": 42,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3467.6200000000003
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:36:58.173709272+01:00",
+          "end_time": "2026-10-18T23:37:02.053131503+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 3,
+          "proteum_tcase_index": 43,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3879.422
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:02.366289491+01:00",
+          "end_time": "2026-10-18T23:37:05.770096922+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 4,
+          "proteum_tcase_index": 44,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3403.8070000000002
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:06.041747493+01:00",
+          "end_time": "2026-10-18T23:37:09.968016528+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 5,
+          "proteum_tcase_index": 45,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] || ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3926.2690000000002
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4295,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if @\\n( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )@\\n\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:37:10.574247576+01:00",
+      "end_time": "2026-10-18T23:37:29.389716283+01:00",
+      "duration_ms": 18815.469,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:37:10.710346468+01:00",
+          "end_time": "2026-10-18T23:37:14.268854201+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 6,
+          "proteum_tcase_index": 46,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3558.508
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:37:14.546392649+01:00",
+          "end_time": "2026-10-18T23:37:17.909741805+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 7,
+          "proteum_tcase_index": 47,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3363.3489999999997
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:37:18.178440255+01:00",
+          "end_time": "2026-10-18T23:37:21.400447837+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 8,
+          "proteum_tcase_index": 48,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3222.007
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:21.681540761+01:00",
+          "end_time": "2026-10-18T23:37:25.263690495+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 9,
+          "proteum_tcase_index": 49,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3582.15
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:25.544226671+01:00",
+          "end_time": "2026-10-18T23:37:29.039740429+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 10,
+          "proteum_tcase_index": 50,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((* __ctype_b_loc())[((int) (* str)) ] && ((unsigned short int) _ISalpha) ) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3495.514
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4296,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:37:29.603876501+01:00",
+      "end_time": "2026-10-18T23:37:34.280352800+01:00",
+      "duration_ms": 4676.476,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:37:29.731946644+01:00",
+          "end_time": "2026-10-18T23:37:30.378611036+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 11,
+          "proteum_tcase_index": 51,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 646.6650000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:37:30.686890992+01:00",
+          "end_time": "2026-10-18T23:37:31.282590037+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 12,
+          "proteum_tcase_index": 52,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 595.7
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:37:31.554669867+01:00",
+          "end_time": "2026-10-18T23:37:32.149849880+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 13,
+          "proteum_tcase_index": 53,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 595.1800000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:32.436796677+01:00",
+          "end_time": "2026-10-18T23:37:33.028802193+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 14,
+          "proteum_tcase_index": 54,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 592.0060000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:33.312226548+01:00",
+          "end_time": "2026-10-18T23:37:33.913701530+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 15,
+          "proteum_tcase_index": 55,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.475
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4297,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:37:34.496192305+01:00",
+      "end_time": "2026-10-18T23:37:39.149572251+01:00",
+      "duration_ms": 4653.38,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:37:34.623216828+01:00",
+          "end_time": "2026-10-18T23:37:35.232392276+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 16,
+          "proteum_tcase_index": 56,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 609.176
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:37:35.512756191+01:00",
+          "end_time": "2026-10-18T23:37:36.149854607+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 17,
+          "proteum_tcase_index": 57,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.0980000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:37:36.429806542+01:00",
+          "end_time": "2026-10-18T23:37:37.042788679+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 18,
+          "proteum_tcase_index": 58,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.982
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:37.326080614+01:00",
+          "end_time": "2026-10-18T23:37:37.911260025+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 19,
+          "proteum_tcase_index": 59,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 585.1800000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:38.180524880+01:00",
+          "end_time": "2026-10-18T23:37:38.793009573+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 20,
+          "proteum_tcase_index": 60,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.4849999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4298,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:37:39.361410268+01:00",
+      "end_time": "2026-10-18T23:37:44.017020644+01:00",
+      "duration_ms": 4655.610000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:37:39.492442374+01:00",
+          "end_time": "2026-10-18T23:37:40.103082729+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 21,
+          "proteum_tcase_index": 61,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 610.64
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:37:40.382750149+01:00",
+          "end_time": "2026-10-18T23:37:40.968107734+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 22,
+          "proteum_tcase_index": 62,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 585.357
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:37:41.263000246+01:00",
+          "end_time": "2026-10-18T23:37:41.869788859+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 23,
+          "proteum_tcase_index": 63,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 606.788
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:42.150643686+01:00",
+          "end_time": "2026-10-18T23:37:42.764519741+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 24,
+          "proteum_tcase_index": 64,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 613.876
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:43.064151888+01:00",
+          "end_time": "2026-10-18T23:37:43.645151828+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 25,
+          "proteum_tcase_index": 65,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] || ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.0
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4299,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_identifier",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Operator `u-OBLN` in function `is_identifier`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): \"int is_identifier(token str)\\n{\\n  int i=1;\\n  if ( ((*__ctype_b_loc ())[(int) ((*str))] & (unsigned short int) _ISalpha) )\\n     {\\n        while( *(str+i) !='\\\\0' )\\n           {\\n            if@\\n(((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISalpha) || ((*__ctype_b_loc ())[(int) ((*(str+i)))] & (unsigned short int) _ISdigit))@\\n\\n               i++;\\n            else\\n               ret\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T23:37:44.229665223+01:00",
+      "end_time": "2026-10-18T23:37:48.861809015+01:00",
+      "duration_ms": 4632.144,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T23:37:44.370688211+01:00",
+          "end_time": "2026-10-18T23:37:44.959757798+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 26,
+          "proteum_tcase_index": 66,
+          "csv_values": {
+            "str": "1abc_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 1: synthesized NEW inputs {'str': '1abc_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 589.069
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T23:37:45.241020389+01:00",
+          "end_time": "2026-10-18T23:37:45.827696192+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 27,
+          "proteum_tcase_index": 67,
+          "csv_values": {
+            "str": "1abc_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 2: synthesized NEW inputs {'str': '1abc_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 586.6759999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T23:37:46.126607538+01:00",
+          "end_time": "2026-10-18T23:37:46.713454798+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 28,
+          "proteum_tcase_index": 68,
+          "csv_values": {
+            "str": "1abc_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 3: synthesized NEW inputs {'str': '1abc_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 586.847
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T23:37:47.020316721+01:00",
+          "end_time": "2026-10-18T23:37:47.618625993+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 29,
+          "proteum_tcase_index": 69,
+          "csv_values": {
+            "str": "1abc_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 4: synthesized NEW inputs {'str': '1abc_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 598.309
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T23:37:47.897619573+01:00",
+          "end_time": "2026-10-18T23:37:48.487090109+01:00",
+          "function_under_testing": "is_identifier",
+          "test_case_number": 30,
+          "proteum_tcase_index": 70,
+          "csv_values": {
+            "str": "1abc_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((* __ctype_b_loc())[((int) (* (str + i))) ] & ((unsigned short int) _ISalpha) ) || ((* __ctype_b_loc())[((int) (* (str + i))) ] && ((unsigned short int) _ISdigit) )) )`. Chose function `is_identifier` from build-view. Iteration 5: synthesized NEW inputs {'str': '1abc_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 589.471
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

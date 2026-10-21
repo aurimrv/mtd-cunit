@@ -31,6 +31,21 @@ def next_test_number(path: Path, number_col: int) -> int:
     return max_n + 1
 
 
+def _encode_oracle_cell(col: str, val: str) -> str:
+    """Match CUnit decode of \\n/\\r/\\t; keep CSV single-line for any program."""
+    if col not in ("expected_output", "expected_stdout"):
+        return val
+    # If already escaped (no raw newlines), leave as-is; else escape.
+    if "\n" not in val and "\r" not in val and "\t" not in val:
+        return val
+    return (
+        val.replace("\\", "\\\\")
+        .replace("\n", "\\n")
+        .replace("\r", "\\r")
+        .replace("\t", "\\t")
+    )
+
+
 def format_row(header: list[str], fields: dict, test_number: int) -> list[str]:
     row: list[str] = []
     for col in header:
@@ -38,7 +53,10 @@ def format_row(header: list[str], fields: dict, test_number: int) -> list[str]:
             row.append(str(test_number))
         elif col in fields:
             val = fields[col]
-            row.append("" if val is None else str(val))
+            if val is None:
+                row.append("")
+            else:
+                row.append(_encode_oracle_cell(col, str(val)))
         else:
             row.append("")
     return row

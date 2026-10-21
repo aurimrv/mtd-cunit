@@ -1,0 +1,1392 @@
+{
+  "schema_version": 1,
+  "program": "cal",
+  "operator": "u-OLBN",
+  "session": "S_cal",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T18:49:39.337928863+01:00",
+  "updated_at": "2026-10-18T18:50:11.069582677+01:00",
+  "mutants": [
+    {
+      "mutant_number": 397,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:49:39.448514011+01:00",
+      "end_time": "2026-10-18T18:49:44.571205194+01:00",
+      "duration_ms": 5122.691,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:49:39.566098400+01:00",
+          "end_time": "2026-10-18T18:49:40.201899901+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.8009999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:49:40.498934208+01:00",
+          "end_time": "2026-10-18T18:49:41.101201544+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 602.267
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:49:41.369226647+01:00",
+          "end_time": "2026-10-18T18:49:42.415302072+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1046.076
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:49:42.685404474+01:00",
+          "end_time": "2026-10-18T18:49:43.282207327+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 596.803
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:49:43.552372193+01:00",
+          "end_time": "2026-10-18T18:49:44.238524440+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) | (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 686.1519999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 398,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:49:44.767981675+01:00",
+      "end_time": "2026-10-18T18:49:50.126014593+01:00",
+      "duration_ms": 5358.032999999999,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:49:44.910384848+01:00",
+          "end_time": "2026-10-18T18:49:45.618151290+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 707.767
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:49:45.893698238+01:00",
+          "end_time": "2026-10-18T18:49:46.598079837+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 704.3810000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:49:46.859381210+01:00",
+          "end_time": "2026-10-18T18:49:47.852663162+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 993.282
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:49:48.124127955+01:00",
+          "end_time": "2026-10-18T18:49:48.760384647+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 636.257
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:49:49.063248114+01:00",
+          "end_time": "2026-10-18T18:49:49.778932306+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) & (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 715.684
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 399,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:49:50.326177334+01:00",
+      "end_time": "2026-10-18T18:49:55.403744765+01:00",
+      "duration_ms": 5077.567,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:49:50.450942524+01:00",
+          "end_time": "2026-10-18T18:49:51.044197697+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.255
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:49:51.324571406+01:00",
+          "end_time": "2026-10-18T18:49:51.908349614+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 12,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 583.778
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:49:52.190940120+01:00",
+          "end_time": "2026-10-18T18:49:53.148759695+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 13,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 957.819
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:49:53.459153315+01:00",
+          "end_time": "2026-10-18T18:49:54.065755154+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 14,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 606.602
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:49:54.341138230+01:00",
+          "end_time": "2026-10-18T18:49:55.055351788+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 15,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) || ((m100 == 0) ^ (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 714.213
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 400,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:49:55.594276027+01:00",
+      "end_time": "2026-10-18T18:50:00.761353559+01:00",
+      "duration_ms": 5167.077,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:49:55.716883874+01:00",
+          "end_time": "2026-10-18T18:49:56.315636784+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 16,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 598.7529999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:49:56.586943924+01:00",
+          "end_time": "2026-10-18T18:49:57.203682133+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 17,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 616.739
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:49:57.472246891+01:00",
+          "end_time": "2026-10-18T18:49:58.528799506+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 18,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1056.553
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:49:58.812910252+01:00",
+          "end_time": "2026-10-18T18:49:59.412357565+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 19,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.447
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:49:59.682974442+01:00",
+          "end_time": "2026-10-18T18:50:00.394281737+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 20,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) | ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 711.307
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 401,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:50:00.961927047+01:00",
+      "end_time": "2026-10-18T18:50:05.983583071+01:00",
+      "duration_ms": 5021.656,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:01.083930020+01:00",
+          "end_time": "2026-10-18T18:50:01.652508197+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 21,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 568.578
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:50:01.939900344+01:00",
+          "end_time": "2026-10-18T18:50:02.555081268+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 22,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 615.1809999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:50:02.834894516+01:00",
+          "end_time": "2026-10-18T18:50:03.885036340+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 23,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1050.1419999999998
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:50:04.166322830+01:00",
+          "end_time": "2026-10-18T18:50:04.764312832+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 24,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 597.99
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:50:05.045914035+01:00",
+          "end_time": "2026-10-18T18:50:05.633828543+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 25,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) & ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 587.9140000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 402,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "cal",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Operator `u-OLBN` in function `cal`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if @\\n((m4 != 0) || ((m100 == 0) && (m400 != 0)))@\\n\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:50:06.173770258+01:00",
+      "end_time": "2026-10-18T18:50:11.067723989+01:00",
+      "duration_ms": 4893.9529999999995,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:06.295167953+01:00",
+          "end_time": "2026-10-18T18:50:06.883288772+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 26,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "month1": "-1",
+            "day1": "8",
+            "month2": "-1",
+            "day2": "18",
+            "year": "2021",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 588.121
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:50:07.154802958+01:00",
+          "end_time": "2026-10-18T18:50:07.738198513+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 27,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "month1": "0",
+            "day1": "9",
+            "month2": "0",
+            "day2": "19",
+            "year": "2022",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 583.3960000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:50:08.017769343+01:00",
+          "end_time": "2026-10-18T18:50:08.927457701+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 28,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "month1": "10",
+            "day1": "10",
+            "month2": "1",
+            "day2": "20",
+            "year": "2023",
+            "expected_output": "41"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '10', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 909.6880000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:50:09.228825693+01:00",
+          "end_time": "2026-10-18T18:50:09.835747301+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 29,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "month1": "2",
+            "day1": "11",
+            "month2": "2",
+            "day2": "21",
+            "year": "2024",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 606.9219999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:50:10.110557261+01:00",
+          "end_time": "2026-10-18T18:50:10.699469694+01:00",
+          "function_under_testing": "cal",
+          "test_case_number": 30,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "month1": "3",
+            "day1": "12",
+            "month2": "3",
+            "day2": "22",
+            "year": "2025",
+            "expected_output": "10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((m4 != 0) ^ ((m100 == 0) && (m400 != 0))) )`. Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 588.912
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

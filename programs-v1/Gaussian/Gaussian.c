@@ -15,6 +15,9 @@ double phi01(double x)
 
 double phi(double x, double mu, double sigma)
 {
+	/* sigma==0 is undefined and would yield NaN/Inf; avoid div-by-zero. */
+	if (sigma == 0.0)
+		return NAN;
 	return phi01((x - mu) / sigma) / sigma;
 }
 
@@ -23,6 +26,9 @@ double Phi201(double z)
 	double sum = 0.0, term = z;
 	int i;
 
+	/* NaN never satisfies z<-8 / z>8; the series loop would not terminate. */
+	if (isnan(z))
+		return NAN;
 	if (z < -8.0)
 		return 0.0;
 	if (z > 8.0)
@@ -37,6 +43,14 @@ double Phi201(double z)
 
 double Phi2(double z, double mu, double sigma)
 {
+	/* Degenerate Gaussian: unit step at mu (avoids 0/0 → NaN hang in Phi201). */
+	if (sigma == 0.0) {
+		if (z < mu)
+			return 0.0;
+		if (z > mu)
+			return 1.0;
+		return 0.5;
+	}
 	return Phi201((z - mu) / sigma);
 }
 

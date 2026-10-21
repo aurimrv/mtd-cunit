@@ -1,0 +1,4 @@
+void missing(void)
+{@
+return;@
+}

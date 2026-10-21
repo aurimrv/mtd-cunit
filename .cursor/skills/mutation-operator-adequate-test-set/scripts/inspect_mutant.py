@@ -25,8 +25,10 @@ FUN_RE = re.compile(
 
 
 def run(cmd: list[str], cwd: Path) -> str:
-    cp = subprocess.run(cmd, cwd=str(cwd), text=True, capture_output=True)
-    return (cp.stdout or "") + (cp.stderr or "")
+    cp = subprocess.run(cmd, cwd=str(cwd), capture_output=True)
+    return (cp.stdout or b"").decode("utf-8", errors="replace") + (
+        cp.stderr or b""
+    ).decode("utf-8", errors="replace")
 
 
 def build_view_text(program_dir: Path, session: str, mutant_id: int) -> str:
@@ -59,7 +61,7 @@ def csv_schema(program_dir: Path, function: str) -> dict:
     path = program_dir / "ts_data" / f"test_cases_{function}.csv"
     if not path.exists():
         return {"function": function, "csv_path": str(path), "exists": False}
-    with path.open(newline="", encoding="utf-8") as fh:
+    with path.open(newline="", encoding="utf-8", errors="replace") as fh:
         reader = csv.DictReader(fh)
         headers = list(reader.fieldnames or [])
         example = next(reader, None)

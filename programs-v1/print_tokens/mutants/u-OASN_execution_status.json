@@ -1,0 +1,2872 @@
+{
+  "schema_version": 1,
+  "program": "print_tokens",
+  "operator": "u-OASN",
+  "session": "S_print_tokens",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-20T01:41:25.934245254+01:00",
+  "updated_at": "2026-10-20T01:44:02.611864639+01:00",
+  "mutants": [
+    {
+      "mutant_number": 180,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "get_char",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Operator `u-OASN` in function `get_char`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"CHARACTER get_char(character_stream stream_ptr)\\n{\\n      if(stream_ptr->stream[stream_ptr->stream_ind] == '\\\\0')\\n      {\\n              if@\\n(fgets(stream_ptr->stream+5,80-5,stream_ptr->fp) == ((void *)0))@\\n\\n                    stream_ptr->stream[5]=(-1);\\n              stream_ptr->stream_ind=5;\\n      }\\n      return(stream_ptr->stream[(stream_ptr->stream_ind)++]);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:41:26.089287332+01:00",
+      "end_time": "2026-10-20T01:41:31.155590618+01:00",
+      "duration_ms": 5066.303,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:41:26.215057298+01:00",
+          "end_time": "2026-10-20T01:41:26.933209133+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "stream_ptr": "P1_m4",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 1: synthesized NEW inputs {'stream_ptr': 'P1_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 718.152
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:41:27.234144314+01:00",
+          "end_time": "2026-10-20T01:41:27.879362123+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "stream_ptr": "P1_m1",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 2: synthesized NEW inputs {'stream_ptr': 'P1_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.218
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:41:28.178330616+01:00",
+          "end_time": "2026-10-20T01:41:28.816706736+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "stream_ptr": "P1_m2",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 3: synthesized NEW inputs {'stream_ptr': 'P1_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.3760000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:41:29.108409903+01:00",
+          "end_time": "2026-10-20T01:41:29.764698190+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "stream_ptr": "P1_m3",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 4: synthesized NEW inputs {'stream_ptr': 'P1_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 656.289
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:41:30.098806465+01:00",
+          "end_time": "2026-10-20T01:41:30.747912487+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "stream_ptr": "P1_m15",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 << 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 5: synthesized NEW inputs {'stream_ptr': 'P1_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 649.106
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 181,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "get_char",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Operator `u-OASN` in function `get_char`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"CHARACTER get_char(character_stream stream_ptr)\\n{\\n      if(stream_ptr->stream[stream_ptr->stream_ind] == '\\\\0')\\n      {\\n              if@\\n(fgets(stream_ptr->stream+5,80-5,stream_ptr->fp) == ((void *)0))@\\n\\n                    stream_ptr->stream[5]=(-1);\\n              stream_ptr->stream_ind=5;\\n      }\\n      return(stream_ptr->stream[(stream_ptr->stream_ind)++]);\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:41:31.365232936+01:00",
+      "end_time": "2026-10-20T01:41:36.329581468+01:00",
+      "duration_ms": 4964.349,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:41:31.485640143+01:00",
+          "end_time": "2026-10-20T01:41:32.226842323+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "stream_ptr": "P1_m4",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 1: synthesized NEW inputs {'stream_ptr': 'P1_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 741.202
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:41:32.529188531+01:00",
+          "end_time": "2026-10-20T01:41:33.163944118+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "stream_ptr": "P1_m1",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 2: synthesized NEW inputs {'stream_ptr': 'P1_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 634.756
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:41:33.453061510+01:00",
+          "end_time": "2026-10-20T01:41:34.084328182+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "stream_ptr": "P1_m2",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 3: synthesized NEW inputs {'stream_ptr': 'P1_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.267
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:41:34.358707387+01:00",
+          "end_time": "2026-10-20T01:41:35.039431124+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "stream_ptr": "P1_m3",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 4: synthesized NEW inputs {'stream_ptr': 'P1_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 680.724
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:41:35.337825386+01:00",
+          "end_time": "2026-10-20T01:41:35.970361308+01:00",
+          "function_under_testing": "get_char",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "stream_ptr": "P1_m15",
+            "expected_output": "65"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (fgets(((stream_ptr->stream) + 5) , (80 >> 5) , (stream_ptr->fp)) == ((void (*)) 0) ) )`. Chose function `get_char` from build-view. Iteration 5: synthesized NEW inputs {'stream_ptr': 'P1_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 632.536
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 316,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_end_of_character_stream",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Operator `u-OASN` in function `is_end_of_character_stream`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'BOOLEAN is_end_of_character_stream(character_stream stream_ptr)\\n{\\n      if@\\n(stream_ptr->stream[stream_ptr->stream_ind-1] == (-1))@\\n\\n            return(1);\\n      else\\n            return(0);\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:41:36.564868721+01:00",
+      "end_time": "2026-10-20T01:41:55.312015505+01:00",
+      "duration_ms": 18747.146999999997,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:41:36.705401463+01:00",
+          "end_time": "2026-10-20T01:41:40.110627412+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 1,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "stream_ptr": "EOF_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 1: synthesized NEW inputs {'stream_ptr': 'EOF_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3405.2259999999997
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:41:40.441687457+01:00",
+          "end_time": "2026-10-20T01:41:43.789402647+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 2,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "stream_ptr": "EOF_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 2: synthesized NEW inputs {'stream_ptr': 'EOF_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3347.715
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:41:44.066779636+01:00",
+          "end_time": "2026-10-20T01:41:47.524622773+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 3,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "stream_ptr": "EOF_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 3: synthesized NEW inputs {'stream_ptr': 'EOF_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3457.843
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:41:47.801905160+01:00",
+          "end_time": "2026-10-20T01:41:51.203974956+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 4,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "stream_ptr": "EOF_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 4: synthesized NEW inputs {'stream_ptr': 'EOF_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3402.069
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:41:51.493734310+01:00",
+          "end_time": "2026-10-20T01:41:54.932676237+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 5,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "stream_ptr": "EOF_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) << 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 5: synthesized NEW inputs {'stream_ptr': 'EOF_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3438.942
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 317,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "is_end_of_character_stream",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Operator `u-OASN` in function `is_end_of_character_stream`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'BOOLEAN is_end_of_character_stream(character_stream stream_ptr)\\n{\\n      if@\\n(stream_ptr->stream[stream_ptr->stream_ind-1] == (-1))@\\n\\n            return(1);\\n      else\\n            return(0);\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:41:55.543599637+01:00",
+      "end_time": "2026-10-20T01:42:14.498175895+01:00",
+      "duration_ms": 18954.576,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:41:55.680178167+01:00",
+          "end_time": "2026-10-20T01:41:59.172838351+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 6,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "stream_ptr": "EOF_m4",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 1: synthesized NEW inputs {'stream_ptr': 'EOF_m4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3492.66
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:41:59.445112091+01:00",
+          "end_time": "2026-10-20T01:42:02.918798274+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 7,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "stream_ptr": "EOF_m1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 2: synthesized NEW inputs {'stream_ptr': 'EOF_m1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3473.6859999999997
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:42:03.214981676+01:00",
+          "end_time": "2026-10-20T01:42:06.544983404+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 8,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "stream_ptr": "EOF_m2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 3: synthesized NEW inputs {'stream_ptr': 'EOF_m2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3330.002
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:42:06.831220071+01:00",
+          "end_time": "2026-10-20T01:42:10.254579879+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 9,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "stream_ptr": "EOF_m3",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 4: synthesized NEW inputs {'stream_ptr': 'EOF_m3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3423.359
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:42:10.554614335+01:00",
+          "end_time": "2026-10-20T01:42:14.128753212+01:00",
+          "function_under_testing": "is_end_of_character_stream",
+          "test_case_number": 10,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "stream_ptr": "EOF_m15",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((stream_ptr->stream)[((stream_ptr->stream_ind) >> 1)] == (- 1)) )`. Chose function `is_end_of_character_stream` from build-view. Iteration 5: synthesized NEW inputs {'stream_ptr': 'EOF_m15'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3574.139
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3021,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "constant",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Operator `u-OASN` in function `constant`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int constant(int state, char token_str[], int token_ind)\\n{\\n     switch(state)\\n     {\\n         case 27 : return(27);\\n         case 29 : @\\ntoken_str[token_ind-2]=' ';@\\n return(29);\\n         default : return(-1);\\n     }\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:42:14.717704128+01:00",
+      "end_time": "2026-10-20T01:42:22.505696600+01:00",
+      "duration_ms": 7787.992,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:14.854005585+01:00",
+          "end_time": "2026-10-20T01:42:15.502975059+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 1,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "state": "25",
+            "token_str": "a,b_m4",
+            "token_ind": "0",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 1: synthesized NEW inputs {'state': '25', 'token_str': 'a,b_m4', 'token_ind': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 648.97
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:42:15.824585454+01:00",
+          "end_time": "2026-10-20T01:42:16.482772766+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 2,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "state": "26",
+            "token_str": "a,b_m1",
+            "token_ind": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 2: synthesized NEW inputs {'state': '26', 'token_str': 'a,b_m1', 'token_ind': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 658.187
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:42:16.769700784+01:00",
+          "end_time": "2026-10-20T01:42:17.419136679+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 3,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "state": "1",
+            "token_str": "a,b_m2",
+            "token_ind": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 3: synthesized NEW inputs {'state': '1', 'token_str': 'a,b_m2', 'token_ind': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 649.436
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:42:17.723125295+01:00",
+          "end_time": "2026-10-20T01:42:18.355952191+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 4,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "state": "28",
+            "token_str": "a,b_m3",
+            "token_ind": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 4: synthesized NEW inputs {'state': '28', 'token_str': 'a,b_m3', 'token_ind': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 632.827
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:42:18.668610821+01:00",
+          "end_time": "2026-10-20T01:42:22.142871500+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 5,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "state": "29",
+            "token_str": "a,b_m4",
+            "token_ind": "4",
+            "expected_output": "29"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind << 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 5: synthesized NEW inputs {'state': '29', 'token_str': 'a,b_m4', 'token_ind': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3474.261
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3022,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "constant",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Operator `u-OASN` in function `constant`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int constant(int state, char token_str[], int token_ind)\\n{\\n     switch(state)\\n     {\\n         case 27 : return(27);\\n         case 29 : @\\ntoken_str[token_ind-2]=' ';@\\n return(29);\\n         default : return(-1);\\n     }\\n}\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:42:22.720639269+01:00",
+      "end_time": "2026-10-20T01:42:30.540814296+01:00",
+      "duration_ms": 7820.175,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:22.858105409+01:00",
+          "end_time": "2026-10-20T01:42:23.480045767+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 6,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "state": "25",
+            "token_str": "a,b_m4",
+            "token_ind": "0",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 1: synthesized NEW inputs {'state': '25', 'token_str': 'a,b_m4', 'token_ind': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 621.94
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:42:23.764538130+01:00",
+          "end_time": "2026-10-20T01:42:24.403062965+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 7,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "state": "26",
+            "token_str": "a,b_m1",
+            "token_ind": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 2: synthesized NEW inputs {'state': '26', 'token_str': 'a,b_m1', 'token_ind': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.524
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:42:24.690347145+01:00",
+          "end_time": "2026-10-20T01:42:25.350721634+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 8,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "state": "1",
+            "token_str": "a,b_m2",
+            "token_ind": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 3: synthesized NEW inputs {'state': '1', 'token_str': 'a,b_m2', 'token_ind': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 660.374
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:42:25.667538175+01:00",
+          "end_time": "2026-10-20T01:42:26.288863494+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 9,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "state": "28",
+            "token_str": "a,b_m3",
+            "token_ind": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 4: synthesized NEW inputs {'state': '28', 'token_str': 'a,b_m3', 'token_ind': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 621.325
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:42:26.581649193+01:00",
+          "end_time": "2026-10-20T01:42:30.142982621+01:00",
+          "function_under_testing": "constant",
+          "test_case_number": 10,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "state": "29",
+            "token_str": "a,b_m4",
+            "token_ind": "4",
+            "expected_output": "29"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(token_str[(token_ind >> 2)] = ' ') ;`. Chose function `constant` from build-view. Iteration 5: synthesized NEW inputs {'state': '29', 'token_str': 'a,b_m4', 'token_ind': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3561.333
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3248,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((base[state] << ch) >= 0) )`. Operator `u-OASN` in function `next_state`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int next_state(int state, char ch)\\n{\\n    if(state < 0)\\n      return(state);\\n    if@\\n(base[state]+ch >= 0)@\\n\\n    {\\n        if(check[base[state]+ch] == state)\\n             return(next[base[state]+ch]);\\n        else\\n              return(next_state(default1[state],ch));\\n    }\\n    else\\n        return(next_state(default1[state],ch));\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:42:30.751509094+01:00",
+      "end_time": "2026-10-20T01:42:44.246973099+01:00",
+      "duration_ms": 13495.464,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:30.881278257+01:00",
+          "end_time": "2026-10-20T01:42:31.561573729+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 1,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] << ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 680.295
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:42:31.873124018+01:00",
+          "end_time": "2026-10-20T01:42:32.504723151+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 2,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "state": "-2",
+            "ch": "-1",
+            "expected_output": "-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] << ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 2: synthesized NEW inputs {'state': '-2', 'ch': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.599
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:42:32.821434853+01:00",
+          "end_time": "2026-10-20T01:42:36.230685268+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 3,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "state": "5",
+            "ch": "0",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] << ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 3: synthesized NEW inputs {'state': '5', 'ch': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3409.2509999999997
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:42:36.511775508+01:00",
+          "end_time": "2026-10-20T01:42:39.965099904+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 4,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "state": "0",
+            "ch": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] << ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 4: synthesized NEW inputs {'state': '0', 'ch': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3453.3239999999996
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:42:40.272258765+01:00",
+          "end_time": "2026-10-20T01:42:43.835040934+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 5,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "state": "1",
+            "ch": "2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] << ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 5: synthesized NEW inputs {'state': '1', 'ch': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3562.7819999999997
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3249,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((base[state] >> ch) >= 0) )`. Operator `u-OASN` in function `next_state`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int next_state(int state, char ch)\\n{\\n    if(state < 0)\\n      return(state);\\n    if@\\n(base[state]+ch >= 0)@\\n\\n    {\\n        if(check[base[state]+ch] == state)\\n             return(next[base[state]+ch]);\\n        else\\n              return(next_state(default1[state],ch));\\n    }\\n    else\\n        return(next_state(default1[state],ch));\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:42:44.491216748+01:00",
+      "end_time": "2026-10-20T01:42:57.822291032+01:00",
+      "duration_ms": 13331.075,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:44.626514588+01:00",
+          "end_time": "2026-10-20T01:42:45.273540190+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 6,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] >> ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 647.026
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:42:45.576709037+01:00",
+          "end_time": "2026-10-20T01:42:46.228667640+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 7,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "state": "-2",
+            "ch": "-1",
+            "expected_output": "-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] >> ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 2: synthesized NEW inputs {'state': '-2', 'ch': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 651.9580000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:42:46.516888751+01:00",
+          "end_time": "2026-10-20T01:42:49.912856033+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 8,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "state": "5",
+            "ch": "0",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] >> ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 3: synthesized NEW inputs {'state': '5', 'ch': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3395.968
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:42:50.211793941+01:00",
+          "end_time": "2026-10-20T01:42:53.695947809+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 9,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "state": "0",
+            "ch": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] >> ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 4: synthesized NEW inputs {'state': '0', 'ch': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3484.154
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:42:54.025476692+01:00",
+          "end_time": "2026-10-20T01:42:57.456710313+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 10,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "state": "1",
+            "ch": "2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((base[state] >> ch) >= 0) )`. Chose function `next_state` from build-view. Iteration 5: synthesized NEW inputs {'state': '1', 'ch': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              3250
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3431.234
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3250,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 11,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (check[(base[state] << ch)] == state) )`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-20T01:42:58.050242862+01:00",
+      "end_time": "2026-10-20T01:42:59.101011690+01:00",
+      "duration_ms": 1050.769,
+      "number_of_iterations": 1,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:58.173797908+01:00",
+          "end_time": "2026-10-20T01:42:58.814323144+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 11,
+          "proteum_tcase_index": 41,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] << ch)] == state) )`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 640.5260000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3251,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 16,
+      "rationality_summary": "Get on: `( (check[(base[state] >> ch)] == state) )`. Operator `u-OASN` in function `next_state`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int next_state(int state, char ch)\\n{\\n    if(state < 0)\\n      return(state);\\n    if(base[state]+ch >= 0)\\n    {\\n        if@\\n(check[base[state]+ch] == state)@\\n\\n             return(next[base[state]+ch]);\\n        else\\n              return(next_state(default1[state],ch));\\n    }\\n    else\\n        return(next_state(default1[state],ch));\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:42:59.312513717+01:00",
+      "end_time": "2026-10-20T01:43:13.568204398+01:00",
+      "duration_ms": 14255.691,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:42:59.454816733+01:00",
+          "end_time": "2026-10-20T01:43:00.121679954+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 12,
+          "proteum_tcase_index": 42,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] >> ch)] == state) )`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 666.8629999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:43:00.421194218+01:00",
+          "end_time": "2026-10-20T01:43:01.059071988+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 13,
+          "proteum_tcase_index": 43,
+          "csv_values": {
+            "state": "-2",
+            "ch": "-1",
+            "expected_output": "-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] >> ch)] == state) )`. Chose function `next_state` from build-view. Iteration 2: synthesized NEW inputs {'state': '-2', 'ch': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.8770000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:43:01.349386841+01:00",
+          "end_time": "2026-10-20T01:43:05.481974120+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 14,
+          "proteum_tcase_index": 44,
+          "csv_values": {
+            "state": "5",
+            "ch": "0",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] >> ch)] == state) )`. Chose function `next_state` from build-view. Iteration 3: synthesized NEW inputs {'state': '5', 'ch': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4132.588
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:43:05.820205527+01:00",
+          "end_time": "2026-10-20T01:43:09.353326032+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 15,
+          "proteum_tcase_index": 45,
+          "csv_values": {
+            "state": "0",
+            "ch": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] >> ch)] == state) )`. Chose function `next_state` from build-view. Iteration 4: synthesized NEW inputs {'state': '0', 'ch': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3533.121
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:43:09.639668753+01:00",
+          "end_time": "2026-10-20T01:43:13.203016194+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 16,
+          "proteum_tcase_index": 46,
+          "csv_values": {
+            "state": "1",
+            "ch": "2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (check[(base[state] >> ch)] == state) )`. Chose function `next_state` from build-view. Iteration 5: synthesized NEW inputs {'state': '1', 'ch': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3563.348
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3252,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 21,
+      "rationality_summary": "Get on: `return (next[(base[state] << ch)]) ;`. Operator `u-OASN` in function `next_state`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int next_state(int state, char ch)\\n{\\n    if(state < 0)\\n      return(state);\\n    if(base[state]+ch >= 0)\\n    {\\n        if(check[base[state]+ch] == state)\\n             @\\nreturn(next[base[state]+ch]);@\\n\\n        else\\n              return(next_state(default1[state],ch));\\n    }\\n    else\\n        return(next_state(default1[state],ch));\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:43:13.780716163+01:00",
+      "end_time": "2026-10-20T01:43:18.916994646+01:00",
+      "duration_ms": 5136.278,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:43:13.922831686+01:00",
+          "end_time": "2026-10-20T01:43:14.597036544+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 17,
+          "proteum_tcase_index": 47,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] << ch)]) ;`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 674.205
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:43:14.920933397+01:00",
+          "end_time": "2026-10-20T01:43:15.588349237+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 18,
+          "proteum_tcase_index": 48,
+          "csv_values": {
+            "state": "-2",
+            "ch": "-1",
+            "expected_output": "-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] << ch)]) ;`. Chose function `next_state` from build-view. Iteration 2: synthesized NEW inputs {'state': '-2', 'ch': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 667.416
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:43:15.873700884+01:00",
+          "end_time": "2026-10-20T01:43:16.567665413+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 19,
+          "proteum_tcase_index": 49,
+          "csv_values": {
+            "state": "5",
+            "ch": "0",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] << ch)]) ;`. Chose function `next_state` from build-view. Iteration 3: synthesized NEW inputs {'state': '5', 'ch': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 693.965
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:43:16.871435810+01:00",
+          "end_time": "2026-10-20T01:43:17.520150416+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 20,
+          "proteum_tcase_index": 50,
+          "csv_values": {
+            "state": "0",
+            "ch": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] << ch)]) ;`. Chose function `next_state` from build-view. Iteration 4: synthesized NEW inputs {'state': '0', 'ch': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 648.715
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:43:17.844983764+01:00",
+          "end_time": "2026-10-20T01:43:18.500122782+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 21,
+          "proteum_tcase_index": 51,
+          "csv_values": {
+            "state": "1",
+            "ch": "2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] << ch)]) ;`. Chose function `next_state` from build-view. Iteration 5: synthesized NEW inputs {'state': '1', 'ch': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 655.139
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 3253,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "next_state",
+      "test_case_number": 26,
+      "rationality_summary": "Get on: `return (next[(base[state] >> ch)]) ;`. Operator `u-OASN` in function `next_state`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int next_state(int state, char ch)\\n{\\n    if(state < 0)\\n      return(state);\\n    if(base[state]+ch >= 0)\\n    {\\n        if(check[base[state]+ch] == state)\\n             @\\nreturn(next[base[state]+ch]);@\\n\\n        else\\n              return(next_state(default1[state],ch));\\n    }\\n    else\\n        return(next_state(default1[state],ch));\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:43:19.133973513+01:00",
+      "end_time": "2026-10-20T01:43:24.018884789+01:00",
+      "duration_ms": 4884.911,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:43:19.274065299+01:00",
+          "end_time": "2026-10-20T01:43:19.901998755+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 22,
+          "proteum_tcase_index": 52,
+          "csv_values": {
+            "state": "-3",
+            "ch": "-2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] >> ch)]) ;`. Chose function `next_state` from build-view. Iteration 1: synthesized NEW inputs {'state': '-3', 'ch': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 627.933
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:43:20.192206565+01:00",
+          "end_time": "2026-10-20T01:43:20.803526879+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 23,
+          "proteum_tcase_index": 53,
+          "csv_values": {
+            "state": "-2",
+            "ch": "-1",
+            "expected_output": "-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] >> ch)]) ;`. Chose function `next_state` from build-view. Iteration 2: synthesized NEW inputs {'state': '-2', 'ch': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 611.3199999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:43:21.120029741+01:00",
+          "end_time": "2026-10-20T01:43:21.753239106+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 24,
+          "proteum_tcase_index": 54,
+          "csv_values": {
+            "state": "5",
+            "ch": "0",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] >> ch)]) ;`. Chose function `next_state` from build-view. Iteration 3: synthesized NEW inputs {'state': '5', 'ch': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 633.21
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:43:22.064258508+01:00",
+          "end_time": "2026-10-20T01:43:22.721387162+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 25,
+          "proteum_tcase_index": 55,
+          "csv_values": {
+            "state": "0",
+            "ch": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] >> ch)]) ;`. Chose function `next_state` from build-view. Iteration 4: synthesized NEW inputs {'state': '0', 'ch': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 657.129
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:43:23.012278048+01:00",
+          "end_time": "2026-10-20T01:43:23.637162916+01:00",
+          "function_under_testing": "next_state",
+          "test_case_number": 26,
+          "proteum_tcase_index": 56,
+          "csv_values": {
+            "state": "1",
+            "ch": "2",
+            "expected_output": "-3"
+          },
+          "rationality": "Mutation-directed invent for Get on: `return (next[(base[state] >> ch)]) ;`. Chose function `next_state` from build-view. Iteration 5: synthesized NEW inputs {'state': '1', 'ch': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 624.884
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4009,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "get_actual_token",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Operator `u-OASN` in function `get_actual_token`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int get_actual_token(char token_str[], int token_ind)\\n{\\n          int ind,start;\\n          for(ind=token_ind;@\\nind>0 && ((*__ctype_b_loc ())[(int) ((token_str[ind-1]))] & (unsigned short int) _ISspace);@\\n--ind);\\n           token_str[ind]='\\\\0';token_ind=ind;\\n          for(ind=0;ind<token_ind;++ind)\\n                if(!((*__ctype_b_loc ())[(int) ((token_str[ind]))] & (unsigned short int) _ISspace))\\n\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:43:24.248377415+01:00",
+      "end_time": "2026-10-20T01:43:43.119672449+01:00",
+      "duration_ms": 18871.295,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:43:24.380896098+01:00",
+          "end_time": "2026-10-20T01:43:27.703447474+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 1,
+          "proteum_tcase_index": 57,
+          "csv_values": {
+            "token_str": "abc_m4",
+            "token_ind": "-2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 1: synthesized NEW inputs {'token_str': 'abc_m4', 'token_ind': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3322.551
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:43:28.020447919+01:00",
+          "end_time": "2026-10-20T01:43:31.409864761+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 2,
+          "proteum_tcase_index": 58,
+          "csv_values": {
+            "token_str": "abc_m1",
+            "token_ind": "-1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 2: synthesized NEW inputs {'token_str': 'abc_m1', 'token_ind': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3389.417
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:43:31.709304901+01:00",
+          "end_time": "2026-10-20T01:43:35.196719100+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 3,
+          "proteum_tcase_index": 59,
+          "csv_values": {
+            "token_str": "abc_m2",
+            "token_ind": "10",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 3: synthesized NEW inputs {'token_str': 'abc_m2', 'token_ind': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3487.415
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:43:35.526037656+01:00",
+          "end_time": "2026-10-20T01:43:38.879292809+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 4,
+          "proteum_tcase_index": 60,
+          "csv_values": {
+            "token_str": "abc_m3",
+            "token_ind": "1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 4: synthesized NEW inputs {'token_str': 'abc_m3', 'token_ind': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3353.2549999999997
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:43:39.193179094+01:00",
+          "end_time": "2026-10-20T01:43:42.597275598+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 5,
+          "proteum_tcase_index": 61,
+          "csv_values": {
+            "token_str": "abc_m4",
+            "token_ind": "2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind << 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 5: synthesized NEW inputs {'token_str': 'abc_m4', 'token_ind': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3404.096
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 4010,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "get_actual_token",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Operator `u-OASN` in function `get_actual_token`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"int get_actual_token(char token_str[], int token_ind)\\n{\\n          int ind,start;\\n          for(ind=token_ind;@\\nind>0 && ((*__ctype_b_loc ())[(int) ((token_str[ind-1]))] & (unsigned short int) _ISspace);@\\n--ind);\\n           token_str[ind]='\\\\0';token_ind=ind;\\n          for(ind=0;ind<token_ind;++ind)\\n                if(!((*__ctype_b_loc ())[(int) ((token_str[ind]))] & (unsigned short int) _ISspace))\\n\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T01:43:43.388619769+01:00",
+      "end_time": "2026-10-20T01:44:02.609926022+01:00",
+      "duration_ms": 19221.307,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T01:43:43.537686989+01:00",
+          "end_time": "2026-10-20T01:43:47.205767469+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 6,
+          "proteum_tcase_index": 62,
+          "csv_values": {
+            "token_str": "abc_m4",
+            "token_ind": "-2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 1: synthesized NEW inputs {'token_str': 'abc_m4', 'token_ind': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3668.081
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T01:43:47.491882865+01:00",
+          "end_time": "2026-10-20T01:43:50.930930103+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 7,
+          "proteum_tcase_index": 63,
+          "csv_values": {
+            "token_str": "abc_m1",
+            "token_ind": "-1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 2: synthesized NEW inputs {'token_str': 'abc_m1', 'token_ind': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3439.0480000000002
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T01:43:51.233063157+01:00",
+          "end_time": "2026-10-20T01:43:54.563780252+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 8,
+          "proteum_tcase_index": 64,
+          "csv_values": {
+            "token_str": "abc_m2",
+            "token_ind": "10",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 3: synthesized NEW inputs {'token_str': 'abc_m2', 'token_ind': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3330.717
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T01:43:54.848646453+01:00",
+          "end_time": "2026-10-20T01:43:58.392350551+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 9,
+          "proteum_tcase_index": 65,
+          "csv_values": {
+            "token_str": "abc_m3",
+            "token_ind": "1",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 4: synthesized NEW inputs {'token_str': 'abc_m3', 'token_ind': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3543.704
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T01:43:58.692061739+01:00",
+          "end_time": "2026-10-20T01:44:02.240114354+01:00",
+          "function_under_testing": "get_actual_token",
+          "test_case_number": 10,
+          "proteum_tcase_index": 66,
+          "csv_values": {
+            "token_str": "abc_m4",
+            "token_ind": "2",
+            "expected_output": "0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((ind > 0) && ((* __ctype_b_loc())[((int) token_str[(ind >> 1)]) ] & ((unsigned short int) _ISspace) )) ;`. Chose function `get_actual_token` from build-view. Iteration 5: synthesized NEW inputs {'token_str': 'abc_m4', 'token_ind': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3548.053
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

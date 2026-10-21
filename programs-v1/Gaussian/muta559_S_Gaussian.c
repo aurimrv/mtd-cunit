@@ -1,0 +1,14 @@
+double Phi201(double z)
+{
+ double sum = 0.0, term = z;
+ int i;
+ if (z < -8.0)
+  return 0.0;
+ @
+UTRAP_ON_STAT();@
+for (i = 3; sum + term != sum; i += 2) {
+  sum = sum + term;
+  term = term * z * z / i;
+ }
+ return 0.5 + sum * phi01(z);
+}

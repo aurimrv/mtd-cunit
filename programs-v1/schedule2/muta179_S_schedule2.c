@@ -1,0 +1,14 @@
+void dispatch(void)
+{
+ int command, prio, status;
+ float ratio;
+ struct process *process;
+ while ((status = get_command(&command, &prio, &ratio)) > 0) {
+  @
+ (schedule(command , TRAP_ON_NEGATIVE(prio) , ratio)) ;@
+
+ }
+ if (status < 0)
+  exit_here(status);
+ exit_here(0);
+}

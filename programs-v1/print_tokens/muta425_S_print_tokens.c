@@ -1,0 +1,12 @@
+int unget_char(CHARACTER ch, character_stream stream_ptr)
+{
+      if@
+(UTRAP_ON_FALSE(@
+(stream_ptr->stream_ind == 0)@
+))@
+
+          return 0;
+      else
+          stream_ptr->stream[--(stream_ptr->stream_ind)]=ch;
+      return 0;
+}

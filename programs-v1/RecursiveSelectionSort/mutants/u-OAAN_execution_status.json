@@ -1,0 +1,1772 @@
+{
+  "schema_version": 1,
+  "program": "RecursiveSelectionSort",
+  "operator": "u-OAAN",
+  "session": "S_RecursiveSelectionSort",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T20:09:31.664049685+01:00",
+  "updated_at": "2026-10-18T20:10:09.780562997+01:00",
+  "mutants": [
+    {
+      "mutant_number": 132,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(i = (low - 1)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: an increment/decrement or ±1 rewrite may not change the asserted return/stdout if the counter is unused by this function's checks. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (@\\ni = low + 1;@\\n i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  sort(list, low + 1, high);\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:31.770697686+01:00",
+      "end_time": "2026-10-18T20:09:36.357301360+01:00",
+      "duration_ms": 4586.604,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:31.883510224+01:00",
+          "end_time": "2026-10-18T20:09:32.491491247+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low - 1)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 607.981
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:32.754178333+01:00",
+          "end_time": "2026-10-18T20:09:33.358808398+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low - 1)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 604.63
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:33.636412980+01:00",
+          "end_time": "2026-10-18T20:09:34.264118705+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low - 1)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 627.706
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:34.536087072+01:00",
+          "end_time": "2026-10-18T20:09:35.117073087+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low - 1)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 580.986
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:35.403102755+01:00",
+          "end_time": "2026-10-18T20:09:36.003765603+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low - 1)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 600.6629999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 133,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(i = (low * 1)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (@\\ni = low + 1;@\\n i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  sort(list, low + 1, high);\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:36.548310289+01:00",
+      "end_time": "2026-10-18T20:09:41.130772349+01:00",
+      "duration_ms": 4582.4619999999995,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:36.670381355+01:00",
+          "end_time": "2026-10-18T20:09:37.298803300+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low * 1)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 628.422
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:37.571069706+01:00",
+          "end_time": "2026-10-18T20:09:38.185583418+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low * 1)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 614.514
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:38.461396737+01:00",
+          "end_time": "2026-10-18T20:09:39.050112709+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low * 1)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 588.716
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:39.324111513+01:00",
+          "end_time": "2026-10-18T20:09:39.908513697+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low * 1)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 584.4019999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:40.168968894+01:00",
+          "end_time": "2026-10-18T20:09:40.775566021+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low * 1)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 606.598
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 134,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(i = (low / 1)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (@\\ni = low + 1;@\\n i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  sort(list, low + 1, high);\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:41.329631548+01:00",
+      "end_time": "2026-10-18T20:09:45.948088683+01:00",
+      "duration_ms": 4618.457,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:41.441723629+01:00",
+          "end_time": "2026-10-18T20:09:42.033714703+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low / 1)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 591.9910000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:42.303337388+01:00",
+          "end_time": "2026-10-18T20:09:42.938674754+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 12,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low / 1)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.337
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:43.208292080+01:00",
+          "end_time": "2026-10-18T20:09:43.886311390+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 13,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low / 1)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 678.019
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:44.154303006+01:00",
+          "end_time": "2026-10-18T20:09:44.744599252+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 14,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low / 1)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 590.296
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:45.016664991+01:00",
+          "end_time": "2026-10-18T20:09:45.594210298+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 15,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low / 1)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 577.546
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 135,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `(i = (low % 1)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (@\\ni = low + 1;@\\n i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  sort(list, low + 1, high);\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:46.157730353+01:00",
+      "end_time": "2026-10-18T20:09:50.695713388+01:00",
+      "duration_ms": 4537.982999999999,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:46.275823276+01:00",
+          "end_time": "2026-10-18T20:09:46.872678184+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 16,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low % 1)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 596.855
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:47.161169598+01:00",
+          "end_time": "2026-10-18T20:09:47.762716279+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 17,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low % 1)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.547
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:48.037706655+01:00",
+          "end_time": "2026-10-18T20:09:48.637018997+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 18,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low % 1)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.312
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:48.908268392+01:00",
+          "end_time": "2026-10-18T20:09:49.508931666+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 19,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low % 1)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 600.6629999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:49.772483312+01:00",
+          "end_time": "2026-10-18T20:09:50.340905936+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 20,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(i = (low % 1)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 568.422
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 136,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `(sort(list , (low - 1) , high)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: an increment/decrement or ±1 rewrite may not change the asserted return/stdout if the counter is unused by this function's checks. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (i = low + 1; i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  @\\nsort(list, low + 1, high);@\\n\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:50.895009792+01:00",
+      "end_time": "2026-10-18T20:09:55.442388611+01:00",
+      "duration_ms": 4547.379,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:51.012111973+01:00",
+          "end_time": "2026-10-18T20:09:51.603162893+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 21,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low - 1) , high)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 591.051
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:51.881936225+01:00",
+          "end_time": "2026-10-18T20:09:52.495926769+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 22,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low - 1) , high)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 613.99
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:52.765501168+01:00",
+          "end_time": "2026-10-18T20:09:53.366663979+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 23,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low - 1) , high)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.1619999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:53.632722598+01:00",
+          "end_time": "2026-10-18T20:09:54.207902100+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 24,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low - 1) , high)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 575.1800000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:54.478819794+01:00",
+          "end_time": "2026-10-18T20:09:55.085603165+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 25,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low - 1) , high)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 606.784
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 137,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `(sort(list , (low * 1) , high)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (i = low + 1; i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  @\\nsort(list, low + 1, high);@\\n\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:09:55.648824558+01:00",
+      "end_time": "2026-10-18T20:10:00.311496809+01:00",
+      "duration_ms": 4662.672,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:09:55.772797696+01:00",
+          "end_time": "2026-10-18T20:09:56.372506766+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 26,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low * 1) , high)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.7090000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:09:56.644047606+01:00",
+          "end_time": "2026-10-18T20:09:57.234489801+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 27,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low * 1) , high)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 590.442
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:09:57.517312181+01:00",
+          "end_time": "2026-10-18T20:09:58.116756251+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 28,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low * 1) , high)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.444
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:09:58.397122080+01:00",
+          "end_time": "2026-10-18T20:09:59.074439266+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 29,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low * 1) , high)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 677.3169999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:09:59.372548370+01:00",
+          "end_time": "2026-10-18T20:09:59.955861632+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 30,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low * 1) , high)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 583.313
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 138,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 35,
+      "rationality_summary": "Get on: `(sort(list , (low / 1) , high)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (i = low + 1; i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  @\\nsort(list, low + 1, high);@\\n\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:10:00.505991884+01:00",
+      "end_time": "2026-10-18T20:10:05.066172672+01:00",
+      "duration_ms": 4560.1810000000005,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:10:00.621823035+01:00",
+          "end_time": "2026-10-18T20:10:01.221503500+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 31,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low / 1) , high)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.68
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:10:01.496945882+01:00",
+          "end_time": "2026-10-18T20:10:02.087084861+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 32,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low / 1) , high)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 590.139
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:10:02.384283151+01:00",
+          "end_time": "2026-10-18T20:10:02.979089237+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 33,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low / 1) , high)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 594.8059999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:10:03.251268188+01:00",
+          "end_time": "2026-10-18T20:10:03.832314471+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 34,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low / 1) , high)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.0459999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:10:04.129787192+01:00",
+          "end_time": "2026-10-18T20:10:04.715158654+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 35,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low / 1) , high)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 585.371
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 139,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "sort",
+      "test_case_number": 40,
+      "rationality_summary": "Get on: `(sort(list , (low % 1) , high)) ;`. Operator `u-OAAN` in function `sort`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void sort(double *list, int low, int high)\\n{\\n int min, indexOfMin, i;\\n if (low < high) {\\n  min = list[low];\\n  indexOfMin = low;\\n  for (i = low + 1; i <= high; i++) {\\n   if (list[i] < min) {\\n    min = list[i];\\n    indexOfMin = i;\\n   }\\n  }\\n  list[indexOfMin] = list[low];\\n  list[low] = min;\\n  @\\nsort(list, low + 1, high);@\\n\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:10:05.262943876+01:00",
+      "end_time": "2026-10-18T20:10:09.778761257+01:00",
+      "duration_ms": 4515.818,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:10:05.385241886+01:00",
+          "end_time": "2026-10-18T20:10:05.986989998+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 36,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "list": "1,-2,-1",
+            "low": "-1",
+            "high": "-1",
+            "expected_output": "1.00,-2.00,-1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low % 1) , high)) ;`. Chose function `sort` from build-view. Iteration 1: synthesized NEW inputs {'list': '1,-2,-1', 'low': '-1', 'high': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.7479999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:10:06.263344276+01:00",
+          "end_time": "2026-10-18T20:10:06.871097625+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 37,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "list": "1,-1,0",
+            "low": "0",
+            "high": "0",
+            "expected_output": "1.00,-1.00,0.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low % 1) , high)) ;`. Chose function `sort` from build-view. Iteration 2: synthesized NEW inputs {'list': '1,-1,0', 'low': '0', 'high': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 607.753
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:10:07.146986357+01:00",
+          "end_time": "2026-10-18T20:10:07.739377208+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 38,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "list": "1,0,1",
+            "low": "10",
+            "high": "1",
+            "expected_output": "1.00,0.00,1.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low % 1) , high)) ;`. Chose function `sort` from build-view. Iteration 3: synthesized NEW inputs {'list': '1,0,1', 'low': '10', 'high': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 592.391
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:10:08.011915951+01:00",
+          "end_time": "2026-10-18T20:10:08.592263428+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 39,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "list": "1,1,2",
+            "low": "2",
+            "high": "2",
+            "expected_output": "1.00,1.00,2.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low % 1) , high)) ;`. Chose function `sort` from build-view. Iteration 4: synthesized NEW inputs {'list': '1,1,2', 'low': '2', 'high': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 580.348
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:10:08.855974852+01:00",
+          "end_time": "2026-10-18T20:10:09.433767930+01:00",
+          "function_under_testing": "sort",
+          "test_case_number": 40,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "list": "1,2,3",
+            "low": "3",
+            "high": "3",
+            "expected_output": "1.00,2.00,3.00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(sort(list , (low % 1) , high)) ;`. Chose function `sort` from build-view. Iteration 5: synthesized NEW inputs {'list': '1,2,3', 'low': '3', 'high': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 577.793
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

@@ -43,6 +43,10 @@ static void run_printdate_test(void)
                 tok = strtok(NULL, ",");
             }
         }
+        /* Never claim more argv slots than were parsed (avoids OOB / binary stdout). */
+        if (argc > i) {
+            argc = i;
+        }
 
         tloc = 0;
         ts = localtime(&tloc);

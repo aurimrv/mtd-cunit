@@ -1,0 +1,17 @@
+void subline(char *lin, char *pat, char *sub)
+{
+ int i, lastm, m;
+ lastm = -1;
+ i = 0;
+ while ((lin[i] != '\0'))
+ {
+     m = amatch(lin, i, pat, 0);
+     @
+return;@
+if ((m == -1) || (m == i)) {
+  fputc(lin[i],stdout);
+  i = i + 1;
+     } else
+  i = m;
+ }
+}

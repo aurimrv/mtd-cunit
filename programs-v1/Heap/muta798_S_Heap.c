@@ -1,0 +1,9 @@
+void sort(char *pq[], int length)
+{
+ int k;
+ for (k = length / 2; k >= 1; k--)
+  sink(pq, k, length);
+ while (length > 1) {@
+return;@
+}
+}

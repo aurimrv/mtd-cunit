@@ -1,0 +1,6 @@
+int isleapyear(int year)
+{
+ @
+return (((! (year % 4)) / (year % 100)) ? 1 : 0) ;@
+
+}

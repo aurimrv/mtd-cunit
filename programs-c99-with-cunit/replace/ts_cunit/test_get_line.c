@@ -60,9 +60,25 @@ static void run_get_line_test(void)
         const char *maxsize_str = cunit_csv_cell_by_name(active_row, "maxsize");
         int maxsize = atoi(maxsize_str);
         char buf[256];
-        if (strcmp(s_token, "push") == 0) {
-            ungetc('A', stdin);
+        char filename[L_tmpnam];
+        FILE *f;
+
+        /*
+         * get_line reads stdin via fgets. Under Proteum tcase -add, recinput
+         * attaches an empty STDIN.TMP that never EOF's, so ungetc/EOF tricks
+         * hang. Feed a real temp file like test_change.c instead.
+         */
+        tmpnam(filename);
+        f = fopen(filename, "w");
+        if (f != NULL) {
+            if (strcmp(s_token, "push") == 0) {
+                fputs("A\n", f);
+            }
+            /* "eof" or anything else: leave empty → fgets returns NULL */
+            fclose(f);
         }
+        freopen(filename, "r", stdin);
+
         bool ret = get_line(buf, maxsize);
         char out[32];
         snprintf(out, sizeof(out), "%d", (int)ret);

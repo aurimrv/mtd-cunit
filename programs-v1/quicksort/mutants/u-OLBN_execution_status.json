@@ -1,0 +1,672 @@
+{
+  "schema_version": 1,
+  "program": "quicksort",
+  "operator": "u-OLBN",
+  "session": "S_quicksort",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-19T05:39:05.412133438+01:00",
+  "updated_at": "2026-10-19T05:39:19.564226801+01:00",
+  "mutants": [
+    {
+      "mutant_number": 360,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "quicksort",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Operator `u-OLBN` in function `quicksort`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void quicksort(int x[], int first, int last)\\n{\\n int pivot, j, temp, i;\\n if (first < last) {\\n  pivot = first;\\n  i = first;\\n  j = last;\\n  while (i < j) {\\n   while @\\n(x[i] <= x[pivot] && i < last)@\\n\\n    i++;\\n   while (x[j] > x[pivot])\\n    j--;\\n   if (i < j) {\\n    temp = x[i];\\n    x[i] = x[j];\\n    x[j] = temp;\\n   }\\n  }\\n  temp = x[pivot];\\n  x[pivot] = x[j];\\n  x[j] = temp;\\n  quicksort(x, first, j - 1);\\n'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T05:39:05.514374779+01:00",
+      "end_time": "2026-10-19T05:39:10.095619622+01:00",
+      "duration_ms": 4581.245,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T05:39:05.623591048+01:00",
+          "end_time": "2026-10-19T05:39:06.236106391+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "0",
+            "last": "-1",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Chose function `quicksort` from build-view. Iteration 1: synthesized NEW inputs {'x': '-2,-1,0', 'first': '0', 'last': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.515
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T05:39:06.512642216+01:00",
+          "end_time": "2026-10-19T05:39:07.117653696+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "x": "-1,0,1",
+            "first": "1",
+            "last": "0",
+            "expected_output": "-1,0,1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Chose function `quicksort` from build-view. Iteration 2: synthesized NEW inputs {'x': '-1,0,1', 'first': '1', 'last': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 605.011
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T05:39:07.410243117+01:00",
+          "end_time": "2026-10-19T05:39:07.981427475+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "x": "0,1,2",
+            "first": "5",
+            "last": "1",
+            "expected_output": "0,1,2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Chose function `quicksort` from build-view. Iteration 3: synthesized NEW inputs {'x': '0,1,2', 'first': '5', 'last': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 571.184
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T05:39:08.250799758+01:00",
+          "end_time": "2026-10-19T05:39:08.837958190+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "3",
+            "last": "2",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Chose function `quicksort` from build-view. Iteration 4: synthesized NEW inputs {'x': '-2,-1,0', 'first': '3', 'last': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 587.159
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T05:39:09.120706650+01:00",
+          "end_time": "2026-10-19T05:39:09.757931260+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "x": "2,3,4",
+            "first": "4",
+            "last": "3",
+            "expected_output": "2,3,4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) | (i < last)) )`. Chose function `quicksort` from build-view. Iteration 5: synthesized NEW inputs {'x': '2,3,4', 'first': '4', 'last': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.225
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 361,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "quicksort",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Operator `u-OLBN` in function `quicksort`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void quicksort(int x[], int first, int last)\\n{\\n int pivot, j, temp, i;\\n if (first < last) {\\n  pivot = first;\\n  i = first;\\n  j = last;\\n  while (i < j) {\\n   while @\\n(x[i] <= x[pivot] && i < last)@\\n\\n    i++;\\n   while (x[j] > x[pivot])\\n    j--;\\n   if (i < j) {\\n    temp = x[i];\\n    x[i] = x[j];\\n    x[j] = temp;\\n   }\\n  }\\n  temp = x[pivot];\\n  x[pivot] = x[j];\\n  x[j] = temp;\\n  quicksort(x, first, j - 1);\\n'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T05:39:10.291736281+01:00",
+      "end_time": "2026-10-19T05:39:14.916593956+01:00",
+      "duration_ms": 4624.857000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T05:39:10.415825560+01:00",
+          "end_time": "2026-10-19T05:39:11.036504263+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "0",
+            "last": "-1",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Chose function `quicksort` from build-view. Iteration 1: synthesized NEW inputs {'x': '-2,-1,0', 'first': '0', 'last': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 620.679
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T05:39:11.343331232+01:00",
+          "end_time": "2026-10-19T05:39:11.945822287+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "x": "-1,0,1",
+            "first": "1",
+            "last": "0",
+            "expected_output": "-1,0,1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Chose function `quicksort` from build-view. Iteration 2: synthesized NEW inputs {'x': '-1,0,1', 'first': '1', 'last': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 602.491
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T05:39:12.243748808+01:00",
+          "end_time": "2026-10-19T05:39:12.838430973+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "x": "0,1,2",
+            "first": "5",
+            "last": "1",
+            "expected_output": "0,1,2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Chose function `quicksort` from build-view. Iteration 3: synthesized NEW inputs {'x': '0,1,2', 'first': '5', 'last': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 594.682
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T05:39:13.109273357+01:00",
+          "end_time": "2026-10-19T05:39:13.688250844+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "3",
+            "last": "2",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Chose function `quicksort` from build-view. Iteration 4: synthesized NEW inputs {'x': '-2,-1,0', 'first': '3', 'last': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 578.977
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T05:39:13.958627027+01:00",
+          "end_time": "2026-10-19T05:39:14.573263041+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "x": "2,3,4",
+            "first": "4",
+            "last": "3",
+            "expected_output": "2,3,4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) & (i < last)) )`. Chose function `quicksort` from build-view. Iteration 5: synthesized NEW inputs {'x': '2,3,4', 'first': '4', 'last': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 614.636
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 362,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "quicksort",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Operator `u-OLBN` in function `quicksort`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void quicksort(int x[], int first, int last)\\n{\\n int pivot, j, temp, i;\\n if (first < last) {\\n  pivot = first;\\n  i = first;\\n  j = last;\\n  while (i < j) {\\n   while @\\n(x[i] <= x[pivot] && i < last)@\\n\\n    i++;\\n   while (x[j] > x[pivot])\\n    j--;\\n   if (i < j) {\\n    temp = x[i];\\n    x[i] = x[j];\\n    x[j] = temp;\\n   }\\n  }\\n  temp = x[pivot];\\n  x[pivot] = x[j];\\n  x[j] = temp;\\n  quicksort(x, first, j - 1);\\n'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T05:39:15.135103049+01:00",
+      "end_time": "2026-10-19T05:39:19.562372972+01:00",
+      "duration_ms": 4427.269,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T05:39:15.247461575+01:00",
+          "end_time": "2026-10-19T05:39:15.820118131+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "0",
+            "last": "-1",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Chose function `quicksort` from build-view. Iteration 1: synthesized NEW inputs {'x': '-2,-1,0', 'first': '0', 'last': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 572.6569999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T05:39:16.087393962+01:00",
+          "end_time": "2026-10-19T05:39:16.656534023+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 12,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "x": "-1,0,1",
+            "first": "1",
+            "last": "0",
+            "expected_output": "-1,0,1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Chose function `quicksort` from build-view. Iteration 2: synthesized NEW inputs {'x': '-1,0,1', 'first': '1', 'last': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 569.141
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T05:39:16.931850895+01:00",
+          "end_time": "2026-10-19T05:39:17.510093028+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 13,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "x": "0,1,2",
+            "first": "5",
+            "last": "1",
+            "expected_output": "0,1,2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Chose function `quicksort` from build-view. Iteration 3: synthesized NEW inputs {'x': '0,1,2', 'first': '5', 'last': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 578.2429999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T05:39:17.798886326+01:00",
+          "end_time": "2026-10-19T05:39:18.375200258+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 14,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "x": "-2,-1,0",
+            "first": "3",
+            "last": "2",
+            "expected_output": "-2,-1,0"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Chose function `quicksort` from build-view. Iteration 4: synthesized NEW inputs {'x': '-2,-1,0', 'first': '3', 'last': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 576.314
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T05:39:18.646515538+01:00",
+          "end_time": "2026-10-19T05:39:19.221321295+01:00",
+          "function_under_testing": "quicksort",
+          "test_case_number": 15,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "x": "2,3,4",
+            "first": "4",
+            "last": "3",
+            "expected_output": "2,3,4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((x[i] <= x[pivot]) ^ (i < last)) )`. Chose function `quicksort` from build-view. Iteration 5: synthesized NEW inputs {'x': '2,3,4', 'first': '4', 'last': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 574.806
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

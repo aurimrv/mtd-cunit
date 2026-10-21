@@ -2,9 +2,8 @@
 # Run operator-adequate suites for each program listed in --programs-file.
 #
 # IMPORTANT: automated reuse of ts_data killing tests is DISABLED.
-# Prefer the Cursor skill so an LLM invents mutation-specific cases
-# (inspect_mutant.py → run_attempt.py). run_operator.py requires
-# --candidates-jsonl with LLM-invented rows.
+# Default: --invent-mutation-directed (NEW inputs from Get on: + schema;
+# oracles via CUNIT_CAPTURE). Or supply LLM rows via candidates JSONL.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -13,7 +12,7 @@ PROGRAMS_FILE=""
 OPS_LIST="${ROOT}/scripts/unit-operators-list.txt"
 SKILL="${ROOT}/.cursor/skills/mutation-operator-adequate-test-set/scripts"
 MAX_ITER="${MAX_ITERATIONS:-5}"
-LLM_NAME="${LLM_NAME:-composer-automated-proposer}"
+LLM_NAME="${LLM_NAME:-composer-mutation-directed-v1}"
 
 usage() {
   cat <<EOF
@@ -24,7 +23,7 @@ Usage: 02-run-adequate-suites.sh \\
 
 Environment:
   MAX_ITERATIONS   default 5
-  LLM_NAME         default composer-automated-proposer
+  LLM_NAME         default composer-mutation-directed-v1
 EOF
 }
 
@@ -111,6 +110,7 @@ for raw in "${PROG_LINES[@]}"; do
       --session "$SESSION" \
       --max-iterations "$MAX_ITER" \
       --llm-name "$LLM_NAME" \
+      --invent-mutation-directed \
       --skip-if-done \
       </dev/null \
       2>&1 | tee "${LOG_DIR}/${op}.log"

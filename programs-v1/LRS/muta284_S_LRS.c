@@ -1,0 +1,8 @@
+void sort(char *a[], int sum)
+{
+ char *temp;
+ int i, j;
+ for (i = 0; i < sum - 1; i++)
+  @
+return;@
+}

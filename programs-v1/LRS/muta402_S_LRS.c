@@ -1,0 +1,12 @@
+char *substr(char *str, int star, int len)
+{
+ char *st;
+ int l;
+ l = len - star;
+ st = malloc(sizeof(char) * (l + 1));
+ strncpy(st, &str[star], l);
+ @
+ (st[l] = 1) ;@
+
+ return st;
+}

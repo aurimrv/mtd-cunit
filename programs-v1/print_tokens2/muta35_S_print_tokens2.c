@@ -1,0 +1,15 @@
+character_stream open_character_stream(char *fname)
+{ character_stream fp;
+  if@
+(UTRAP_ON_FALSE(@
+(fname == ((void *)0))@
+))@
+
+     fp=stdin;
+  else if ((fp=fopen(fname,"r"))== ((void *)0))
+  {
+       fprintf(stdout, "The file %s doesn't exists\n",fname);
+       exit(0);
+  }
+  return(fp);
+}

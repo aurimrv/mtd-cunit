@@ -1,0 +1,3313 @@
+{
+  "schema_version": 1,
+  "program": "testPad",
+  "operator": "u-OEBA",
+  "session": "S_testPad",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-20T16:31:49.596659164+01:00",
+  "updated_at": "2026-10-20T16:33:06.242278886+01:00",
+  "mutants": [
+    {
+      "mutant_number": 201,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(rtnIndex &= iSub) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   @\\nrtnIndex = iSub;@\\n\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:31:49.706543307+01:00",
+      "end_time": "2026-10-20T16:31:54.843606523+01:00",
+      "duration_ms": 5137.063,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:31:49.822285655+01:00",
+          "end_time": "2026-10-20T16:31:50.438445520+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= iSub) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 616.1600000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:31:50.737329521+01:00",
+          "end_time": "2026-10-20T16:31:51.356862675+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= iSub) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 619.533
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:31:51.642962204+01:00",
+          "end_time": "2026-10-20T16:31:52.670765098+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= iSub) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1027.803
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:31:52.954352267+01:00",
+          "end_time": "2026-10-20T16:31:53.574695960+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= iSub) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 620.343
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:31:53.855654925+01:00",
+          "end_time": "2026-10-20T16:31:54.482123189+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= iSub) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 626.469
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 202,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(rtnIndex ^= iSub) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   @\\nrtnIndex = iSub;@\\n\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:31:55.050263938+01:00",
+      "end_time": "2026-10-20T16:32:00.218104357+01:00",
+      "duration_ms": 5167.841,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:31:55.167844913+01:00",
+          "end_time": "2026-10-20T16:31:55.793770625+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= iSub) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 625.9259999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:31:56.086196296+01:00",
+          "end_time": "2026-10-20T16:31:56.697063222+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= iSub) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 610.8670000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:31:56.973735221+01:00",
+          "end_time": "2026-10-20T16:31:57.998778322+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= iSub) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1025.043
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:31:58.279643529+01:00",
+          "end_time": "2026-10-20T16:31:58.913686404+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= iSub) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 634.043
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:31:59.197166939+01:00",
+          "end_time": "2026-10-20T16:31:59.807617697+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= iSub) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 610.451
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 203,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(rtnIndex |= iSub) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   @\\nrtnIndex = iSub;@\\n\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:00.438756729+01:00",
+      "end_time": "2026-10-20T16:32:05.629330509+01:00",
+      "duration_ms": 5190.574,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:00.562859062+01:00",
+          "end_time": "2026-10-20T16:32:01.179989667+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= iSub) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 617.13
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:01.452477851+01:00",
+          "end_time": "2026-10-20T16:32:02.089932387+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 12,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= iSub) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.455
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:02.392444567+01:00",
+          "end_time": "2026-10-20T16:32:03.439275186+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 13,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= iSub) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1046.8310000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:03.710955463+01:00",
+          "end_time": "2026-10-20T16:32:04.309781171+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 14,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= iSub) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 598.826
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:04.593890517+01:00",
+          "end_time": "2026-10-20T16:32:05.228693655+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 15,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= iSub) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 634.803
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 204,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `(isPat &= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   @\\nisPat = 1;@\\n\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:05.845226034+01:00",
+      "end_time": "2026-10-20T16:32:11.058635403+01:00",
+      "duration_ms": 5213.409000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:05.966683323+01:00",
+          "end_time": "2026-10-20T16:32:06.586866379+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 16,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 620.183
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:06.893459376+01:00",
+          "end_time": "2026-10-20T16:32:07.533480171+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 17,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 640.021
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:07.804460000+01:00",
+          "end_time": "2026-10-20T16:32:08.843210639+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 18,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1038.75
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:09.124100666+01:00",
+          "end_time": "2026-10-20T16:32:09.736969851+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 19,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.869
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:10.021355297+01:00",
+          "end_time": "2026-10-20T16:32:10.649021210+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 20,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 627.6659999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 205,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `(isPat ^= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   @\\nisPat = 1;@\\n\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:11.277629178+01:00",
+      "end_time": "2026-10-20T16:32:16.521818156+01:00",
+      "duration_ms": 5244.189,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:11.411798598+01:00",
+          "end_time": "2026-10-20T16:32:12.050550470+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 21,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.752
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:12.323638299+01:00",
+          "end_time": "2026-10-20T16:32:12.939154253+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 22,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 615.516
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:13.224931133+01:00",
+          "end_time": "2026-10-20T16:32:14.280759928+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 23,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1055.828
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:14.591354630+01:00",
+          "end_time": "2026-10-20T16:32:15.233394979+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 24,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 642.0400000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:15.518040094+01:00",
+          "end_time": "2026-10-20T16:32:16.152329395+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 25,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 634.289
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 206,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `(isPat |= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   @\\nisPat = 1;@\\n\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:16.730751827+01:00",
+      "end_time": "2026-10-20T16:32:21.881152435+01:00",
+      "duration_ms": 5150.401,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:16.862231616+01:00",
+          "end_time": "2026-10-20T16:32:17.478386898+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 26,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 616.155
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:17.762126637+01:00",
+          "end_time": "2026-10-20T16:32:18.406981015+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 27,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 644.8549999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:18.690504077+01:00",
+          "end_time": "2026-10-20T16:32:19.727004584+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 28,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1036.5
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:20.013632163+01:00",
+          "end_time": "2026-10-20T16:32:20.625862941+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 29,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 612.23
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:20.908735793+01:00",
+          "end_time": "2026-10-20T16:32:21.519837699+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 30,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 611.1020000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 207,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 35,
+      "rationality_summary": "Get on: `(iPat &= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (@\\niPat = 1;@\\n iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:22.096250205+01:00",
+      "end_time": "2026-10-20T16:32:27.190756250+01:00",
+      "duration_ms": 5094.506,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:22.223044262+01:00",
+          "end_time": "2026-10-20T16:32:22.838268524+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 31,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat &= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 615.224
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:23.121762659+01:00",
+          "end_time": "2026-10-20T16:32:23.738999619+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 32,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat &= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 617.2370000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:24.022683362+01:00",
+          "end_time": "2026-10-20T16:32:25.015223472+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 33,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat &= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 992.54
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:25.302207752+01:00",
+          "end_time": "2026-10-20T16:32:25.937462299+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 34,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat &= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.255
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:26.222027218+01:00",
+          "end_time": "2026-10-20T16:32:26.826502514+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 35,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat &= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 604.475
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 208,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 40,
+      "rationality_summary": "Get on: `(iPat ^= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (@\\niPat = 1;@\\n iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:27.401326932+01:00",
+      "end_time": "2026-10-20T16:32:32.556267386+01:00",
+      "duration_ms": 5154.941,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:27.534498047+01:00",
+          "end_time": "2026-10-20T16:32:28.160488093+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 36,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 625.99
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:28.449383620+01:00",
+          "end_time": "2026-10-20T16:32:29.051914163+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 37,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 602.5310000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:29.332265142+01:00",
+          "end_time": "2026-10-20T16:32:30.370409207+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 38,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1038.144
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:30.661205504+01:00",
+          "end_time": "2026-10-20T16:32:31.260514034+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 39,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.309
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:31.561735018+01:00",
+          "end_time": "2026-10-20T16:32:32.178829227+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 40,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat ^= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 617.094
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 209,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 45,
+      "rationality_summary": "Get on: `(iPat |= 1) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (@\\niPat = 1;@\\n iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:32.766571824+01:00",
+      "end_time": "2026-10-20T16:32:37.989263554+01:00",
+      "duration_ms": 5222.692,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:32.889823451+01:00",
+          "end_time": "2026-10-20T16:32:33.489403388+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 41,
+          "proteum_tcase_index": 41,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat |= 1) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 599.58
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:33.790319484+01:00",
+          "end_time": "2026-10-20T16:32:34.495959481+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 42,
+          "proteum_tcase_index": 42,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat |= 1) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 705.6400000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:34.775164691+01:00",
+          "end_time": "2026-10-20T16:32:35.765629288+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 43,
+          "proteum_tcase_index": 43,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat |= 1) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 990.465
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:36.089702627+01:00",
+          "end_time": "2026-10-20T16:32:36.707134857+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 44,
+          "proteum_tcase_index": 44,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat |= 1) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 617.432
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:36.985100541+01:00",
+          "end_time": "2026-10-20T16:32:37.596498901+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 45,
+          "proteum_tcase_index": 45,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(iPat |= 1) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              210
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 611.398
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 210,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 46,
+      "rationality_summary": "Mutation-directed invent for Get on: `(rtnIndex &= (- 1)) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-20T16:32:38.209102261+01:00",
+      "end_time": "2026-10-20T16:32:39.233095250+01:00",
+      "duration_ms": 1023.9929999999999,
+      "number_of_iterations": 1,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:38.337429720+01:00",
+          "end_time": "2026-10-20T16:32:38.945627422+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 46,
+          "proteum_tcase_index": 46,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex &= (- 1)) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 608.198
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 211,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 51,
+      "rationality_summary": "Get on: `(rtnIndex ^= (- 1)) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: an increment/decrement or ±1 rewrite may not change the asserted return/stdout if the counter is unused by this function's checks. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     @\\nrtnIndex = -1;@\\n\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:39.439356297+01:00",
+      "end_time": "2026-10-20T16:32:44.547972730+01:00",
+      "duration_ms": 5108.616,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:39.568254768+01:00",
+          "end_time": "2026-10-20T16:32:40.161874223+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 47,
+          "proteum_tcase_index": 47,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= (- 1)) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.62
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:40.472413750+01:00",
+          "end_time": "2026-10-20T16:32:41.095360855+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 48,
+          "proteum_tcase_index": 48,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= (- 1)) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 622.947
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:41.383606480+01:00",
+          "end_time": "2026-10-20T16:32:42.379347881+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 49,
+          "proteum_tcase_index": 49,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= (- 1)) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 995.741
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:42.668342890+01:00",
+          "end_time": "2026-10-20T16:32:43.273237237+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 50,
+          "proteum_tcase_index": 50,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= (- 1)) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 604.895
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:43.560699510+01:00",
+          "end_time": "2026-10-20T16:32:44.177627782+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 51,
+          "proteum_tcase_index": 51,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex ^= (- 1)) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 616.928
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 212,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 56,
+      "rationality_summary": "Get on: `(rtnIndex |= (- 1)) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: an increment/decrement or ±1 rewrite may not change the asserted return/stdout if the counter is unused by this function's checks. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     @\\nrtnIndex = -1;@\\n\\n     is'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:44.764536787+01:00",
+      "end_time": "2026-10-20T16:32:49.846194124+01:00",
+      "duration_ms": 5081.658,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:44.892006951+01:00",
+          "end_time": "2026-10-20T16:32:45.509039131+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 52,
+          "proteum_tcase_index": 52,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= (- 1)) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 617.033
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:45.806218938+01:00",
+          "end_time": "2026-10-20T16:32:46.402931542+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 53,
+          "proteum_tcase_index": 53,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= (- 1)) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 596.7130000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:46.692075613+01:00",
+          "end_time": "2026-10-20T16:32:47.689571823+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 54,
+          "proteum_tcase_index": 54,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= (- 1)) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 997.4960000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:47.968256400+01:00",
+          "end_time": "2026-10-20T16:32:48.572597401+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 55,
+          "proteum_tcase_index": 55,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= (- 1)) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 604.341
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:48.856556384+01:00",
+          "end_time": "2026-10-20T16:32:49.471158025+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 56,
+          "proteum_tcase_index": 56,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(rtnIndex |= (- 1)) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 614.602
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 213,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 61,
+      "rationality_summary": "Get on: `(isPat &= 0) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     @\\nisPa'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:50.054652722+01:00",
+      "end_time": "2026-10-20T16:32:55.181412776+01:00",
+      "duration_ms": 5126.76,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:50.181821357+01:00",
+          "end_time": "2026-10-20T16:32:50.808330564+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 57,
+          "proteum_tcase_index": 57,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 0) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 626.509
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:51.095945728+01:00",
+          "end_time": "2026-10-20T16:32:51.689639012+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 58,
+          "proteum_tcase_index": 58,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 0) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.6940000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:52.004602245+01:00",
+          "end_time": "2026-10-20T16:32:52.968201025+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 59,
+          "proteum_tcase_index": 59,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 0) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 963.5989999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:53.272516340+01:00",
+          "end_time": "2026-10-20T16:32:53.902229064+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 60,
+          "proteum_tcase_index": 60,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 0) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 629.713
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:54.186075351+01:00",
+          "end_time": "2026-10-20T16:32:54.787435253+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 61,
+          "proteum_tcase_index": 61,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat &= 0) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.36
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 214,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 66,
+      "rationality_summary": "Get on: `(isPat ^= 0) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     @\\nisPa'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:32:55.388947185+01:00",
+      "end_time": "2026-10-20T16:33:00.538323616+01:00",
+      "duration_ms": 5149.376,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:32:55.525351804+01:00",
+          "end_time": "2026-10-20T16:32:56.136004191+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 62,
+          "proteum_tcase_index": 62,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 0) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 610.653
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:32:56.430748326+01:00",
+          "end_time": "2026-10-20T16:32:57.041545993+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 63,
+          "proteum_tcase_index": 63,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 0) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 610.797
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:32:57.324359348+01:00",
+          "end_time": "2026-10-20T16:32:58.294128413+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 64,
+          "proteum_tcase_index": 64,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 0) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 969.769
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:32:58.583174530+01:00",
+          "end_time": "2026-10-20T16:32:59.176567613+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 65,
+          "proteum_tcase_index": 65,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 0) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 593.3929999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:32:59.471943833+01:00",
+          "end_time": "2026-10-20T16:33:00.145747045+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 66,
+          "proteum_tcase_index": 66,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat ^= 0) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 673.804
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 215,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "pat",
+      "test_case_number": 71,
+      "rationality_summary": "Get on: `(isPat |= 0) ;`. Operator `u-OEBA` in function `pat`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'int pat(char subject[], int subjectLen, char pattern[], int patternLen)\\n{\\n int iSub = 0;\\n int rtnIndex = -1;\\n int isPat = 0;\\n int iPat = 0;\\n while (isPat == 0 && (iSub + patternLen - 1 < subjectLen)) {\\n  if (subject[iSub] == pattern[0]) {\\n   rtnIndex = iSub;\\n   isPat = 1;\\n   for (iPat = 1; iPat < patternLen; iPat++) {\\n    if (subject[iSub + iPat] != pattern[iPat]) {\\n     rtnIndex = -1;\\n     @\\nisPa'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T16:33:00.755234377+01:00",
+      "end_time": "2026-10-20T16:33:06.240081760+01:00",
+      "duration_ms": 5484.847000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T16:33:00.886169741+01:00",
+          "end_time": "2026-10-20T16:33:01.602522056+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 67,
+          "proteum_tcase_index": 67,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "0",
+            "pattern": "abc",
+            "patternLen": "1",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 0) ;`. Chose function `pat` from build-view. Iteration 1: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '0', 'pattern': 'abc', 'patternLen': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 716.3530000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T16:33:01.928391504+01:00",
+          "end_time": "2026-10-20T16:33:02.563697563+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 68,
+          "proteum_tcase_index": 68,
+          "csv_values": {
+            "subject": "ab_m1",
+            "subjectLen": "1",
+            "pattern": "abc_m1",
+            "patternLen": "2",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 0) ;`. Chose function `pat` from build-view. Iteration 2: synthesized NEW inputs {'subject': 'ab_m1', 'subjectLen': '1', 'pattern': 'abc_m1', 'patternLen': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.306
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T16:33:02.849576622+01:00",
+          "end_time": "2026-10-20T16:33:04.026569659+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 69,
+          "proteum_tcase_index": 69,
+          "csv_values": {
+            "subject": "ab_m2",
+            "subjectLen": "5",
+            "pattern": "abc_m2",
+            "patternLen": "3",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 0) ;`. Chose function `pat` from build-view. Iteration 3: synthesized NEW inputs {'subject': 'ab_m2', 'subjectLen': '5', 'pattern': 'abc_m2', 'patternLen': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1176.993
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T16:33:04.348185986+01:00",
+          "end_time": "2026-10-20T16:33:04.959893614+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 70,
+          "proteum_tcase_index": 70,
+          "csv_values": {
+            "subject": "ab_m3",
+            "subjectLen": "3",
+            "pattern": "abc_m3",
+            "patternLen": "4",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 0) ;`. Chose function `pat` from build-view. Iteration 4: synthesized NEW inputs {'subject': 'ab_m3', 'subjectLen': '3', 'pattern': 'abc_m3', 'patternLen': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 611.7080000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T16:33:05.263676077+01:00",
+          "end_time": "2026-10-20T16:33:05.859848803+01:00",
+          "function_under_testing": "pat",
+          "test_case_number": 71,
+          "proteum_tcase_index": 71,
+          "csv_values": {
+            "subject": "ab_m4",
+            "subjectLen": "4",
+            "pattern": "abc_m4",
+            "patternLen": "5",
+            "expected_output": "-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(isPat |= 0) ;`. Chose function `pat` from build-view. Iteration 5: synthesized NEW inputs {'subject': 'ab_m4', 'subjectLen': '4', 'pattern': 'abc_m4', 'patternLen': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 596.172
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

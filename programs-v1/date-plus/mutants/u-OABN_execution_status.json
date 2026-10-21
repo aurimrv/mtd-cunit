@@ -1,0 +1,1332 @@
+{
+  "schema_version": 1,
+  "program": "date-plus",
+  "operator": "u-OABN",
+  "session": "S_date-plus",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-19T11:23:02.414466813+01:00",
+  "updated_at": "2026-10-19T11:23:27.215710615+01:00",
+  "mutants": [
+    {
+      "mutant_number": 1850,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:02.534039691+01:00",
+      "end_time": "2026-10-19T11:23:06.555076462+01:00",
+      "duration_ms": 4021.037,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:02.726393557+01:00",
+          "end_time": "2026-10-19T11:23:03.305540791+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 579.1469999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:03.599431649+01:00",
+          "end_time": "2026-10-19T11:23:04.178591363+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 579.16
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:04.462231962+01:00",
+          "end_time": "2026-10-19T11:23:05.041853035+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 579.622
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:05.313457977+01:00",
+          "end_time": "2026-10-19T11:23:05.920637865+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 607.1800000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:06.199223831+01:00",
+          "end_time": "2026-10-19T11:23:06.203019920+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 5,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) | 1))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.796
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1851,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:06.765701350+01:00",
+      "end_time": "2026-10-19T11:23:10.690731384+01:00",
+      "duration_ms": 3925.03,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:06.885725070+01:00",
+          "end_time": "2026-10-19T11:23:07.494911938+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 6,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 609.186
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:07.772221796+01:00",
+          "end_time": "2026-10-19T11:23:08.350896490+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 7,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 578.6750000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:08.648989898+01:00",
+          "end_time": "2026-10-19T11:23:09.230078802+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 8,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.0889999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:09.497041035+01:00",
+          "end_time": "2026-10-19T11:23:10.072400884+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 9,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 575.3589999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:10.339960810+01:00",
+          "end_time": "2026-10-19T11:23:10.344461021+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 10,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) & 1))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.5009999999999994
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1852,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:10.890062286+01:00",
+      "end_time": "2026-10-19T11:23:14.805012305+01:00",
+      "duration_ms": 3914.9500000000003,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:11.011332739+01:00",
+          "end_time": "2026-10-19T11:23:11.590990162+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 11,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 579.658
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:11.864631069+01:00",
+          "end_time": "2026-10-19T11:23:12.450136576+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 12,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 585.5050000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:12.722694555+01:00",
+          "end_time": "2026-10-19T11:23:13.296441425+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 13,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 573.747
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:13.568720421+01:00",
+          "end_time": "2026-10-19T11:23:14.145694163+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 14,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 576.9739999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:14.428949417+01:00",
+          "end_time": "2026-10-19T11:23:14.433505585+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 15,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d\" , ((ts->tm_mon) ^ 1))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.556
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1853,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:14.999216970+01:00",
+      "end_time": "2026-10-19T11:23:19.052919904+01:00",
+      "duration_ms": 4053.7029999999995,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:15.126331053+01:00",
+          "end_time": "2026-10-19T11:23:15.708103424+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 16,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.7719999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:15.996571707+01:00",
+          "end_time": "2026-10-19T11:23:16.580726162+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 17,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 584.155
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:16.857576700+01:00",
+          "end_time": "2026-10-19T11:23:17.460244732+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 18,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 602.668
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:17.765480669+01:00",
+          "end_time": "2026-10-19T11:23:18.388570719+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 19,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 623.09
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:18.682970070+01:00",
+          "end_time": "2026-10-19T11:23:18.687114086+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 20,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) | 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.144
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1854,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:19.251485575+01:00",
+      "end_time": "2026-10-19T11:23:23.160494212+01:00",
+      "duration_ms": 3909.009,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:19.373281480+01:00",
+          "end_time": "2026-10-19T11:23:19.962645775+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 21,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 589.364
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:20.236460687+01:00",
+          "end_time": "2026-10-19T11:23:20.837976713+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 22,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.5160000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:21.110407830+01:00",
+          "end_time": "2026-10-19T11:23:21.693906483+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 23,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 583.499
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:21.967276460+01:00",
+          "end_time": "2026-10-19T11:23:22.540283225+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 24,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 573.0070000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:22.808230761+01:00",
+          "end_time": "2026-10-19T11:23:22.812443922+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 25,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) & 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.213
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1855,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printdate",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Operator `u-OABN` in function `printdate`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int printdate(int argc, char **argv)\\n{\\n char *format;\\n static char *month[] = {\\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\\n };\\n static char *day[] = {\\n  \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"\\n };\\n if (argc == 0) {\\n  argv[0] = \"%H:%M %h %d\";\\n  argc++;\\n }\\n while (argc > 0) {\\n  format = argv[0];\\n  while (*format) {\\n   if (*format != \\'%\\')\\n    putcha'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T11:23:23.359346986+01:00",
+      "end_time": "2026-10-19T11:23:27.213622481+01:00",
+      "duration_ms": 3854.276,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T11:23:23.483739485+01:00",
+          "end_time": "2026-10-19T11:23:24.065143868+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 26,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "argc": "-1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 1: synthesized NEW inputs {'argc': '-1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 581.404
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T11:23:24.326344221+01:00",
+          "end_time": "2026-10-19T11:23:24.905331663+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 27,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "argc": "0",
+            "argv": "%",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 2: synthesized NEW inputs {'argc': '0', 'argv': '%'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 578.9870000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T11:23:25.181056529+01:00",
+          "end_time": "2026-10-19T11:23:25.748712590+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 28,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%H:%M %h %d",
+            "expected_output": "0",
+            "expected_stdout": "01:00 Jan 01"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 3: synthesized NEW inputs {'argc': '1', 'argv': '%H:%M %h %d'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 567.6560000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T11:23:26.021172000+01:00",
+          "end_time": "2026-10-19T11:23:26.585989342+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 29,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "argc": "1",
+            "argv": "%T",
+            "expected_output": "0",
+            "expected_stdout": "01:00:00"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 4: synthesized NEW inputs {'argc': '1', 'argv': '%T'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 564.817
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T11:23:26.865284411+01:00",
+          "end_time": "2026-10-19T11:23:26.869368811+01:00",
+          "function_under_testing": "printdate",
+          "test_case_number": 30,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "argc": "1",
+            "argv": "abc%n%txyz",
+            "expected_output": "0",
+            "expected_stdout": "abc\n\txyz"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(printf(\"%02d/%02d/%02d\" , ((ts->tm_mon) ^ 1) , (ts->tm_mday) , (ts->tm_year))) ;`. Chose function `printdate` from build-view. Iteration 5: synthesized NEW inputs {'argc': '1', 'argv': 'abc%n%txyz'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.084
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2362 @@
+{
+  "schema_version": 1,
+  "program": "replace",
+  "operator": "u-OBAN",
+  "session": "S_replace",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-20T06:42:49.848911277+01:00",
+  "updated_at": "2026-10-20T06:43:41.465652691+01:00",
+  "mutants": [
+    {
+      "mutant_number": 1438,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:42:50.046997806+01:00",
+      "end_time": "2026-10-20T06:42:54.956326832+01:00",
+      "duration_ms": 4909.329,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:42:50.186404829+01:00",
+          "end_time": "2026-10-20T06:42:50.832046280+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.642
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:42:51.116797580+01:00",
+          "end_time": "2026-10-20T06:42:51.750302419+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 633.505
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:42:52.058480757+01:00",
+          "end_time": "2026-10-20T06:42:52.746041486+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 687.5609999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:42:53.033494168+01:00",
+          "end_time": "2026-10-20T06:42:53.679338171+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.8439999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:42:53.950923768+01:00",
+          "end_time": "2026-10-20T06:42:54.588355768+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] + ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.432
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1439,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:42:55.165063953+01:00",
+      "end_time": "2026-10-20T06:43:00.085740462+01:00",
+      "duration_ms": 4920.677000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:42:55.295314226+01:00",
+          "end_time": "2026-10-20T06:42:55.932659808+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.345
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:42:56.222932218+01:00",
+          "end_time": "2026-10-20T06:42:56.859292444+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 636.36
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:42:57.149431603+01:00",
+          "end_time": "2026-10-20T06:42:57.788104799+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.673
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:42:58.099753598+01:00",
+          "end_time": "2026-10-20T06:42:58.734099677+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 634.346
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:42:59.007341594+01:00",
+          "end_time": "2026-10-20T06:42:59.667718765+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] - ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 660.377
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1440,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:00.301294276+01:00",
+      "end_time": "2026-10-20T06:43:05.635967227+01:00",
+      "duration_ms": 5334.673000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:00.436088575+01:00",
+          "end_time": "2026-10-20T06:43:01.085022364+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 648.934
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:01.373344661+01:00",
+          "end_time": "2026-10-20T06:43:02.010106666+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 12,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 636.7620000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:02.314476129+01:00",
+          "end_time": "2026-10-20T06:43:03.100300762+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 13,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 785.824
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:03.484802887+01:00",
+          "end_time": "2026-10-20T06:43:04.194903367+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 14,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 710.101
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:04.472971314+01:00",
+          "end_time": "2026-10-20T06:43:05.189167630+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 15,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] * ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 716.196
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1441,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:05.904393868+01:00",
+      "end_time": "2026-10-20T06:43:10.830174067+01:00",
+      "duration_ms": 4925.781,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:06.045180800+01:00",
+          "end_time": "2026-10-20T06:43:06.672858241+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 16,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 627.678
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:06.961756775+01:00",
+          "end_time": "2026-10-20T06:43:07.658794994+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 17,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 697.038
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:07.942689374+01:00",
+          "end_time": "2026-10-20T06:43:08.587987719+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 18,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.298
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:08.876819532+01:00",
+          "end_time": "2026-10-20T06:43:09.528062863+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 19,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 651.243
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:09.818366054+01:00",
+          "end_time": "2026-10-20T06:43:10.460334916+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 20,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] / ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 641.968
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1442,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:11.047188019+01:00",
+      "end_time": "2026-10-20T06:43:15.915023061+01:00",
+      "duration_ms": 4867.835,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:11.179196210+01:00",
+          "end_time": "2026-10-20T06:43:11.807831898+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 21,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 628.6350000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:12.102566474+01:00",
+          "end_time": "2026-10-20T06:43:12.747126260+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 22,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 644.5600000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:13.035595286+01:00",
+          "end_time": "2026-10-20T06:43:13.668569980+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 23,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 632.974
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:13.962737648+01:00",
+          "end_time": "2026-10-20T06:43:14.613947643+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 24,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 651.2099999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:14.910913633+01:00",
+          "end_time": "2026-10-20T06:43:15.542470173+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 25,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] % ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] & ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.557
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1443,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:16.128166416+01:00",
+      "end_time": "2026-10-20T06:43:21.033870957+01:00",
+      "duration_ms": 4905.704,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:16.264271400+01:00",
+          "end_time": "2026-10-20T06:43:16.908615300+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 26,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 644.344
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:17.197274715+01:00",
+          "end_time": "2026-10-20T06:43:17.842402057+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 27,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.128
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:18.143347560+01:00",
+          "end_time": "2026-10-20T06:43:18.800527899+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 28,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 657.18
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:19.095219832+01:00",
+          "end_time": "2026-10-20T06:43:19.728840971+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 29,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 633.621
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:20.023123489+01:00",
+          "end_time": "2026-10-20T06:43:20.658291862+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 30,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] + ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.168
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1444,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 35,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:21.235782274+01:00",
+      "end_time": "2026-10-20T06:43:26.129061179+01:00",
+      "duration_ms": 4893.2789999999995,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:21.363710682+01:00",
+          "end_time": "2026-10-20T06:43:21.981866283+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 31,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 618.1560000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:22.272696997+01:00",
+          "end_time": "2026-10-20T06:43:22.913010083+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 32,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 640.3140000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:23.209725570+01:00",
+          "end_time": "2026-10-20T06:43:23.847028679+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 33,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.303
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:24.141288740+01:00",
+          "end_time": "2026-10-20T06:43:24.810937599+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 34,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 669.649
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:25.094360558+01:00",
+          "end_time": "2026-10-20T06:43:25.734595490+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 35,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] - ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 640.235
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1445,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 40,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:26.336996904+01:00",
+      "end_time": "2026-10-20T06:43:31.275635158+01:00",
+      "duration_ms": 4938.639,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:26.524857882+01:00",
+          "end_time": "2026-10-20T06:43:27.198410803+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 36,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 673.553
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:27.490719553+01:00",
+          "end_time": "2026-10-20T06:43:28.122493764+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 37,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 631.774
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:28.416333317+01:00",
+          "end_time": "2026-10-20T06:43:29.055234526+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 38,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 638.9010000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:29.350804279+01:00",
+          "end_time": "2026-10-20T06:43:29.990766928+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 39,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 639.962
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:30.277907232+01:00",
+          "end_time": "2026-10-20T06:43:30.899816502+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 40,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] * ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 621.909
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1446,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 45,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:31.488644736+01:00",
+      "end_time": "2026-10-20T06:43:36.366139438+01:00",
+      "duration_ms": 4877.495,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:31.610973972+01:00",
+          "end_time": "2026-10-20T06:43:32.257008695+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 41,
+          "proteum_tcase_index": 41,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 646.0350000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:32.551075828+01:00",
+          "end_time": "2026-10-20T06:43:33.176774995+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 42,
+          "proteum_tcase_index": 42,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 625.699
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:33.469561112+01:00",
+          "end_time": "2026-10-20T06:43:34.099324070+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 43,
+          "proteum_tcase_index": 43,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 629.7629999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:34.391324802+01:00",
+          "end_time": "2026-10-20T06:43:35.043558264+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 44,
+          "proteum_tcase_index": 44,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 652.2339999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:35.370905656+01:00",
+          "end_time": "2026-10-20T06:43:35.992971553+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 45,
+          "proteum_tcase_index": 45,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] / ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 622.066
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 1447,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dodash",
+      "test_case_number": 50,
+      "rationality_summary": "Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Operator `u-OBAN` in function `dodash`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): \"void dodash(char delim, char *src, int *i, char *dest, int *j, int maxset)\\n{\\n    int k;\\n    bool junk;\\n    char escjunk;\\n    while ((src[*i] != delim) && (src[*i] != '\\\\0'))\\n    {\\n if (src[*i - 1] == '@') {\\n     escjunk = esc(src, i);\\n     junk = addstr(escjunk, dest, j, maxset);\\n } else\\n     if (src[*i] != '-')\\n  junk = addstr(src[*i], dest, j, maxset);\\n     else if (*j <= 1 || src[*i + 1] == '\\\\0'\". After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-20T06:43:36.579230411+01:00",
+      "end_time": "2026-10-20T06:43:41.463440574+01:00",
+      "duration_ms": 4884.21,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-20T06:43:36.723085171+01:00",
+          "end_time": "2026-10-20T06:43:37.348178510+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 46,
+          "proteum_tcase_index": 46,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]",
+            "i": "-2",
+            "dest": "",
+            "j": "-2",
+            "maxset": "8",
+            "expected_output": "dest=,j=-2,i=-2"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 1: synthesized NEW inputs {'delim': ']_m4', 'src': ']', 'i': '-2', 'dest': '', 'j': '-2', 'maxset': '8'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 625.093
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-20T06:43:37.646924839+01:00",
+          "end_time": "2026-10-20T06:43:38.308155263+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 47,
+          "proteum_tcase_index": 47,
+          "csv_values": {
+            "delim": "]_m1",
+            "src": "]_m1",
+            "i": "-1",
+            "dest": "",
+            "j": "-1",
+            "maxset": "9",
+            "expected_output": "dest=,j=-1,i=-1"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 2: synthesized NEW inputs {'delim': ']_m1', 'src': ']_m1', 'i': '-1', 'dest': '', 'j': '-1', 'maxset': '9'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 661.231
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-20T06:43:38.606852213+01:00",
+          "end_time": "2026-10-20T06:43:39.216073240+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 48,
+          "proteum_tcase_index": 48,
+          "csv_values": {
+            "delim": "]_m2",
+            "src": "]_m2",
+            "i": "10",
+            "dest": "",
+            "j": "0",
+            "maxset": "10",
+            "expected_output": "dest=,j=0,i=10"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 3: synthesized NEW inputs {'delim': ']_m2', 'src': ']_m2', 'i': '10', 'dest': '', 'j': '0', 'maxset': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 609.221
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-20T06:43:39.504942047+01:00",
+          "end_time": "2026-10-20T06:43:40.159344370+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 49,
+          "proteum_tcase_index": 49,
+          "csv_values": {
+            "delim": "]_m3",
+            "src": "]_m3",
+            "i": "1",
+            "dest": "",
+            "j": "1",
+            "maxset": "11",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 4: synthesized NEW inputs {'delim': ']_m3', 'src': ']_m3', 'i': '1', 'dest': '', 'j': '1', 'maxset': '11'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 654.402
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-20T06:43:40.454739472+01:00",
+          "end_time": "2026-10-20T06:43:41.083365237+01:00",
+          "function_under_testing": "dodash",
+          "test_case_number": 50,
+          "proteum_tcase_index": 50,
+          "csv_values": {
+            "delim": "]_m4",
+            "src": "]_m4",
+            "i": "2",
+            "dest": "",
+            "j": "2",
+            "maxset": "12",
+            "expected_output": "dest=,j=4,i=4"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( ((((* __ctype_b_loc())[((int) src[((* i) - 1)]) ] & ((unsigned short int) _ISalnum) ) && ((* __ctype_b_loc())[((int) src[((* i) + 1)]) ] % ((unsigned short int) _ISalnum) )) && (src[((* i) - 1)] <= src[((* i) + 1)])) )`. Chose function `dodash` from build-view. Iteration 5: synthesized NEW inputs {'delim': ']_m4', 'src': ']_m4', 'i': '2', 'dest': '', 'j': '2', 'maxset': '12'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 628.626
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

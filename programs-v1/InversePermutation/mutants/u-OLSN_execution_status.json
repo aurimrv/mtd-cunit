@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "program": "InversePermutation",
+  "operator": "u-OLSN",
+  "session": "S_InversePermutation",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-19T13:31:26.423882804+01:00",
+  "updated_at": "2026-10-19T13:31:40.940584281+01:00",
+  "mutants": [
+    {
+      "mutant_number": 246,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "invert",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Operator `u-OLSN` in function `invert`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void invert(int a[], int N)\\n{\\n int i;\\n for (i = 0; i < N; i++) {\\n  if @\\n(a[i] < 0 || a[i] >= N || exists[a[i]])@\\n {\\n   printf(\"Input is not a permutation.\\\\n\");\\n   return;\\n  }\\n  exists[a[i]] = 1;\\n }\\n for (i = 0; i < N; i++)\\n  ainv[a[i]] = i;\\n for (i = 0; i < N; i++)\\n  printf(\"%d \", ainv[i]);\\n printf(\"\\\\n\");\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T13:31:26.530310607+01:00",
+      "end_time": "2026-10-19T13:31:32.942181392+01:00",
+      "duration_ms": 6411.871,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T13:31:26.677437634+01:00",
+          "end_time": "2026-10-19T13:31:27.346986729+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "a": "",
+            "N": "-2",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 1: synthesized NEW inputs {'a': '', 'N': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 669.549
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T13:31:27.659788393+01:00",
+          "end_time": "2026-10-19T13:31:28.313861102+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "a": "",
+            "N": "-1",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 2: synthesized NEW inputs {'a': '', 'N': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 654.073
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T13:31:28.637723833+01:00",
+          "end_time": "2026-10-19T13:31:29.350806626+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "a": "",
+            "N": "0",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 3: synthesized NEW inputs {'a': '', 'N': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 713.083
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T13:31:29.688099401+01:00",
+          "end_time": "2026-10-19T13:31:30.999059242+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "a": "",
+            "N": "1",
+            "expected_output": "",
+            "expected_stdout": "0 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 4: synthesized NEW inputs {'a': '', 'N': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1310.9599999999998
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T13:31:31.332862075+01:00",
+          "end_time": "2026-10-19T13:31:32.532163125+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "a": "",
+            "N": "2",
+            "expected_output": "",
+            "expected_stdout": "Input is not a permutation."
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) << (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 5: synthesized NEW inputs {'a': '', 'N': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1199.301
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 247,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "invert",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Operator `u-OLSN` in function `invert`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void invert(int a[], int N)\\n{\\n int i;\\n for (i = 0; i < N; i++) {\\n  if @\\n(a[i] < 0 || a[i] >= N || exists[a[i]])@\\n {\\n   printf(\"Input is not a permutation.\\\\n\");\\n   return;\\n  }\\n  exists[a[i]] = 1;\\n }\\n for (i = 0; i < N; i++)\\n  ainv[a[i]] = i;\\n for (i = 0; i < N; i++)\\n  printf(\"%d \", ainv[i]);\\n printf(\"\\\\n\");\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T13:31:33.152074252+01:00",
+      "end_time": "2026-10-19T13:31:39.349231618+01:00",
+      "duration_ms": 6197.157,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T13:31:33.299835158+01:00",
+          "end_time": "2026-10-19T13:31:33.968049345+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "a": "",
+            "N": "-2",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 1: synthesized NEW inputs {'a': '', 'N': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 668.2139999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T13:31:34.290451094+01:00",
+          "end_time": "2026-10-19T13:31:34.987129695+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "a": "",
+            "N": "-1",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 2: synthesized NEW inputs {'a': '', 'N': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 696.678
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T13:31:35.295342973+01:00",
+          "end_time": "2026-10-19T13:31:35.941653477+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "a": "",
+            "N": "0",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 3: synthesized NEW inputs {'a': '', 'N': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 646.3109999999999
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T13:31:36.245509711+01:00",
+          "end_time": "2026-10-19T13:31:37.523397043+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "a": "",
+            "N": "1",
+            "expected_output": "",
+            "expected_stdout": "0 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 4: synthesized NEW inputs {'a': '', 'N': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1277.888
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T13:31:37.887281824+01:00",
+          "end_time": "2026-10-19T13:31:38.934516618+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "a": "",
+            "N": "2",
+            "expected_output": "",
+            "expected_stdout": "Input is not a permutation."
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) >> (a[i] >= N)) || exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 5: synthesized NEW inputs {'a': '', 'N': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": [
+              248,
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1047.235
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 248,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "invert",
+      "test_case_number": 11,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (((a[i] < 0) || (a[i] >= N)) << exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 1: synthesized NEW inputs {'a': '', 'N': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-19T13:31:39.554606297+01:00",
+      "end_time": "2026-10-19T13:31:40.704530890+01:00",
+      "duration_ms": 1149.924,
+      "number_of_iterations": 1,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T13:31:39.719269389+01:00",
+          "end_time": "2026-10-19T13:31:40.397627058+01:00",
+          "function_under_testing": "invert",
+          "test_case_number": 11,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "a": "",
+            "N": "-2",
+            "expected_output": "",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (((a[i] < 0) || (a[i] >= N)) << exists[a[i]]) )`. Chose function `invert` from build-view. Iteration 1: synthesized NEW inputs {'a': '', 'N': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": [
+              249
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 678.3580000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 249,
+      "status": "KILLED",
+      "killed_by_mutant_target": 248,
+      "function_under_testing": "invert",
+      "test_case_number": 11,
+      "rationality_summary": null,
+      "initial_time": "2026-10-19T13:31:40.821264188+01:00",
+      "end_time": "2026-10-19T13:31:40.938032496+01:00",
+      "duration_ms": 116.768,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

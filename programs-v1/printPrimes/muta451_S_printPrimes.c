@@ -1,0 +1,17 @@
+void printPrimes(int n)
+{
+ int curPrime = 0;
+ int numPrimes = 0;
+ int isPrime = 0;
+ int primes[100];
+ int i, j;
+ primes[0] = 2;
+ numPrimes = 1;
+ curPrime = 2;
+ while (numPrimes < n) {@
+return;@
+}
+ for (j = 0; j <= numPrimes - 1; j++) {
+  printf("Prime:    %d \n", primes[j]);
+ }
+}

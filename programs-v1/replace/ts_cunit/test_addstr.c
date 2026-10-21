@@ -68,8 +68,30 @@ static void run_addstr_test(void)
         int j_val = j_cell ? atoi(j_cell) : 0;
         int maxset = maxset_cell ? atoi(maxset_cell) : 0;
         int result = addstr(c, outset_buf, &j_val, maxset);
-        char outbuf[32];
-        snprintf(outbuf, sizeof(outbuf), "%d", result);
+        /*
+         * Observe return, updated j, and outset bytes: u-SSDL often deletes
+         * only outset[*j]=c or *j+=1 while leaving the same return value.
+         */
+        char outbuf[512];
+        int pos = 0;
+        int pi;
+        int n;
+        int sl = (int)strnlen(outset_buf, 64);
+        n = j_val > sl ? j_val : sl;
+        if (n < 1) {
+            n = 1;
+        }
+        if (n > 64) {
+            n = 64;
+        }
+        pos += snprintf(outbuf + pos, sizeof(outbuf) - (size_t)pos, "%d#%d#", result, j_val);
+        for (pi = 0; pi < n; pi++) {
+            pos += snprintf(outbuf + pos, sizeof(outbuf) - (size_t)pos, "%02x",
+                            (unsigned char)outset_buf[pi]);
+            if (pos >= (int)sizeof(outbuf) - 4) {
+                break;
+            }
+        }
         cunit_oracle_check_output(outbuf);
     }
     /* LLM_BODY_END */

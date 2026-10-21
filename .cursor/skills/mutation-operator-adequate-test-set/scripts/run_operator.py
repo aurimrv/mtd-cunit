@@ -2,11 +2,10 @@
 """
 Run the adequate-suite loop for one operator on one program directory.
 
-Automated reuse of ts_data as killing tests is DISABLED. Use the Cursor skill
-with an LLM that invents mutation-specific cases (see inspect_mutant.py).
-
-This driver remains useful for session select / seed / finalize plumbing when
-driven by an external inventor that supplies --candidate-file JSON lines.
+Automated reuse of ts_data as killing tests is DISABLED. Provide either:
+  --candidates-jsonl   LLM-invented rows, or
+  --invent-mutation-directed   synthesize NEW inputs from Get on: + schema,
+                               fill oracles via CUNIT_CAPTURE (not ts_data reuse).
 """
 
 from __future__ import annotations
@@ -20,15 +19,31 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import alive_path, read_alive_ids, status_path
 from inspect_mutant import inspect
+from invent_mutation_directed import invent_for_mutant
 
 
 def run(cmd: list[str], cwd: Path, check: bool = False) -> subprocess.CompletedProcess[str]:
-    cp = subprocess.run(cmd, cwd=str(cwd), text=True, capture_output=True)
-    if check and cp.returncode != 0:
+    # Proteum tools sometimes emit non-UTF8 bytes in listings; never crash the loop.
+    cp = subprocess.run(
+        cmd,
+        cwd=str(cwd),
+        capture_output=True,
+    )
+
+    def _dec(b: bytes | None) -> str:
+        return (b or b"").decode("utf-8", errors="replace")
+
+    out = subprocess.CompletedProcess(
+        args=cp.args,
+        returncode=cp.returncode,
+        stdout=_dec(cp.stdout),
+        stderr=_dec(cp.stderr),
+    )
+    if check and out.returncode != 0:
         raise RuntimeError(
-            f"cmd failed ({cp.returncode}): {cmd}\n{cp.stdout}\n{cp.stderr}"
+            f"cmd failed ({out.returncode}): {cmd}\n{out.stdout}\n{out.stderr}"
         )
-    return cp
+    return out
 
 
 def run_tty(cmd: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -68,10 +83,25 @@ def main() -> int:
         help=(
             "JSONL file: each line is "
             '{"mutant_id":N,"iteration":i,"function":"...","fields":{...},"rationality":"..."} '
-            "Invented by the LLM (required). Optional per-mutant field "
+            "Invented by the LLM. Optional per-mutant field "
             "equivalence_rationality (or a final line with "
-            '{"mutant_id":N,"equivalence_rationality":"..."}) used when marking EQUIVALENT. '
-            "Without this file, the driver refuses to invent from ts_data."
+            '{"mutant_id":N,"equivalence_rationality":"..."}) used when marking EQUIVALENT.'
+        ),
+    )
+    p.add_argument(
+        "--invent-mutation-directed",
+        action="store_true",
+        help=(
+            "For each alive mutant, invent NEW cases from Get on:/schema and "
+            "CUNIT_CAPTURE oracles (does not reuse ts_data rows)."
+        ),
+    )
+    p.add_argument(
+        "--resume",
+        action="store_true",
+        help=(
+            "If status JSON already exists, keep it (do not --force init) and "
+            "continue remaining alive mutants."
         ),
     )
     args = p.parse_args()
@@ -82,29 +112,29 @@ def main() -> int:
     session = args.session
     max_iter = int(args.max_iterations)
 
-    if not args.candidates_jsonl:
+    if not args.candidates_jsonl and not args.invent_mutation_directed:
         print(
             "error: automated ts_data reuse is disabled. "
-            "Apply the mutation-operator-adequate-test-set skill so the LLM invents "
-            "cases (inspect_mutant.py → run_attempt.py), or pass --candidates-jsonl "
-            "with LLM-invented rows.",
+            "Pass --candidates-jsonl with invented rows, or "
+            "--invent-mutation-directed to synthesize mutation-aimed cases.",
             file=sys.stderr,
         )
         return 2
 
     cand_by_mutant: dict[int, list[dict]] = {}
     equiv_rationality: dict[int, str] = {}
-    with Path(args.candidates_jsonl).open(encoding="utf-8") as fh:
-        for line in fh:
-            line = line.strip()
-            if not line:
-                continue
-            row = json.loads(line)
-            mid = int(row["mutant_id"])
-            if row.get("equivalence_rationality"):
-                equiv_rationality[mid] = str(row["equivalence_rationality"])
-            if row.get("fields") and row.get("function"):
-                cand_by_mutant.setdefault(mid, []).append(row)
+    if args.candidates_jsonl:
+        with Path(args.candidates_jsonl).open(encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                row = json.loads(line)
+                mid = int(row["mutant_id"])
+                if row.get("equivalence_rationality"):
+                    equiv_rationality[mid] = str(row["equivalence_rationality"])
+                if row.get("fields") and row.get("function"):
+                    cand_by_mutant.setdefault(mid, []).append(row)
 
     alive = read_alive_ids(alive_path(program_dir, op))
     if args.skip_if_done and not alive and status_path(program_dir, op).exists():
@@ -114,6 +144,12 @@ def main() -> int:
         print(json.dumps({"operator": op, "skipped": True, "reason": "no_alive"}))
         return 0
 
+    status_exists = status_path(program_dir, op).exists()
+    resume = bool(args.resume and status_exists)
+    # Auto-resume when continuing a crashed operator (alive remain + status present)
+    if not resume and args.skip_if_done and status_exists and alive:
+        resume = True
+
     clear_tcases(program_dir, session)
     py(
         scripts,
@@ -122,25 +158,24 @@ def main() -> int:
         program_dir,
     )
     (program_dir / f"testset_{op}.txt").write_text("", encoding="utf-8")
-    py(
-        scripts,
-        "update_execution_status.py",
-        [
-            "init",
-            "--program-dir",
-            str(program_dir),
-            "--operator",
-            op,
-            "--session",
-            session,
-            "--max-iterations",
-            str(max_iter),
-            "--llm-name",
-            args.llm_name,
-            "--force",
-        ],
-        program_dir,
-    )
+    init_args = [
+        "init",
+        "--program-dir",
+        str(program_dir),
+        "--operator",
+        op,
+        "--session",
+        session,
+        "--max-iterations",
+        str(max_iter),
+        "--llm-name",
+        args.llm_name,
+    ]
+    if not resume:
+        init_args.append("--force")
+    else:
+        print(json.dumps({"operator": op, "resume": True, "alive": len(alive)}), flush=True)
+    py(scripts, "update_execution_status.py", init_args, program_dir)
     run(["exemuta", "-select", "-all", "0.0", f"-{op}", "1.0", session], cwd=program_dir)
 
     processed = 0
@@ -154,20 +189,26 @@ def main() -> int:
         processed += 1
         print(f"[{op}] target={target} remaining={len(alive)}", flush=True)
 
-        py(
-            scripts,
-            "update_execution_status.py",
-            [
-                "start-mutant",
-                "--program-dir",
-                str(program_dir),
-                "--operator",
-                op,
-                "--mutant-id",
-                str(target),
-            ],
-            program_dir,
-        )
+        start_args = [
+            "start-mutant",
+            "--program-dir",
+            str(program_dir),
+            "--operator",
+            op,
+            "--mutant-id",
+            str(target),
+        ]
+        # Reopened EQUIVALENT mutants need a clean attempt slate
+        try:
+            st_data = json.loads(status_path(program_dir, op).read_text(encoding="utf-8"))
+            for rec in st_data.get("mutants") or []:
+                if int(rec.get("mutant_number", -1)) == int(target):
+                    if str(rec.get("status") or "").upper() == "EQUIVALENT":
+                        start_args.append("--reset")
+                    break
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            pass
+        py(scripts, "update_execution_status.py", start_args, program_dir)
 
         # Always dump inspection for logging / LLM context
         insp = inspect(program_dir, session, target)
@@ -182,6 +223,32 @@ def main() -> int:
             cand_by_mutant.get(target, []),
             key=lambda r: int(r.get("iteration") or 0),
         )[:max_iter]
+        if not rows and args.invent_mutation_directed:
+            # SSDL needs more branch-hitting probes (equivalents are rare)
+            invent_n = max(max_iter, 8) if "ssdl" in op.lower() else max_iter
+            try:
+                bundle = invent_for_mutant(program_dir, session, target, invent_n)
+            except Exception as exc:  # noqa: BLE001 — surface and stop operator
+                print(
+                    f"error: [{op}] invent failed for mutant {target}: {exc}",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                return 4
+            rows = list(bundle.get("candidates") or [])[:invent_n]
+            if bundle.get("equivalence_rationality"):
+                equiv_rationality[target] = str(bundle["equivalence_rationality"])
+            print(
+                json.dumps(
+                    {
+                        "invented": True,
+                        "mutant_id": target,
+                        "n_candidates": len(rows),
+                        "ssdl_boost": invent_n > max_iter,
+                    }
+                ),
+                flush=True,
+            )
         if not rows:
             er = equiv_rationality.get(target)
             if not er:

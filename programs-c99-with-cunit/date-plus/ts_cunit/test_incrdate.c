@@ -41,6 +41,10 @@ static void run_incrdate_test(void)
             argv[i++] = tok;
             tok = strtok(NULL, ",");
         }
+        /* Never claim more argv slots than were parsed (avoids OOB / garbage). */
+        if (argc > i) {
+            argc = i;
+        }
 
         will_exit = 0;
         if (argc >= 2) {

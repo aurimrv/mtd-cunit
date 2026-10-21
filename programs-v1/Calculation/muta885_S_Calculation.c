@@ -1,0 +1,20 @@
+int FnDivide(int a, int b)
+{
+ int quotient = 0;
+ int divisor = 0;
+ int divend;
+ if (b == 0) {
+  printf("ERROR: Divide by zero.");
+  return 0;
+ }
+ divisor = FnNegate(abss(b));
+ divend = abss(a);
+ for (divend = abss(a); divend >= abss(divisor); divend += divisor) {
+  ++quotient;
+ }
+ if @
+( (1) )@
+
+  quotient = FnNegate(quotient);
+ return quotient;
+}

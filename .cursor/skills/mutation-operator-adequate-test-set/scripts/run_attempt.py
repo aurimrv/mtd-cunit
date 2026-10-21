@@ -28,11 +28,17 @@ from append_csv_case import format_row, next_test_number, read_header, write_csv
 
 
 def run(cmd: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        cmd,
-        cwd=str(cwd),
-        text=True,
-        capture_output=True,
+    cp = subprocess.run(cmd, cwd=str(cwd), capture_output=True)
+
+    def _dec(b: bytes | None) -> str:
+        return (b or b"").decode("utf-8", errors="replace")
+
+    # Normalize to text-like CompletedProcess for callers
+    return subprocess.CompletedProcess(
+        args=cp.args,
+        returncode=cp.returncode,
+        stdout=_dec(cp.stdout),
+        stderr=_dec(cp.stderr),
     )
 
 
@@ -151,17 +157,21 @@ def main() -> int:
         else:
             validation["tcase_add_ok"] = False
         if validation["tcase_add_ok"]:
-            # exemuta -exec also needs a TTY (tcgetattr on stdin)
-            cp = run_with_tty(["exemuta", "-exec", "-trace", session], cwd=program_dir)
+            # Restrict -exec to the target mutant (-f/-t). Full-operator exec
+            # (hundreds of SSDL compiles) made each invent attempt take many
+            # minutes and hid whether generation actually kills. Other alive
+            # mutants still see new tests when their turn runs -f/-t on them.
+            mid_s = str(args.mutant_id)
+            cp = run_with_tty(
+                ["exemuta", "-exec", "-trace", "-f", mid_s, "-t", mid_s, session],
+                cwd=program_dir,
+            )
             validation["exemuta_exec_ok"] = cp.returncode == 0
-            check_ids = list(dict.fromkeys(alive_before + [args.mutant_id]))
-            for mid in check_ids:
-                st = muta_status(program_dir, session, mid)
-                if mid == args.mutant_id:
-                    target_life = st.get("life")
-                    target_killed = bool(st.get("is_dead"))
-                elif st.get("is_dead"):
-                    collateral_kills.append(mid)
+            st = muta_status(program_dir, session, args.mutant_id)
+            target_life = st.get("life")
+            target_killed = bool(st.get("is_dead"))
+            # Collateral kills require executing other mutants; deferred until
+            # each alive ID is processed with its own -f/-t exec (tests persist).
 
     end_time = now_iso()
     attempt = {

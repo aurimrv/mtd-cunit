@@ -1,0 +1,20 @@
+token error_or_eof_case(token_stream tstream_ptr, token token_ptr, int cu_state, char token_str[], int token_ind, char ch)
+{
+      if(is_end_of_character_stream(tstream_ptr->ch_stream))
+      {
+            token_ptr->token_id = 0;
+            token_ptr->token_string[0]='\0';
+            return(token_ptr);
+      }
+      if(cu_state !=0)
+      {
+            @
+ (unget_char(TRAP_ON_ZERO(ch) , (tstream_ptr->ch_stream))) ;@
+
+            token_ind--;
+      }
+      token_ptr->token_id=-1;
+      get_actual_token(token_str,token_ind);
+      strcpy(token_ptr->token_string,token_str);
+      return(token_ptr);
+}

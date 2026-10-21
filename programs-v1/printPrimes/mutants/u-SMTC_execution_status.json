@@ -1,0 +1,657 @@
+{
+  "schema_version": 1,
+  "program": "printPrimes",
+  "operator": "u-SMTC",
+  "session": "S_printPrimes",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T20:29:16.283631411+01:00",
+  "updated_at": "2026-10-18T20:29:28.098647734+01:00",
+  "mutants": [
+    {
+      "mutant_number": 429,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printPrimes",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `}`. Operator `u-SMTC` in function `printPrimes`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'void printPrimes(int n)\\n{\\n int curPrime = 0;\\n int numPrimes = 0;\\n int isPrime = 0;\\n int primes[100];\\n int i, j;\\n primes[0] = 2;\\n numPrimes = 1;\\n curPrime = 2;\\n while (numPrimes < n) {\\n  curPrime++;\\n  isPrime = 1;\\n  @\\n@\\nfor (i = 0; i <= numPrimes - 1; i++) @\\n@\\n{\\n   if (isDivisible(primes[i], curPrime)) {\\n    isPrime = 0;\\n    break;\\n   }\\n  }\\n  @\\n@\\n@\\n@\\nif (isPrime == 1) {\\n   primes[numPrimes] = curPr'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:29:16.390091103+01:00",
+      "end_time": "2026-10-18T20:29:20.239602806+01:00",
+      "duration_ms": 3849.511,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:29:16.501705214+01:00",
+          "end_time": "2026-10-18T20:29:17.679683765+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "n": "-1",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 1: synthesized NEW inputs {'n': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1177.978
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:29:17.943454068+01:00",
+          "end_time": "2026-10-18T20:29:19.027190325+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "n": "0",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 2: synthesized NEW inputs {'n': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1083.736
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:29:19.323991605+01:00",
+          "end_time": "2026-10-18T20:29:19.328454905+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 3,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "10",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 \nPrime:    7 \nPrime:    11 \nPrime:    13 \nPrime:    17 \nPrime:    19 \nPrime:    23 \nPrime:    29 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 3: synthesized NEW inputs {'n': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.463
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:29:19.614954106+01:00",
+          "end_time": "2026-10-18T20:29:19.618791873+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 4,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "2",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 4: synthesized NEW inputs {'n': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.837
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:29:19.887310907+01:00",
+          "end_time": "2026-10-18T20:29:19.891114742+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 5,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "3",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 5: synthesized NEW inputs {'n': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.8040000000000003
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 430,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printPrimes",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `}`. Operator `u-SMTC` in function `printPrimes`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'void printPrimes(int n)\\n{\\n int curPrime = 0;\\n int numPrimes = 0;\\n int isPrime = 0;\\n int primes[100];\\n int i, j;\\n primes[0] = 2;\\n numPrimes = 1;\\n curPrime = 2;\\n @\\n@\\nwhile (numPrimes < n) @\\n@\\n{\\n  curPrime++;\\n  isPrime = 1;\\n  for (i = 0; i <= numPrimes - 1; i++) {\\n   if (isDivisible(primes[i], curPrime)) {\\n    isPrime = 0;\\n    break;\\n   }\\n  }\\n  if (isPrime == 1) {\\n   primes[numPrimes] = curPrime;\\n   '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:29:20.444404664+01:00",
+      "end_time": "2026-10-18T20:29:24.209858234+01:00",
+      "duration_ms": 3765.454,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:29:20.566510686+01:00",
+          "end_time": "2026-10-18T20:29:21.666528344+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 6,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "n": "-1",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 1: synthesized NEW inputs {'n': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1100.018
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:29:21.934023705+01:00",
+          "end_time": "2026-10-18T20:29:23.036935556+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 7,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "n": "0",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 2: synthesized NEW inputs {'n': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1102.9119999999998
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:29:23.301541774+01:00",
+          "end_time": "2026-10-18T20:29:23.305414641+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 8,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "10",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 \nPrime:    7 \nPrime:    11 \nPrime:    13 \nPrime:    17 \nPrime:    19 \nPrime:    23 \nPrime:    29 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 3: synthesized NEW inputs {'n': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.873
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:29:23.575588910+01:00",
+          "end_time": "2026-10-18T20:29:23.580346914+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 9,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "2",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 4: synthesized NEW inputs {'n': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.758
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:29:23.857410263+01:00",
+          "end_time": "2026-10-18T20:29:23.861518475+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 10,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "3",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 5: synthesized NEW inputs {'n': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.108
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 431,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printPrimes",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `}`. Operator `u-SMTC` in function `printPrimes`. Semantic hypothesis: the rewritten expression may preserve return value and stdout for inputs expressible through this function's CSV harness. Build-view fragment (truncated): 'void printPrimes(int n)\\n{\\n int curPrime = 0;\\n int numPrimes = 0;\\n int isPrime = 0;\\n int primes[100];\\n int i, j;\\n primes[0] = 2;\\n numPrimes = 1;\\n curPrime = 2;\\n while (numPrimes < n) {\\n  curPrime++;\\n  isPrime = 1;\\n  for (i = 0; i <= numPrimes - 1; i++) {\\n   if (isDivisible(primes[i], curPrime)) {\\n    isPrime = 0;\\n    break;\\n   }\\n  }\\n  if (isPrime == 1) {\\n   primes[numPrimes] = curPrime;\\n   numPrime'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T20:29:24.408932694+01:00",
+      "end_time": "2026-10-18T20:29:28.097047060+01:00",
+      "duration_ms": 3688.115,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T20:29:24.527601412+01:00",
+          "end_time": "2026-10-18T20:29:25.573210283+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 11,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "n": "-1",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 1: synthesized NEW inputs {'n': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1045.609
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T20:29:25.835359017+01:00",
+          "end_time": "2026-10-18T20:29:26.881178656+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 12,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "n": "0",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 2: synthesized NEW inputs {'n': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1045.819
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T20:29:27.172030619+01:00",
+          "end_time": "2026-10-18T20:29:27.177061175+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 13,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "10",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 \nPrime:    7 \nPrime:    11 \nPrime:    13 \nPrime:    17 \nPrime:    19 \nPrime:    23 \nPrime:    29 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 3: synthesized NEW inputs {'n': '10'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 5.031
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T20:29:27.460811138+01:00",
+          "end_time": "2026-10-18T20:29:27.465023214+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 14,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "2",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 4: synthesized NEW inputs {'n': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 4.212
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T20:29:27.728634717+01:00",
+          "end_time": "2026-10-18T20:29:27.732593084+01:00",
+          "function_under_testing": "printPrimes",
+          "test_case_number": 15,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "n": "3",
+            "expected_output": "",
+            "expected_stdout": "Prime:    2 \nPrime:    3 \nPrime:    5 "
+          },
+          "rationality": "Mutation-directed invent for Get on: `}`. Chose function `printPrimes` from build-view. Iteration 5: synthesized NEW inputs {'n': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 1,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3.9589999999999996
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

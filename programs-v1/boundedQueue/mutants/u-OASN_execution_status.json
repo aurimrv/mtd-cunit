@@ -1,0 +1,2695 @@
+{
+  "schema_version": 1,
+  "program": "boundedQueue",
+  "operator": "u-OASN",
+  "session": "S_boundedQueue",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-18T18:50:38.462434881+01:00",
+  "updated_at": "2026-10-18T18:52:18.179210114+01:00",
+  "mutants": [
+    {
+      "mutant_number": 34,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "createQueue",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Operator `u-OASN` in function `createQueue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'BoundedQueue *createQueue(int maxElements)\\n{\\n BoundedQueue *q;\\n if (maxElements < 0) {\\n  printf(\"Invalid size.\\\\n\");\\n  q = 0;\\n  return q;\\n }\\n q = (BoundedQueue *) malloc(sizeof(BoundedQueue));\\n @\\nq->elements = (int *)malloc(sizeof(int) * maxElements);@\\n\\n q->size = 0;\\n q->capacity = maxElements;\\n q->front = 0;\\n q->back = 0;\\n return q;\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:50:38.565572465+01:00",
+      "end_time": "2026-10-18T18:50:46.640153879+01:00",
+      "duration_ms": 8074.581,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:38.685895345+01:00",
+          "end_time": "2026-10-18T18:50:39.311160540+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 1,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "maxElements": "-3",
+            "expected_output": "NULL",
+            "expected_stdout": "Invalid size."
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 1: synthesized NEW inputs {'maxElements': '-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 625.265
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:50:39.575146654+01:00",
+          "end_time": "2026-10-18T18:50:40.195451993+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 2,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "maxElements": "-2",
+            "expected_output": "NULL",
+            "expected_stdout": "Invalid size."
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 2: synthesized NEW inputs {'maxElements': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 620.305
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:50:40.445260665+01:00",
+          "end_time": "2026-10-18T18:50:42.258902479+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 3,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "maxElements": "5",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 3: synthesized NEW inputs {'maxElements': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1813.642
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:50:42.534554054+01:00",
+          "end_time": "2026-10-18T18:50:44.209744833+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 4,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "maxElements": "0",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 4: synthesized NEW inputs {'maxElements': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1675.19
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:50:44.466681751+01:00",
+          "end_time": "2026-10-18T18:50:46.302968049+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 5,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "maxElements": "1",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  << maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 5: synthesized NEW inputs {'maxElements': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1836.287
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 35,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "createQueue",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Operator `u-OASN` in function `createQueue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'BoundedQueue *createQueue(int maxElements)\\n{\\n BoundedQueue *q;\\n if (maxElements < 0) {\\n  printf(\"Invalid size.\\\\n\");\\n  q = 0;\\n  return q;\\n }\\n q = (BoundedQueue *) malloc(sizeof(BoundedQueue));\\n @\\nq->elements = (int *)malloc(sizeof(int) * maxElements);@\\n\\n q->size = 0;\\n q->capacity = maxElements;\\n q->front = 0;\\n q->back = 0;\\n return q;\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:50:46.833546910+01:00",
+      "end_time": "2026-10-18T18:50:54.959467957+01:00",
+      "duration_ms": 8125.921,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:46.964964741+01:00",
+          "end_time": "2026-10-18T18:50:47.780383634+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 6,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "maxElements": "-3",
+            "expected_output": "NULL",
+            "expected_stdout": "Invalid size."
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 1: synthesized NEW inputs {'maxElements': '-3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 815.419
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:50:48.092828001+01:00",
+          "end_time": "2026-10-18T18:50:48.741926570+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 7,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "maxElements": "-2",
+            "expected_output": "NULL",
+            "expected_stdout": "Invalid size."
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 2: synthesized NEW inputs {'maxElements': '-2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 649.098
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:50:49.005827833+01:00",
+          "end_time": "2026-10-18T18:50:50.638664868+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 8,
+          "proteum_tcase_index": 8,
+          "csv_values": {
+            "maxElements": "5",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 3: synthesized NEW inputs {'maxElements': '5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1632.837
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:50:50.906971641+01:00",
+          "end_time": "2026-10-18T18:50:52.648377878+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 9,
+          "proteum_tcase_index": 9,
+          "csv_values": {
+            "maxElements": "0",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 4: synthesized NEW inputs {'maxElements': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1741.406
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:50:52.915228345+01:00",
+          "end_time": "2026-10-18T18:50:54.600599144+01:00",
+          "function_under_testing": "createQueue",
+          "test_case_number": 10,
+          "proteum_tcase_index": 10,
+          "csv_values": {
+            "maxElements": "1",
+            "expected_output": "NONNULL",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->elements) = ((int (*)) malloc((sizeof(int)  >> maxElements))) ) ;`. Chose function `createQueue` from build-view. Iteration 5: synthesized NEW inputs {'maxElements': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1685.3709999999999
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 260,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "enqueue",
+      "test_case_number": 1,
+      "rationality_summary": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `enqueue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init=', 'e': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-18T18:50:55.173169579+01:00",
+      "end_time": "2026-10-18T18:50:58.518305973+01:00",
+      "duration_ms": 3345.136,
+      "number_of_iterations": 1,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:55.304267013+01:00",
+          "end_time": "2026-10-18T18:50:58.235472230+01:00",
+          "function_under_testing": "enqueue",
+          "test_case_number": 1,
+          "proteum_tcase_index": 11,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "e": "3",
+            "expected_output": "",
+            "expected_stdout": "[3]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `enqueue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init=', 'e': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": [
+              261,
+              936
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2931.205
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 261,
+      "status": "KILLED",
+      "killed_by_mutant_target": 260,
+      "function_under_testing": "enqueue",
+      "test_case_number": 1,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:50:58.625488496+01:00",
+      "end_time": "2026-10-18T18:50:58.720191696+01:00",
+      "duration_ms": 94.70299999999999,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 936,
+      "status": "KILLED",
+      "killed_by_mutant_target": 260,
+      "function_under_testing": "enqueue",
+      "test_case_number": 1,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:50:58.817121014+01:00",
+      "end_time": "2026-10-18T18:50:58.908587800+01:00",
+      "duration_ms": 91.46600000000001,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 262,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": "Mutation-directed invent for Get on: `((q->back) = (((q->back) << 1) % (q->capacity))) ;`. Chose function `enqueue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1', 'e': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-18T18:50:59.100461448+01:00",
+      "end_time": "2026-10-18T18:51:05.443250893+01:00",
+      "duration_ms": 6342.789,
+      "number_of_iterations": 2,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:50:59.229696285+01:00",
+          "end_time": "2026-10-18T18:51:02.077876183+01:00",
+          "function_under_testing": "enqueue",
+          "test_case_number": 2,
+          "proteum_tcase_index": 12,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "e": "3",
+            "expected_output": "",
+            "expected_stdout": "[3]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->back) = (((q->back) << 1) % (q->capacity))) ;`. Chose function `enqueue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init=', 'e': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2848.1800000000003
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:02.362885983+01:00",
+          "end_time": "2026-10-18T18:51:05.181135067+01:00",
+          "function_under_testing": "enqueue",
+          "test_case_number": 3,
+          "proteum_tcase_index": 13,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "e": "4",
+            "expected_output": "",
+            "expected_stdout": "[1, 4]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->back) = (((q->back) << 1) % (q->capacity))) ;`. Chose function `enqueue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1', 'e': '4'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": [
+              263,
+              264,
+              265,
+              932,
+              933,
+              934,
+              935
+            ]
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 2818.25
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 263,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:05.543927039+01:00",
+      "end_time": "2026-10-18T18:51:05.636701388+01:00",
+      "duration_ms": 92.774,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 264,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:05.729099347+01:00",
+      "end_time": "2026-10-18T18:51:05.822898060+01:00",
+      "duration_ms": 93.79899999999999,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 265,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:05.915479165+01:00",
+      "end_time": "2026-10-18T18:51:06.020941699+01:00",
+      "duration_ms": 105.462,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 932,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:06.119889663+01:00",
+      "end_time": "2026-10-18T18:51:06.217746593+01:00",
+      "duration_ms": 97.857,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 933,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:06.314530963+01:00",
+      "end_time": "2026-10-18T18:51:06.409670357+01:00",
+      "duration_ms": 95.14,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 934,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:06.503798462+01:00",
+      "end_time": "2026-10-18T18:51:06.596012375+01:00",
+      "duration_ms": 92.214,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 935,
+      "status": "KILLED",
+      "killed_by_mutant_target": 262,
+      "function_under_testing": "enqueue",
+      "test_case_number": 3,
+      "rationality_summary": null,
+      "initial_time": "2026-10-18T18:51:06.692451069+01:00",
+      "end_time": "2026-10-18T18:51:06.783923859+01:00",
+      "duration_ms": 91.472,
+      "number_of_iterations": 0,
+      "attempts": [],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 636,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `((q->size) = ((q->size) << 1)) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  @\\nq->size = q->size - 1;@\\n\\n  r = q->elements[(q->front % q->capacity)];\\n  q->front = (q->front + 1) % q->capacity;\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:06.975602987+01:00",
+      "end_time": "2026-10-18T18:51:14.978922503+01:00",
+      "duration_ms": 8003.320000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:07.095106033+01:00",
+          "end_time": "2026-10-18T18:51:07.696231987+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 1,
+          "proteum_tcase_index": 14,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 601.125
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:07.994668247+01:00",
+          "end_time": "2026-10-18T18:51:09.823089092+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 2,
+          "proteum_tcase_index": 15,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1828.421
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:10.089483205+01:00",
+          "end_time": "2026-10-18T18:51:11.838851983+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 3,
+          "proteum_tcase_index": 16,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1749.368
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:12.103264582+01:00",
+          "end_time": "2026-10-18T18:51:12.708103785+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 4,
+          "proteum_tcase_index": 17,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 604.839
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:12.970831652+01:00",
+          "end_time": "2026-10-18T18:51:14.636939032+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 5,
+          "proteum_tcase_index": 18,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) << 1)) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1666.108
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 637,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `((q->size) = ((q->size) >> 1)) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  @\\nq->size = q->size - 1;@\\n\\n  r = q->elements[(q->front % q->capacity)];\\n  q->front = (q->front + 1) % q->capacity;\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:15.191914724+01:00",
+      "end_time": "2026-10-18T18:51:23.400509074+01:00",
+      "duration_ms": 8208.595000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:15.324991764+01:00",
+          "end_time": "2026-10-18T18:51:15.905551180+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 6,
+          "proteum_tcase_index": 19,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) >> 1)) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 580.56
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:16.173063666+01:00",
+          "end_time": "2026-10-18T18:51:18.055932255+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 7,
+          "proteum_tcase_index": 20,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) >> 1)) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1882.869
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:18.327076331+01:00",
+          "end_time": "2026-10-18T18:51:20.058266942+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 8,
+          "proteum_tcase_index": 21,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) >> 1)) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1731.19
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:20.354807020+01:00",
+          "end_time": "2026-10-18T18:51:21.073337200+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 9,
+          "proteum_tcase_index": 22,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) >> 1)) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 718.53
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:21.348965922+01:00",
+          "end_time": "2026-10-18T18:51:23.053941413+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 10,
+          "proteum_tcase_index": 23,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->size) = ((q->size) >> 1)) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1704.976
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 638,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  @\\nr = q->elements[(q->front % q->capacity)];@\\n\\n  q->front = (q->front + 1) % q->capacity;\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:23.596359794+01:00",
+      "end_time": "2026-10-18T18:51:31.477119802+01:00",
+      "duration_ms": 7880.76,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:23.720955771+01:00",
+          "end_time": "2026-10-18T18:51:24.313355755+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 11,
+          "proteum_tcase_index": 24,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 592.4000000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:24.581182777+01:00",
+          "end_time": "2026-10-18T18:51:26.207448768+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 12,
+          "proteum_tcase_index": 25,
+          "csv_values": {
+            "q": "cap=2|init=1,2",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1,2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1626.266
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:26.485845556+01:00",
+          "end_time": "2026-10-18T18:51:28.159493686+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 13,
+          "proteum_tcase_index": 26,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1673.6480000000001
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:28.445111590+01:00",
+          "end_time": "2026-10-18T18:51:29.147792674+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 14,
+          "proteum_tcase_index": 27,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 702.681
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:29.414299417+01:00",
+          "end_time": "2026-10-18T18:51:31.133373607+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 15,
+          "proteum_tcase_index": 28,
+          "csv_values": {
+            "q": "cap=5|init=4,5,6",
+            "expected_output": "4",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) << (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=4,5,6'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1719.074
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 639,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 20,
+      "rationality_summary": "Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  @\\nr = q->elements[(q->front % q->capacity)];@\\n\\n  q->front = (q->front + 1) % q->capacity;\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:31.667903359+01:00",
+      "end_time": "2026-10-18T18:51:39.940727281+01:00",
+      "duration_ms": 8272.824,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:31.788149697+01:00",
+          "end_time": "2026-10-18T18:51:32.501201906+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 16,
+          "proteum_tcase_index": 29,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 713.052
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:32.779501456+01:00",
+          "end_time": "2026-10-18T18:51:34.557578319+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 17,
+          "proteum_tcase_index": 30,
+          "csv_values": {
+            "q": "cap=2|init=1,2",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1,2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1778.077
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:34.830347297+01:00",
+          "end_time": "2026-10-18T18:51:36.649208981+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 18,
+          "proteum_tcase_index": 31,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1818.861
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:36.965572061+01:00",
+          "end_time": "2026-10-18T18:51:37.581688691+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 19,
+          "proteum_tcase_index": 32,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 616.116
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:37.945406238+01:00",
+          "end_time": "2026-10-18T18:51:39.596174392+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 20,
+          "proteum_tcase_index": 33,
+          "csv_values": {
+            "q": "cap=5|init=4,5,6",
+            "expected_output": "4",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(r = (q->elements)[((q->front) >> (q->capacity))]) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=4,5,6'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1650.768
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 640,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 25,
+      "rationality_summary": "Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  r = q->elements[(q->front % q->capacity)];\\n  @\\nq->front = (q->front + 1) % q->capacity;@\\n\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:40.138580055+01:00",
+      "end_time": "2026-10-18T18:51:48.069219545+01:00",
+      "duration_ms": 7930.639,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:40.263896100+01:00",
+          "end_time": "2026-10-18T18:51:40.896181805+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 21,
+          "proteum_tcase_index": 34,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 632.285
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:41.161913721+01:00",
+          "end_time": "2026-10-18T18:51:42.929771733+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 22,
+          "proteum_tcase_index": 35,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1767.858
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:43.200329510+01:00",
+          "end_time": "2026-10-18T18:51:44.816605992+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 23,
+          "proteum_tcase_index": 36,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1616.276
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:45.092941535+01:00",
+          "end_time": "2026-10-18T18:51:45.767958346+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 24,
+          "proteum_tcase_index": 37,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 675.0169999999999
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:46.038957932+01:00",
+          "end_time": "2026-10-18T18:51:47.725008793+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 25,
+          "proteum_tcase_index": 38,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) << 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1686.051
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 641,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 30,
+      "rationality_summary": "Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  r = q->elements[(q->front % q->capacity)];\\n  @\\nq->front = (q->front + 1) % q->capacity;@\\n\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:48.261533518+01:00",
+      "end_time": "2026-10-18T18:51:56.266157349+01:00",
+      "duration_ms": 8004.624,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:48.381840104+01:00",
+          "end_time": "2026-10-18T18:51:48.958577611+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 26,
+          "proteum_tcase_index": 39,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 576.7370000000001
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:49.231028109+01:00",
+          "end_time": "2026-10-18T18:51:50.842120853+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 27,
+          "proteum_tcase_index": 40,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1611.0919999999999
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:51.107954622+01:00",
+          "end_time": "2026-10-18T18:51:52.798122130+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 28,
+          "proteum_tcase_index": 41,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1690.168
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:51:53.071400587+01:00",
+          "end_time": "2026-10-18T18:51:53.768626012+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 29,
+          "proteum_tcase_index": 42,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 697.226
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:51:54.042390332+01:00",
+          "end_time": "2026-10-18T18:51:55.914125084+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 30,
+          "proteum_tcase_index": 43,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) >> 1) % (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1871.735
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 642,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 35,
+      "rationality_summary": "Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  r = q->elements[(q->front % q->capacity)];\\n  @\\nq->front = (q->front + 1) % q->capacity;@\\n\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:51:56.466223527+01:00",
+      "end_time": "2026-10-18T18:52:04.574607550+01:00",
+      "duration_ms": 8108.383999999999,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:51:56.589040586+01:00",
+          "end_time": "2026-10-18T18:51:57.203471862+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 31,
+          "proteum_tcase_index": 44,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 614.4309999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:51:57.478459652+01:00",
+          "end_time": "2026-10-18T18:51:59.190002346+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 32,
+          "proteum_tcase_index": 45,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1711.5430000000001
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:51:59.469928353+01:00",
+          "end_time": "2026-10-18T18:52:01.181700770+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 33,
+          "proteum_tcase_index": 46,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1711.7720000000002
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:52:01.506656545+01:00",
+          "end_time": "2026-10-18T18:52:02.198412943+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 34,
+          "proteum_tcase_index": 47,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 691.7560000000001
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:52:02.474314715+01:00",
+          "end_time": "2026-10-18T18:52:04.224731216+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 35,
+          "proteum_tcase_index": 48,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) << (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1750.417
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 643,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "dequeue",
+      "test_case_number": 40,
+      "rationality_summary": "Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Operator `u-OASN` in function `dequeue`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'int dequeue(BoundedQueue *q)\\n{\\n int r;\\n if (q->size == 0) {\\n  printf(\"Queue is already empty!\\\\n\");\\n  return -1;\\n } else {\\n  q->size = q->size - 1;\\n  r = q->elements[(q->front % q->capacity)];\\n  @\\nq->front = (q->front + 1) % q->capacity;@\\n\\n  return r;\\n }\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-18T18:52:04.787680422+01:00",
+      "end_time": "2026-10-18T18:52:12.914663319+01:00",
+      "duration_ms": 8126.982999999999,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:52:04.902110469+01:00",
+          "end_time": "2026-10-18T18:52:05.537311683+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 36,
+          "proteum_tcase_index": 49,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 635.201
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:52:05.824661584+01:00",
+          "end_time": "2026-10-18T18:52:07.450360436+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 37,
+          "proteum_tcase_index": 50,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1625.699
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:52:07.736242084+01:00",
+          "end_time": "2026-10-18T18:52:09.504399657+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 38,
+          "proteum_tcase_index": 51,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "12",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1768.157
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-18T18:52:09.776537925+01:00",
+          "end_time": "2026-10-18T18:52:10.462171611+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 39,
+          "proteum_tcase_index": 52,
+          "csv_values": {
+            "q": "cap=4|init=",
+            "expected_output": "-1",
+            "expected_stdout": "Queue is already empty!"
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 4: synthesized NEW inputs {'q': 'cap=4|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 685.634
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-18T18:52:10.736256117+01:00",
+          "end_time": "2026-10-18T18:52:12.445385359+01:00",
+          "function_under_testing": "dequeue",
+          "test_case_number": 40,
+          "proteum_tcase_index": 53,
+          "csv_values": {
+            "q": "cap=5|init=1",
+            "expected_output": "1",
+            "expected_stdout": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `((q->front) = (((q->front) + 1) >> (q->capacity))) ;`. Chose function `dequeue` from build-view. Iteration 5: synthesized NEW inputs {'q': 'cap=5|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1709.129
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 937,
+      "status": "KILLED",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "printBoundedQueue",
+      "test_case_number": 3,
+      "rationality_summary": "Mutation-directed invent for Get on: `( (i < ((q->size) >> 1)) )`. Chose function `printBoundedQueue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+      "initial_time": "2026-10-18T18:52:13.122190280+01:00",
+      "end_time": "2026-10-18T18:52:18.177518491+01:00",
+      "duration_ms": 5055.328,
+      "number_of_iterations": 3,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-18T18:52:13.250673432+01:00",
+          "end_time": "2026-10-18T18:52:13.830700513+01:00",
+          "function_under_testing": "printBoundedQueue",
+          "test_case_number": 1,
+          "proteum_tcase_index": 54,
+          "csv_values": {
+            "q": "cap=1|init=",
+            "expected_output": "",
+            "expected_stdout": "[]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (i < ((q->size) >> 1)) )`. Chose function `printBoundedQueue` from build-view. Iteration 1: synthesized NEW inputs {'q': 'cap=1|init='} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 580.0269999999999
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-18T18:52:14.119212661+01:00",
+          "end_time": "2026-10-18T18:52:15.765806698+01:00",
+          "function_under_testing": "printBoundedQueue",
+          "test_case_number": 2,
+          "proteum_tcase_index": 55,
+          "csv_values": {
+            "q": "cap=2|init=1",
+            "expected_output": "",
+            "expected_stdout": "[1]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (i < ((q->size) >> 1)) )`. Chose function `printBoundedQueue` from build-view. Iteration 2: synthesized NEW inputs {'q': 'cap=2|init=1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1646.5939999999998
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-18T18:52:16.061163523+01:00",
+          "end_time": "2026-10-18T18:52:17.916119736+01:00",
+          "function_under_testing": "printBoundedQueue",
+          "test_case_number": 3,
+          "proteum_tcase_index": 56,
+          "csv_values": {
+            "q": "cap=3|init=12,22,32",
+            "expected_output": "",
+            "expected_stdout": "[12, 22, 32]"
+          },
+          "rationality": "Mutation-directed invent for Get on: `( (i < ((q->size) >> 1)) )`. Chose function `printBoundedQueue` from build-view. Iteration 3: synthesized NEW inputs {'q': 'cap=3|init=12,22,32'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Dead",
+            "target_killed": true,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1854.9560000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}
