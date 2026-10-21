@@ -3,7 +3,8 @@
 DEPRECATED for automated killing.
 
 ts_data must NOT be reused as killing tests. Use inspect_mutant.py for schema
-+ mutation context; the LLM invents new cases.
++ mutation context, then mutation_oriented_input_generation (heuristic) or an
+LLM via --candidates-jsonl.
 
 This script now only prints inspect_mutant output (no candidate list from ts_data).
 """
@@ -31,7 +32,8 @@ def main() -> int:
     info["candidates"] = []
     info["max_candidates"] = args.max_candidates
     info["deprecated_notice"] = (
-        "No automated candidates. Invent tests with the LLM using this inspection."
+        "No automated candidates here. Use mutation_oriented_input_generation "
+        "(--mutation-oriented-input-generation) or an LLM (--candidates-jsonl)."
     )
     print(json.dumps(info, indent=2))
     return 0

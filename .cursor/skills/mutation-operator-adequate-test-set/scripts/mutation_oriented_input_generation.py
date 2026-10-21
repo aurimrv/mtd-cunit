@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Invent NEW CUnit CSV cases aimed at a mutant (not ts_data row reuse).
+Mutation-oriented input generation for CUnit CSV cases (not ts_data row reuse).
 
-Uses inspect_mutant for Get on: / schema encoding, synthesizes distinct input
-rows, then fills expected_output / expected_stdout via CUNIT_CAPTURE=1 against
-the original ./runner.
+Deterministic / heuristic synthesizer — does NOT call an LLM. Uses inspect_mutant
+for Get on: / schema encoding, synthesizes distinct input rows aimed at the
+current mutant, then fills expected_output / expected_stdout via CUNIT_CAPTURE=1
+against the original ./runner.
 
 SSDL (statement deletion) gets build-view–aware targeting: the deleted @…@
 fragment and surrounding control-flow drive inputs so the removed statement is
@@ -421,7 +422,7 @@ def _stdin_token_ssdl_fields(
     iteration: int,
 ) -> dict[str, str]:
     """When CSV has an `s` (or line) column whose examples are harness tokens."""
-    fields = _invent_inputs(headers, format_example, get_on, iteration)
+    fields = _synthesize_inputs(headers, format_example, get_on, iteration)
     s_h = _header_named(headers, "s", "line", "input", "stdin")
     if not s_h:
         return fields
@@ -490,7 +491,7 @@ def _generic_ssdl_fields(
     return fields
 
 
-def _invent_inputs(
+def _synthesize_inputs(
     headers: list[str],
     format_example: dict[str, str] | None,
     get_on: str,
@@ -529,7 +530,7 @@ def _invent_inputs(
     return fields
 
 
-def _invent_inputs_for_mutant(
+def _synthesize_inputs_for_mutant(
     headers: list[str],
     format_example: dict[str, str] | None,
     insp: dict[str, Any],
@@ -572,7 +573,7 @@ def _invent_inputs_for_mutant(
         else:
             fields = _generic_ssdl_fields(headers, format_example, ctx, iteration)
         return _boost_numeric_for_deleted(fields, ctx, iteration)
-    return _invent_inputs(headers, format_example, get_on, iteration)
+    return _synthesize_inputs(headers, format_example, get_on, iteration)
 
 
 def _boost_numeric_for_deleted(
@@ -718,11 +719,11 @@ def _equivalence_rationality(insp: dict[str, Any], n_attempts: int) -> str:
         f"with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. "
         f"Residual doubt: stronger multi-call scenarios or encodings outside this CSV "
         f"schema might still kill it; mark as possible equivalent only under the "
-        f"current interface and invent budget."
+        f"current interface and generation budget."
     )
 
 
-def invent_for_mutant(
+def generate_for_mutant(
     program_dir: Path,
     session: str,
     mutant_id: int,
@@ -754,12 +755,12 @@ def invent_for_mutant(
     seen_inputs: set[str] = set()
     ctx = _extract_ssdl_context(insp.get("build_view") or "") if is_ssdl else {}
     for i in range(1, n_cand + 1):
-        inputs = _invent_inputs_for_mutant(headers, example, insp, i)
+        inputs = _synthesize_inputs_for_mutant(headers, example, insp, i)
         key = json.dumps(inputs, sort_keys=True)
         nudge = 0
         while key in seen_inputs and nudge < 8:
             nudge += 1
-            inputs = _invent_inputs_for_mutant(headers, example, insp, i + nudge * 11)
+            inputs = _synthesize_inputs_for_mutant(headers, example, insp, i + nudge * 11)
             key = json.dumps(inputs, sort_keys=True)
         seen_inputs.add(key)
 
@@ -768,7 +769,7 @@ def invent_for_mutant(
         filled.pop("_runner_exit", None)
         deleted = (ctx.get("deleted") or "")[:80]
         rationality = (
-            f"Mutation-directed invent for Get on: `{get_on}` "
+            f"Mutation-oriented input generation for Get on: `{get_on}` "
             f"(operator `{op}`). Chose function `{fn}` from build-view. "
             f"Iteration {i}: synthesized NEW inputs { {k: v for k, v in inputs.items()} } "
             f"(not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok={capture_ok}). "
@@ -823,7 +824,7 @@ def main() -> int:
         print("error: ./runner missing; compile first", flush=True)
         return 1
 
-    bundle = invent_for_mutant(
+    bundle = generate_for_mutant(
         program_dir, args.session, args.mutant_id, args.max_candidates
     )
     if args.jsonl_out:

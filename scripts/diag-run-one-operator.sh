@@ -49,7 +49,7 @@ set +e
     --session "S_${PROG}" \
     --max-iterations "$MAX_ITER" \
     --llm-name "$LLM_NAME" \
-    --invent-mutation-directed \
+    --mutation-oriented-input-generation \
     --skip-if-done \
     --limit-mutants "$LIMIT" \
     </dev/null >>"$LOG" 2>&1

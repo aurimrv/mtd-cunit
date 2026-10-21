@@ -13,7 +13,7 @@ disable-model-invocation: true
 
 # Mutation-operator adequate test set
 
-Build an adequate test suite **per mutation operator**: invent CUnit CSV cases
+Build an adequate test suite **per mutation operator**: generate CUnit CSV cases
 until every mutant in `mutants/<OP>.txt` is KILLED or marked EQUIVALENT after
 `max_iterations` failed attempts.
 
@@ -170,14 +170,22 @@ For each `OP` in the operators list, for each program `P`:
      `equivalents_<OP>.txt`); then `sync_alive_list.py`
 5. Next program; then next operator.
 
-## Inventing tests (critical)
+## Generating tests (critical)
 
 **Do not copy or reuse rows from `ts_data/` as killing tests.**  
 `ts_data` exists only so you can learn the CSV column layout and value encoding
-for the CUnit runner. Always invent **new** cases aimed at the current mutant.
+for the CUnit runner. Always generate **new** cases aimed at the current mutant.
+
+**Automated path (no LLM):** `scripts/mutation_oriented_input_generation.py`
+(`generate_for_mutant`), invoked via `run_operator.py
+--mutation-oriented-input-generation`. It synthesizes inputs from mutant
+inspection (Get on: / build-view) + CSV schema and fills oracles with
+`CUNIT_CAPTURE`.
+
+**LLM / manual path:** supply `--candidates-jsonl` rows instead.
 
 1. Run `inspect_mutant.py` (build-view, `Get on:`, CSV headers + one format example).
-2. Invent a new row for the relevant function using those headers.
+2. Generate a new row for the relevant function using those headers.
 3. Oracle = **original** `./runner` (must pass before `tcase -add`).
 4. Attempt `rationality` must explain how the case targets **this** mutation
    (`Get on:` / build-view diff).

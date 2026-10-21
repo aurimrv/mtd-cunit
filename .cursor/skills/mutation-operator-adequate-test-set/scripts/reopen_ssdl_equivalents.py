@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Reopen false SSDL EQUIVALENT mutants for a fresh invent pass.
+Reopen false SSDL EQUIVALENT mutants for a fresh mutation-oriented generation pass.
 
 Keeps KILLED results. For each program under --programs-dir whose u-SSDL
 equivalent rate is >= --min-equiv-rate:

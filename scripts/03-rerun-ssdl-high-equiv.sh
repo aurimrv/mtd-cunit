@@ -94,7 +94,7 @@ run_one() {
       --session "$SESSION" \
       --max-iterations "$MAX_ITER" \
       --llm-name "$LLM_NAME" \
-      --invent-mutation-directed \
+      --mutation-oriented-input-generation \
       --resume \
       --skip-if-done
     python3 "${SKILL}/summarize_status.py" --program-dir "$PROG_DIR" || true

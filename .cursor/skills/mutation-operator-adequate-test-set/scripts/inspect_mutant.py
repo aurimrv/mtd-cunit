@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Inspect a mutant for LLM test invention.
+Inspect a mutant for mutation-oriented test generation.
 
 Returns build-view context, Get on:, detected function, and CSV *schema*
 from ts_data (headers + one format example). Does NOT propose executable
-test cases — the LLM must invent new cases aimed at the mutation.
+test cases — callers (mutation_oriented_input_generation or an LLM) use
+this context to synthesize new cases aimed at the mutation.
 """
 
 from __future__ import annotations
@@ -80,7 +81,7 @@ def csv_schema(program_dir: Path, function: str) -> dict:
         "format_example_row": format_example,
         "note": (
             "format_example_row is ONLY to illustrate CSV encoding. "
-            "Do not reuse it as a killing test; invent a new case for this mutation."
+            "Do not reuse it as a killing test; generate a new case for this mutation."
         ),
     }
 

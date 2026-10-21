@@ -2,8 +2,9 @@
 # Run operator-adequate suites for each program listed in --programs-file.
 #
 # IMPORTANT: automated reuse of ts_data killing tests is DISABLED.
-# Default: --invent-mutation-directed (NEW inputs from Get on: + schema;
-# oracles via CUNIT_CAPTURE). Or supply LLM rows via candidates JSONL.
+# Default: --mutation-oriented-input-generation (heuristic NEW inputs from
+# Get on: + schema; oracles via CUNIT_CAPTURE; no LLM). Or supply LLM rows
+# via candidates JSONL.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -110,7 +111,7 @@ for raw in "${PROG_LINES[@]}"; do
       --session "$SESSION" \
       --max-iterations "$MAX_ITER" \
       --llm-name "$LLM_NAME" \
-      --invent-mutation-directed \
+      --mutation-oriented-input-generation \
       --skip-if-done \
       </dev/null \
       2>&1 | tee "${LOG_DIR}/${op}.log"

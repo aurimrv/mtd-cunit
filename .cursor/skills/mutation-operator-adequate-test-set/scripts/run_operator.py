@@ -3,9 +3,10 @@
 Run the adequate-suite loop for one operator on one program directory.
 
 Automated reuse of ts_data as killing tests is DISABLED. Provide either:
-  --candidates-jsonl   LLM-invented rows, or
-  --invent-mutation-directed   synthesize NEW inputs from Get on: + schema,
-                               fill oracles via CUNIT_CAPTURE (not ts_data reuse).
+  --candidates-jsonl   LLM-proposed rows, or
+  --mutation-oriented-input-generation
+      Heuristic synthesizer (no LLM): NEW inputs from Get on: + schema,
+      oracles via CUNIT_CAPTURE (not ts_data reuse).
 """
 
 from __future__ import annotations
@@ -19,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import alive_path, read_alive_ids, status_path
 from inspect_mutant import inspect
-from invent_mutation_directed import invent_for_mutant
+from mutation_oriented_input_generation import generate_for_mutant
 
 
 def run(cmd: list[str], cwd: Path, check: bool = False) -> subprocess.CompletedProcess[str]:
@@ -83,17 +84,17 @@ def main() -> int:
         help=(
             "JSONL file: each line is "
             '{"mutant_id":N,"iteration":i,"function":"...","fields":{...},"rationality":"..."} '
-            "Invented by the LLM. Optional per-mutant field "
+            "Typically from an LLM. Optional per-mutant field "
             "equivalence_rationality (or a final line with "
             '{"mutant_id":N,"equivalence_rationality":"..."}) used when marking EQUIVALENT.'
         ),
     )
     p.add_argument(
-        "--invent-mutation-directed",
+        "--mutation-oriented-input-generation",
         action="store_true",
         help=(
-            "For each alive mutant, invent NEW cases from Get on:/schema and "
-            "CUNIT_CAPTURE oracles (does not reuse ts_data rows)."
+            "For each alive mutant, heuristically generate NEW cases from Get on:/schema "
+            "and CUNIT_CAPTURE oracles (no LLM; does not reuse ts_data rows)."
         ),
     )
     p.add_argument(
@@ -112,11 +113,11 @@ def main() -> int:
     session = args.session
     max_iter = int(args.max_iterations)
 
-    if not args.candidates_jsonl and not args.invent_mutation_directed:
+    if not args.candidates_jsonl and not args.mutation_oriented_input_generation:
         print(
             "error: automated ts_data reuse is disabled. "
-            "Pass --candidates-jsonl with invented rows, or "
-            "--invent-mutation-directed to synthesize mutation-aimed cases.",
+            "Pass --candidates-jsonl with LLM/manual rows, or "
+            "--mutation-oriented-input-generation to synthesize mutation-aimed cases.",
             file=sys.stderr,
         )
         return 2
@@ -223,28 +224,29 @@ def main() -> int:
             cand_by_mutant.get(target, []),
             key=lambda r: int(r.get("iteration") or 0),
         )[:max_iter]
-        if not rows and args.invent_mutation_directed:
+        if not rows and args.mutation_oriented_input_generation:
             # SSDL needs more branch-hitting probes (equivalents are rare)
-            invent_n = max(max_iter, 8) if "ssdl" in op.lower() else max_iter
+            gen_n = max(max_iter, 8) if "ssdl" in op.lower() else max_iter
             try:
-                bundle = invent_for_mutant(program_dir, session, target, invent_n)
+                bundle = generate_for_mutant(program_dir, session, target, gen_n)
             except Exception as exc:  # noqa: BLE001 — surface and stop operator
                 print(
-                    f"error: [{op}] invent failed for mutant {target}: {exc}",
+                    f"error: [{op}] mutation-oriented generation failed for mutant "
+                    f"{target}: {exc}",
                     file=sys.stderr,
                     flush=True,
                 )
                 return 4
-            rows = list(bundle.get("candidates") or [])[:invent_n]
+            rows = list(bundle.get("candidates") or [])[:gen_n]
             if bundle.get("equivalence_rationality"):
                 equiv_rationality[target] = str(bundle["equivalence_rationality"])
             print(
                 json.dumps(
                     {
-                        "invented": True,
+                        "generated": True,
                         "mutant_id": target,
                         "n_candidates": len(rows),
-                        "ssdl_boost": invent_n > max_iter,
+                        "ssdl_boost": gen_n > max_iter,
                     }
                 ),
                 flush=True,
@@ -261,7 +263,7 @@ def main() -> int:
                 )
                 return 3
             print(
-                f"[{op}] no LLM kill candidates for mutant {target}; "
+                f"[{op}] no kill candidates for mutant {target}; "
                 f"marking EQUIVALENT with provided rationality",
                 flush=True,
             )
@@ -289,7 +291,7 @@ def main() -> int:
             i = int(cand.get("iteration") or 1)
             fields_json = json.dumps(cand["fields"])
             rationality = cand.get("rationality") or (
-                f"LLM-invented case for Get on: {insp.get('get_on')}"
+                f"Mutation-oriented case for Get on: {insp.get('get_on')}"
             )
             cp = run(
                 [
