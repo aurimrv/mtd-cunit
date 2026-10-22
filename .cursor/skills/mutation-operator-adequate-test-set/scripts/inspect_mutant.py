@@ -18,8 +18,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Allow `char *foo` (no space after *) as well as `char * foo` / `void foo`.
 FUN_RE = re.compile(
-    r"^(?:BoundedQueue\s*\*|void|int|char\s*\*|double|float|long|unsigned\s+int)\s+"
+    r"^(?:(?:static|extern)\s+)?"
+    r"(?:BoundedQueue\s*\*|void|int|char\s*\*|double|float|long|short|"
+    r"unsigned\s+int|size_t|struct\s+\w+\s*\*)\s*"
     r"([A-Za-z_][A-Za-z0-9_]*)\s*\(",
     re.MULTILINE,
 )
@@ -45,14 +48,30 @@ def build_view_text(program_dir: Path, session: str, mutant_id: int) -> str:
 
 
 def detect_function(view: str, functions: list[str]) -> str | None:
+    """
+    Choose the function that *owns* the @…@ mutation site in build-view.
+
+    Prefer the nearest enclosing definition before `@`. Never pick a callee
+    merely because its name appears in the deleted fragment (e.g. `minn` inside
+    `lcp`).
+    """
     at = view.find("@")
     head = view if at < 0 else view[:at]
     found = FUN_RE.findall(head)
     for name in reversed(found):
         if name in functions:
             return name
+    # First non-empty line often is the defining signature of the fragment.
+    first = next((ln.strip() for ln in head.splitlines() if ln.strip()), "")
     for name in functions:
-        if name in view:
+        if re.search(rf"\b{re.escape(name)}\s*\(", first):
+            return name
+    # Definition-shaped match before `@` only (not bare substring / callee).
+    for name in functions:
+        if re.search(
+            rf"(?m)^[^\n]*\b{re.escape(name)}\s*\([^;]*\)\s*\{{",
+            head,
+        ):
             return name
     return functions[0] if functions else None
 
@@ -92,14 +111,20 @@ def inspect(program_dir: Path, session: str, mutant_id: int) -> dict:
         for ln in (program_dir / "functions.txt").read_text(encoding="utf-8").splitlines()
         if ln.strip()
     ]
-    view = build_view_text(program_dir, session, mutant_id)
+    muta_out = run(
+        ["muta", "-l", "-f", str(mutant_id), "-t", str(mutant_id), session],
+        cwd=program_dir,
+    )
+    inspect_error = ""
+    if "Error in mutant database" in muta_out or "Error Opening File" in muta_out:
+        inspect_error = "proteum_mutant_database_error"
+    view = ""
+    if not inspect_error:
+        view = build_view_text(program_dir, session, mutant_id)
     fn = detect_function(view, functions) or (functions[0] if functions else None)
     get_on = ""
     operator = ""
-    for line in run(
-        ["muta", "-l", "-f", str(mutant_id), "-t", str(mutant_id), session],
-        cwd=program_dir,
-    ).splitlines():
+    for line in muta_out.splitlines():
         if "Get on:" in line:
             get_on = line.split("Get on:", 1)[1].strip()
         if "Operator:" in line and "(" in line:
@@ -109,6 +134,10 @@ def inspect(program_dir: Path, session: str, mutant_id: int) -> dict:
     for f in functions:
         schemas[f] = csv_schema(program_dir, f)
 
+    # Usable for equivalence claims: must see the mutation site in build-view.
+    view_ok = bool(view.strip()) and "@" in view
+    inspect_usable = (not inspect_error) and view_ok
+
     return {
         "mutant_id": mutant_id,
         "operator": operator,
@@ -117,6 +146,8 @@ def inspect(program_dir: Path, session: str, mutant_id: int) -> dict:
         "build_view": view.strip(),
         "functions": functions,
         "csv_schemas": schemas,
+        "inspect_error": inspect_error or None,
+        "inspect_usable": inspect_usable,
         "instruction": (
             "Invent a NEW CUnit CSV row for the detected (or most relevant) function. "
             "Match csv_schemas[function].headers. Use format_example_row only as encoding "

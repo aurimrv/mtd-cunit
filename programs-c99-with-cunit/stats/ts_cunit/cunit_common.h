@@ -753,4 +753,140 @@ static void cunit_assert_stdout_equal(const char *expected, const char *actual)
     CU_ASSERT_STRING_EQUAL(actual, expected);
 }
 
+/*
+ * Agnostic post-state fingerprints for void / in-place mutators.
+ * Serialize observable buffers into oracle strings (never leave expected empty).
+ */
+static int cunit_fingerprint_ints(char *out, size_t out_sz, const int *a, int n)
+{
+    size_t pos = 0;
+    int i;
+    if (out == NULL || out_sz == 0) {
+        return -1;
+    }
+    out[0] = '\0';
+    if (a == NULL || n <= 0) {
+        return 0;
+    }
+    for (i = 0; i < n; i++) {
+        int w;
+        if (i > 0) {
+            if (pos + 1 >= out_sz) {
+                break;
+            }
+            out[pos++] = ',';
+            out[pos] = '\0';
+        }
+        w = snprintf(out + pos, out_sz - pos, "%d", a[i]);
+        if (w < 0) {
+            return -1;
+        }
+        pos += (size_t)w;
+        if (pos >= out_sz) {
+            out[out_sz - 1] = '\0';
+            break;
+        }
+    }
+    return 0;
+}
+
+static int cunit_fingerprint_doubles(
+    char *out, size_t out_sz, const double *a, int n, const char *fmt
+)
+{
+    size_t pos = 0;
+    int i;
+    if (fmt == NULL || fmt[0] == '\0') {
+        fmt = "%.2f";
+    }
+    if (out == NULL || out_sz == 0) {
+        return -1;
+    }
+    out[0] = '\0';
+    if (a == NULL || n <= 0) {
+        return 0;
+    }
+    for (i = 0; i < n; i++) {
+        int w;
+        if (i > 0) {
+            if (pos + 1 >= out_sz) {
+                break;
+            }
+            out[pos++] = ',';
+            out[pos] = '\0';
+        }
+        w = snprintf(out + pos, out_sz - pos, fmt, a[i]);
+        if (w < 0) {
+            return -1;
+        }
+        pos += (size_t)w;
+        if (pos >= out_sz) {
+            out[out_sz - 1] = '\0';
+            break;
+        }
+    }
+    return 0;
+}
+
+static int cunit_fingerprint_cstrs(char *out, size_t out_sz, char *const *a, int n)
+{
+    size_t pos = 0;
+    int i;
+    if (out == NULL || out_sz == 0) {
+        return -1;
+    }
+    out[0] = '\0';
+    if (a == NULL || n <= 0) {
+        return 0;
+    }
+    for (i = 0; i < n; i++) {
+        const char *s = a[i] == NULL ? "" : a[i];
+        size_t sl = strlen(s);
+        if (i > 0) {
+            if (pos + 1 >= out_sz) {
+                break;
+            }
+            out[pos++] = ',';
+            out[pos] = '\0';
+        }
+        if (pos + sl >= out_sz) {
+            sl = out_sz - pos - 1;
+        }
+        memcpy(out + pos, s, sl);
+        pos += sl;
+        out[pos] = '\0';
+        if (pos + 1 >= out_sz) {
+            break;
+        }
+    }
+    return 0;
+}
+
+static int cunit_fingerprint_bytes(
+    char *out, size_t out_sz, const unsigned char *p, int n
+)
+{
+    size_t pos = 0;
+    int i;
+    if (out == NULL || out_sz == 0) {
+        return -1;
+    }
+    out[0] = '\0';
+    if (p == NULL || n <= 0) {
+        return 0;
+    }
+    for (i = 0; i < n; i++) {
+        int w = snprintf(out + pos, out_sz - pos, "%02x", (unsigned int)p[i]);
+        if (w < 0) {
+            return -1;
+        }
+        pos += (size_t)w;
+        if (pos >= out_sz) {
+            out[out_sz - 1] = '\0';
+            break;
+        }
+    }
+    return 0;
+}
+
 #endif

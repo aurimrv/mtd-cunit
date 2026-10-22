@@ -24,6 +24,7 @@ static void run_exch_test(void)
         int n;
         char *tok;
         int i, j;
+        char fp[512];
         strncpy(buf, pq_cell, sizeof(buf) - 1);
         buf[sizeof(buf) - 1] = 0;
         n = 0;
@@ -35,6 +36,8 @@ static void run_exch_test(void)
         sscanf(i_cell, "%d", &i);
         sscanf(j_cell, "%d", &j);
         exch(items, i, j);
+        cunit_fingerprint_cstrs(fp, sizeof(fp), items, n);
+        cunit_oracle_check_output(fp);
     }
     /* LLM_BODY_END */
 }

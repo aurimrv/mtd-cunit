@@ -50,7 +50,14 @@ static void run_merge_test(void)
         int list1len; sscanf(cunit_csv_cell_by_name(active_row, "list1len"), "%d", &list1len);
         int list2len; sscanf(cunit_csv_cell_by_name(active_row, "list2len"), "%d", &list2len);
         merge(list1, list1len, list2, list2len, temp);
-        cunit_oracle_check_output("");
+        {
+            char fp[512];
+            int nfp = list1len + list2len;
+            if (nfp < 0) nfp = 0;
+            if (nfp > 200) nfp = 200;
+            cunit_fingerprint_ints(fp, sizeof(fp), temp, nfp);
+            cunit_oracle_check_output(fp);
+        }
     }
     /* LLM_BODY_END */
 }

@@ -1,0 +1,12 @@
+void change(char *pat, char *sub)
+{
+    string line;
+    bool result;
+    result = get_line(line, 100);
+    while ((result)) {
+ @
+ (subline(line , sub , sub)) ; @
+
+ result = get_line(line, 100);
+    }
+}

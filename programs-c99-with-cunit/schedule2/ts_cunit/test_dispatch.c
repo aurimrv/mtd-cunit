@@ -41,6 +41,7 @@ static void run_dispatch_test(void)
         }
         rewind(fp);
         mystdin = fp;
+        cunit_capture_stdout_begin();
         cunit_expect_exit();
         dispatch();
     }

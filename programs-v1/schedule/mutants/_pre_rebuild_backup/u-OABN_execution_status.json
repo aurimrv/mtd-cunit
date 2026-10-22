@@ -1,0 +1,657 @@
+{
+  "schema_version": 1,
+  "program": "schedule",
+  "operator": "u-OABN",
+  "session": "S_schedule",
+  "max_iterations": 5,
+  "llm_name": "composer-mutation-directed-v1",
+  "created_at": "2026-10-19T23:42:42.448955037+01:00",
+  "updated_at": "2026-10-19T23:43:07.422933787+01:00",
+  "mutants": [
+    {
+      "mutant_number": 720,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "upgrade_process_prio",
+      "test_case_number": 5,
+      "rationality_summary": "Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Operator `u-OABN` in function `upgrade_process_prio`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void upgrade_process_prio(int prio, float ratio)\\n{\\n int count;\\n int n;\\n Ele *proc;\\n List *src_queue, *dest_queue;\\n if (prio >= 3)\\n  return;\\n src_queue = prio_queue[prio];\\n @\\ndest_queue = prio_queue[prio + 1];@\\n\\n count = src_queue->mem_count;\\n if (count > 0) {\\n  n = (int)(count * ratio + 1);\\n  proc = find_nth(src_queue, n);\\n  if (proc) {\\n   src_queue = del_ele(src_queue, proc);\\n   proc->priority = '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T23:42:42.590229959+01:00",
+      "end_time": "2026-10-19T23:42:55.332193082+01:00",
+      "duration_ms": 12741.964,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T23:42:44.111627099+01:00",
+          "end_time": "2026-10-19T23:42:44.549039743+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 1,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "1",
+            "ratio": "-1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 1: synthesized NEW inputs {'prio': '1', 'ratio': '-1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 437.41200000000003
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T23:42:44.860327778+01:00",
+          "end_time": "2026-10-19T23:42:48.648409835+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 2,
+          "proteum_tcase_index": 1,
+          "csv_values": {
+            "prio": "2",
+            "ratio": "-0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 2: synthesized NEW inputs {'prio': '2', 'ratio': '-0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3788.0820000000003
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T23:42:48.985781124+01:00",
+          "end_time": "2026-10-19T23:42:52.693808734+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 3,
+          "proteum_tcase_index": 2,
+          "csv_values": {
+            "prio": "-1",
+            "ratio": "0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 3: synthesized NEW inputs {'prio': '-1', 'ratio': '0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 3708.027
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T23:42:52.994927777+01:00",
+          "end_time": "2026-10-19T23:42:54.031620652+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 4,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "4",
+            "ratio": "1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 4: synthesized NEW inputs {'prio': '4', 'ratio': '1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 1036.693
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T23:42:54.338845997+01:00",
+          "end_time": "2026-10-19T23:42:54.941201592+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 5,
+          "proteum_tcase_index": 3,
+          "csv_values": {
+            "prio": "5",
+            "ratio": "2.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio | 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 5: synthesized NEW inputs {'prio': '5', 'ratio': '2.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 602.356
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 721,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "upgrade_process_prio",
+      "test_case_number": 10,
+      "rationality_summary": "Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Operator `u-OABN` in function `upgrade_process_prio`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void upgrade_process_prio(int prio, float ratio)\\n{\\n int count;\\n int n;\\n Ele *proc;\\n List *src_queue, *dest_queue;\\n if (prio >= 3)\\n  return;\\n src_queue = prio_queue[prio];\\n @\\ndest_queue = prio_queue[prio + 1];@\\n\\n count = src_queue->mem_count;\\n if (count > 0) {\\n  n = (int)(count * ratio + 1);\\n  proc = find_nth(src_queue, n);\\n  if (proc) {\\n   src_queue = del_ele(src_queue, proc);\\n   proc->priority = '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T23:42:55.541768024+01:00",
+      "end_time": "2026-10-19T23:43:01.270701895+01:00",
+      "duration_ms": 5728.933,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T23:42:57.043984870+01:00",
+          "end_time": "2026-10-19T23:42:57.500964908+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 6,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "1",
+            "ratio": "-1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 1: synthesized NEW inputs {'prio': '1', 'ratio': '-1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 456.98
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T23:42:57.790558275+01:00",
+          "end_time": "2026-10-19T23:42:58.236038408+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 7,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "2",
+            "ratio": "-0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 2: synthesized NEW inputs {'prio': '2', 'ratio': '-0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 445.47999999999996
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T23:42:58.526442942+01:00",
+          "end_time": "2026-10-19T23:42:58.934077689+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 8,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "-1",
+            "ratio": "0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 3: synthesized NEW inputs {'prio': '-1', 'ratio': '0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 407.63500000000005
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T23:42:59.214343001+01:00",
+          "end_time": "2026-10-19T23:42:59.901098721+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 9,
+          "proteum_tcase_index": 4,
+          "csv_values": {
+            "prio": "4",
+            "ratio": "1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 4: synthesized NEW inputs {'prio': '4', 'ratio': '1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 686.755
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T23:43:00.260231346+01:00",
+          "end_time": "2026-10-19T23:43:00.898027075+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 10,
+          "proteum_tcase_index": 5,
+          "csv_values": {
+            "prio": "5",
+            "ratio": "2.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio & 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 5: synthesized NEW inputs {'prio': '5', 'ratio': '2.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 637.796
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    },
+    {
+      "mutant_number": 722,
+      "status": "EQUIVALENT",
+      "killed_by_mutant_target": null,
+      "function_under_testing": "upgrade_process_prio",
+      "test_case_number": 15,
+      "rationality_summary": "Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Operator `u-OABN` in function `upgrade_process_prio`. Semantic hypothesis: a constant rewrite may leave behaviour unchanged for the value domains this harness exercises, or the constant may be dominated by later logic. Build-view fragment (truncated): 'void upgrade_process_prio(int prio, float ratio)\\n{\\n int count;\\n int n;\\n Ele *proc;\\n List *src_queue, *dest_queue;\\n if (prio >= 3)\\n  return;\\n src_queue = prio_queue[prio];\\n @\\ndest_queue = prio_queue[prio + 1];@\\n\\n count = src_queue->mem_count;\\n if (count > 0) {\\n  n = (int)(count * ratio + 1);\\n  proc = find_nth(src_queue, n);\\n  if (proc) {\\n   src_queue = del_ele(src_queue, proc);\\n   proc->priority = '. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
+      "initial_time": "2026-10-19T23:43:01.483001690+01:00",
+      "end_time": "2026-10-19T23:43:07.420669687+01:00",
+      "duration_ms": 5937.668000000001,
+      "number_of_iterations": 5,
+      "attempts": [
+        {
+          "iteration": 1,
+          "start_time": "2026-10-19T23:43:03.076123622+01:00",
+          "end_time": "2026-10-19T23:43:03.617445343+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 11,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "1",
+            "ratio": "-1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 1: synthesized NEW inputs {'prio': '1', 'ratio': '-1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 541.322
+        },
+        {
+          "iteration": 2,
+          "start_time": "2026-10-19T23:43:03.959877971+01:00",
+          "end_time": "2026-10-19T23:43:04.437217680+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 12,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "2",
+            "ratio": "-0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 2: synthesized NEW inputs {'prio': '2', 'ratio': '-0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 477.34
+        },
+        {
+          "iteration": 3,
+          "start_time": "2026-10-19T23:43:04.749866214+01:00",
+          "end_time": "2026-10-19T23:43:05.166870236+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 13,
+          "proteum_tcase_index": null,
+          "csv_values": {
+            "prio": "-1",
+            "ratio": "0.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 3: synthesized NEW inputs {'prio': '-1', 'ratio': '0.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=False). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": -11,
+            "original_runner_ok": false,
+            "tcase_add_ok": false,
+            "exemuta_exec_ok": false
+          },
+          "outcome": {
+            "target_life": null,
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 417.00399999999996
+        },
+        {
+          "iteration": 4,
+          "start_time": "2026-10-19T23:43:05.477823915+01:00",
+          "end_time": "2026-10-19T23:43:06.095951130+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 14,
+          "proteum_tcase_index": 6,
+          "csv_values": {
+            "prio": "4",
+            "ratio": "1.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 4: synthesized NEW inputs {'prio': '4', 'ratio': '1.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 618.128
+        },
+        {
+          "iteration": 5,
+          "start_time": "2026-10-19T23:43:06.384135808+01:00",
+          "end_time": "2026-10-19T23:43:07.029642322+01:00",
+          "function_under_testing": "upgrade_process_prio",
+          "test_case_number": 15,
+          "proteum_tcase_index": 7,
+          "csv_values": {
+            "prio": "5",
+            "ratio": "2.5",
+            "expected_output": ""
+          },
+          "rationality": "Mutation-directed invent for Get on: `(dest_queue = prio_queue[(prio ^ 1)]) ;`. Chose function `upgrade_process_prio` from build-view. Iteration 5: synthesized NEW inputs {'prio': '5', 'ratio': '2.5'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "validation": {
+            "original_runner_exit_code": 0,
+            "original_runner_ok": true,
+            "tcase_add_ok": true,
+            "exemuta_exec_ok": true
+          },
+          "outcome": {
+            "target_life": "Alive",
+            "target_killed": false,
+            "collateral_kills": []
+          },
+          "tokens": {
+            "input": null,
+            "output": null,
+            "source": "unavailable"
+          },
+          "cost_usd": {
+            "input": null,
+            "output": null,
+            "total": null,
+            "source": "unavailable"
+          },
+          "llm_name": "composer-mutation-directed-v1",
+          "duration_ms": 645.5070000000001
+        }
+      ],
+      "tokens_total": {
+        "input": null,
+        "output": null,
+        "source": "unavailable"
+      },
+      "cost_usd_total": {
+        "input": null,
+        "output": null,
+        "total": null,
+        "source": "unavailable"
+      }
+    }
+  ]
+}

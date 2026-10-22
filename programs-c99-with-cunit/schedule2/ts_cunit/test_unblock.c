@@ -23,25 +23,54 @@ extern int schedule(int command, int prio, float ratio);
 extern int put_end(int prio, struct process *process);
 extern int get_process(int prio, float ratio, struct process **job);
 
+/* Seed N jobs at a usable priority so queue side effects are observable via flush. */
+static void cunit_sched_seed_jobs(int n_jobs, int prio)
+{
+    int i;
+    int p = prio;
+    if (p < 1) p = 1;
+    if (p > 3) p = 3;
+    for (i = 0; i < n_jobs; i++) {
+        new_job(p);
+    }
+}
+
+static int cunit_sched_n_jobs_cell(void)
+{
+    const char *nj = cunit_csv_cell_by_name(active_row, "n_jobs");
+    if (nj == NULL || nj[0] == '\0') return 0;
+    return atoi(nj);
+}
+
+static void cunit_sched_oracle_ret_flush(int ret)
+{
+    char buf[512];
+    const char *cap;
+    cunit_capture_stdout_begin();
+    flush();
+    cunit_capture_stdout_end();
+    cap = cunit_capture_buf == NULL ? "" : cunit_capture_buf;
+    snprintf(buf, sizeof(buf), "%d#%s", ret, cap);
+    cunit_oracle_check_output(buf);
+    if (cunit_has_column("expected_stdout")) {
+        cunit_oracle_check_stdout();
+    }
+}
+
 static void run_unblock_test(void)
 {
     cunit_csv_load("test_cases_unblock.csv");
     /* LLM_BODY_BEGIN */
     for (active_row = 0; active_row < cunit_csv_row_count(); active_row++) {
-        const char *ratio_str = cunit_csv_cell_by_name(active_row, "ratio");
-        float ratio = 0.0f;
-        sscanf(ratio_str, "%f", &ratio);
-
-        if (ratio > 0.5f) {
-            new_job(1);
-            dispatch();
-            block();
-        }
-
-        int ret = unblock(ratio);
-        char buf[32];
-        snprintf(buf, sizeof(buf), "%d", ret);
-        cunit_oracle_check_output(buf);
+        float ratio = (float)atof(cunit_csv_cell_by_name(active_row, "ratio"));
+        int n_jobs = cunit_sched_n_jobs_cell();
+        int ret;
+        if (n_jobs <= 0) n_jobs = 2;
+        cunit_sched_seed_jobs(n_jobs, 1);
+        get_current();
+        block();
+        ret = unblock(ratio);
+        cunit_sched_oracle_ret_flush(ret);
     }
     /* LLM_BODY_END */
 }

@@ -23,6 +23,8 @@ static void run_sort_test(void)
         int n;
         char *tok;
         int length;
+        char fp[512];
+        int nfp;
         strncpy(buf, pq_cell, sizeof(buf) - 1);
         buf[sizeof(buf) - 1] = 0;
         n = 0;
@@ -33,6 +35,12 @@ static void run_sort_test(void)
         }
         sscanf(length_cell, "%d", &length);
         sort(items, length);
+        nfp = length;
+        if (nfp < 0) nfp = 0;
+        if (nfp > n) nfp = n;
+        if (nfp == 0) nfp = n;
+        cunit_fingerprint_cstrs(fp, sizeof(fp), items, nfp);
+        cunit_oracle_check_output(fp);
     }
     /* LLM_BODY_END */
 }

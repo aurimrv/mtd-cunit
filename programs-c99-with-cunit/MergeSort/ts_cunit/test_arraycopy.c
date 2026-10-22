@@ -39,7 +39,14 @@ static void run_arraycopy_test(void)
         int deststart; sscanf(cunit_csv_cell_by_name(active_row, "deststart"), "%d", &deststart);
         int length; sscanf(cunit_csv_cell_by_name(active_row, "length"), "%d", &length);
         arraycopy(src, srcstart, dest, deststart, length);
-        cunit_oracle_check_output("");
+        {
+            char fp[512];
+            int nfp = dest_count;
+            if (deststart + length > nfp) nfp = deststart + length;
+            if (nfp > 100) nfp = 100;
+            cunit_fingerprint_ints(fp, sizeof(fp), dest, nfp);
+            cunit_oracle_check_output(fp);
+        }
     }
     /* LLM_BODY_END */
 }

@@ -25,7 +25,15 @@ static void run_mergeSort_test(void)
         }
         int len; sscanf(cunit_csv_cell_by_name(active_row, "len"), "%d", &len);
         mergeSort(list, len);
-        cunit_oracle_check_output("");
+        {
+            char fp[512];
+            int nfp = len;
+            if (nfp < 0) nfp = 0;
+            if (nfp > 100) nfp = 100;
+            if (nfp == 0 && list_count > 0) nfp = list_count;
+            cunit_fingerprint_ints(fp, sizeof(fp), list, nfp);
+            cunit_oracle_check_output(fp);
+        }
     }
     /* LLM_BODY_END */
 }

@@ -4,9 +4,9 @@
   "operator": "u-SSDL",
   "session": "S_cal",
   "max_iterations": 5,
-  "llm_name": "composer-mutation-directed-v1",
+  "llm_name": "composer-ssdl-oracle-v1",
   "created_at": "2026-10-18T19:00:28.647172617+01:00",
-  "updated_at": "2026-10-20T21:55:20.139703308+01:00",
+  "updated_at": "2026-10-21T11:28:41.991008515+01:00",
   "mutants": [
     {
       "mutant_number": 549,
@@ -131,16 +131,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "cal",
       "test_case_number": 8,
-      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'daysIn[2] = 28;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   @\\ndaysIn[2] = 28;@\\n\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and invent budget.",
-      "initial_time": "2026-10-20T21:46:18.263550876+01:00",
-      "end_time": "2026-10-20T21:54:25.664788921+01:00",
-      "duration_ms": 487401.23799999995,
+      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'daysIn[2] = 28;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   @\\ndaysIn[2] = 28;@\\n\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T11:26:04.608554776+01:00",
+      "end_time": "2026-10-21T11:27:37.150005205+01:00",
+      "duration_ms": 92541.451,
       "number_of_iterations": 8,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T21:54:13.074094335+01:00",
-          "end_time": "2026-10-20T21:54:14.275781438+01:00",
+          "start_time": "2026-10-21T11:27:21.501899654+01:00",
+          "end_time": "2026-10-21T11:27:22.996121691+01:00",
           "function_under_testing": "cal",
           "test_case_number": 1,
           "proteum_tcase_index": 1,
@@ -152,7 +152,7 @@
             "year": "2021",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -175,13 +175,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1201.687
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1494.222
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T21:54:14.652978085+01:00",
-          "end_time": "2026-10-20T21:54:15.835455109+01:00",
+          "start_time": "2026-10-21T11:27:23.419139755+01:00",
+          "end_time": "2026-10-21T11:27:24.809571380+01:00",
           "function_under_testing": "cal",
           "test_case_number": 2,
           "proteum_tcase_index": 2,
@@ -193,7 +193,7 @@
             "year": "2022",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -216,13 +216,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1182.477
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1390.4319999999998
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T21:54:16.140466942+01:00",
-          "end_time": "2026-10-20T21:54:17.298790603+01:00",
+          "start_time": "2026-10-21T11:27:25.259640406+01:00",
+          "end_time": "2026-10-21T11:27:26.664095151+01:00",
           "function_under_testing": "cal",
           "test_case_number": 3,
           "proteum_tcase_index": 3,
@@ -234,7 +234,7 @@
             "year": "2023",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -257,13 +257,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1158.3239999999998
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1404.455
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T21:54:17.595955936+01:00",
-          "end_time": "2026-10-20T21:54:18.619828203+01:00",
+          "start_time": "2026-10-21T11:27:27.086971213+01:00",
+          "end_time": "2026-10-21T11:27:28.395402829+01:00",
           "function_under_testing": "cal",
           "test_case_number": 4,
           "proteum_tcase_index": 4,
@@ -275,7 +275,7 @@
             "year": "2024",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -298,13 +298,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1023.873
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1308.4309999999998
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T21:54:18.924724816+01:00",
-          "end_time": "2026-10-20T21:54:20.231736379+01:00",
+          "start_time": "2026-10-21T11:27:28.871179580+01:00",
+          "end_time": "2026-10-21T11:27:30.392888185+01:00",
           "function_under_testing": "cal",
           "test_case_number": 5,
           "proteum_tcase_index": 5,
@@ -316,7 +316,7 @@
             "year": "2025",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -339,13 +339,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1307.0120000000002
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1521.709
         },
         {
           "iteration": 6,
-          "start_time": "2026-10-20T21:54:20.553814249+01:00",
-          "end_time": "2026-10-20T21:54:21.858526552+01:00",
+          "start_time": "2026-10-21T11:27:30.779993760+01:00",
+          "end_time": "2026-10-21T11:27:32.365294880+01:00",
           "function_under_testing": "cal",
           "test_case_number": 6,
           "proteum_tcase_index": 6,
@@ -357,7 +357,7 @@
             "year": "0",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -380,13 +380,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1304.712
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1585.3010000000002
         },
         {
           "iteration": 7,
-          "start_time": "2026-10-20T21:54:22.248892617+01:00",
-          "end_time": "2026-10-20T21:54:23.534734137+01:00",
+          "start_time": "2026-10-21T11:27:32.800799824+01:00",
+          "end_time": "2026-10-21T11:27:34.527689082+01:00",
           "function_under_testing": "cal",
           "test_case_number": 7,
           "proteum_tcase_index": 7,
@@ -398,7 +398,7 @@
             "year": "1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -421,13 +421,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1285.8419999999999
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1726.89
         },
         {
           "iteration": 8,
-          "start_time": "2026-10-20T21:54:23.867805809+01:00",
-          "end_time": "2026-10-20T21:54:25.206327100+01:00",
+          "start_time": "2026-10-21T11:27:35.007818174+01:00",
+          "end_time": "2026-10-21T11:27:36.554017225+01:00",
           "function_under_testing": "cal",
           "test_case_number": 8,
           "proteum_tcase_index": 8,
@@ -439,7 +439,7 @@
             "year": "-1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '28', 'day1': '-1', 'month2': '28', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '28', 'day1': '-1', 'month2': '28', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 28;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -462,8 +462,8 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1338.522
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1546.199
         }
       ],
       "tokens_total": {
@@ -484,16 +484,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "cal",
       "test_case_number": 16,
-      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'daysIn[2] = 29;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   @\\ndaysIn[2] = 29;@\\n\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and invent budget.",
-      "initial_time": "2026-10-20T21:46:18.266919694+01:00",
-      "end_time": "2026-10-20T21:54:39.814911446+01:00",
-      "duration_ms": 501547.992,
+      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'daysIn[2] = 29;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   @\\ndaysIn[2] = 29;@\\n\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T11:26:04.610308983+01:00",
+      "end_time": "2026-10-21T11:27:54.284917357+01:00",
+      "duration_ms": 109674.609,
       "number_of_iterations": 8,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T21:54:26.082196745+01:00",
-          "end_time": "2026-10-20T21:54:27.400083246+01:00",
+          "start_time": "2026-10-21T11:27:37.706955548+01:00",
+          "end_time": "2026-10-21T11:27:39.317172032+01:00",
           "function_under_testing": "cal",
           "test_case_number": 9,
           "proteum_tcase_index": 9,
@@ -505,7 +505,7 @@
             "year": "2021",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -528,13 +528,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1317.887
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1610.217
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T21:54:27.835409471+01:00",
-          "end_time": "2026-10-20T21:54:29.073262681+01:00",
+          "start_time": "2026-10-21T11:27:39.744433987+01:00",
+          "end_time": "2026-10-21T11:27:41.455520440+01:00",
           "function_under_testing": "cal",
           "test_case_number": 10,
           "proteum_tcase_index": 10,
@@ -546,7 +546,7 @@
             "year": "2022",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -569,13 +569,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1237.853
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1711.087
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T21:54:29.423037182+01:00",
-          "end_time": "2026-10-20T21:54:30.551887345+01:00",
+          "start_time": "2026-10-21T11:27:41.977701354+01:00",
+          "end_time": "2026-10-21T11:27:43.726169659+01:00",
           "function_under_testing": "cal",
           "test_case_number": 11,
           "proteum_tcase_index": 11,
@@ -587,7 +587,7 @@
             "year": "2023",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -610,13 +610,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1128.85
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1748.4679999999998
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T21:54:30.924365190+01:00",
-          "end_time": "2026-10-20T21:54:32.156263923+01:00",
+          "start_time": "2026-10-21T11:27:44.207797702+01:00",
+          "end_time": "2026-10-21T11:27:45.804042968+01:00",
           "function_under_testing": "cal",
           "test_case_number": 12,
           "proteum_tcase_index": 12,
@@ -628,7 +628,7 @@
             "year": "2024",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -651,13 +651,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1231.898
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1596.245
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T21:54:32.535638203+01:00",
-          "end_time": "2026-10-20T21:54:33.976881377+01:00",
+          "start_time": "2026-10-21T11:27:46.262343544+01:00",
+          "end_time": "2026-10-21T11:27:47.942853264+01:00",
           "function_under_testing": "cal",
           "test_case_number": 13,
           "proteum_tcase_index": 13,
@@ -669,7 +669,7 @@
             "year": "2025",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -692,13 +692,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1441.243
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1680.51
         },
         {
           "iteration": 6,
-          "start_time": "2026-10-20T21:54:34.389330842+01:00",
-          "end_time": "2026-10-20T21:54:35.753104750+01:00",
+          "start_time": "2026-10-21T11:27:48.390389608+01:00",
+          "end_time": "2026-10-21T11:27:49.970927565+01:00",
           "function_under_testing": "cal",
           "test_case_number": 14,
           "proteum_tcase_index": 14,
@@ -710,7 +710,7 @@
             "year": "0",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -733,13 +733,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1363.7740000000001
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1580.538
         },
         {
           "iteration": 7,
-          "start_time": "2026-10-20T21:54:36.144941727+01:00",
-          "end_time": "2026-10-20T21:54:37.551897369+01:00",
+          "start_time": "2026-10-21T11:27:50.412342104+01:00",
+          "end_time": "2026-10-21T11:27:51.869971822+01:00",
           "function_under_testing": "cal",
           "test_case_number": 15,
           "proteum_tcase_index": 15,
@@ -751,7 +751,7 @@
             "year": "1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -774,13 +774,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1406.9560000000001
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1457.6290000000001
         },
         {
           "iteration": 8,
-          "start_time": "2026-10-20T21:54:37.927947032+01:00",
-          "end_time": "2026-10-20T21:54:39.329039287+01:00",
+          "start_time": "2026-10-21T11:27:52.341837292+01:00",
+          "end_time": "2026-10-21T11:27:53.813252151+01:00",
           "function_under_testing": "cal",
           "test_case_number": 16,
           "proteum_tcase_index": 16,
@@ -792,7 +792,7 @@
             "year": "-1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '29', 'day1': '-1', 'month2': '29', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '29', 'day1': '-1', 'month2': '29', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `daysIn[2] = 29;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -815,8 +815,8 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1401.092
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1471.415
         }
       ],
       "tokens_total": {
@@ -837,16 +837,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "cal",
       "test_case_number": 24,
-      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  @\\nif ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  @\\nnumDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and invent budget.",
-      "initial_time": "2026-10-20T21:46:18.270854961+01:00",
-      "end_time": "2026-10-20T21:54:54.662324822+01:00",
-      "duration_ms": 516391.47000000003,
+      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  @\\nif ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  @\\nnumDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   nu'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T11:26:04.612048536+01:00",
+      "end_time": "2026-10-21T11:28:11.515329650+01:00",
+      "duration_ms": 126903.281,
       "number_of_iterations": 8,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T21:54:40.287606383+01:00",
-          "end_time": "2026-10-20T21:54:41.615882557+01:00",
+          "start_time": "2026-10-21T11:27:54.745667499+01:00",
+          "end_time": "2026-10-21T11:27:56.148348774+01:00",
           "function_under_testing": "cal",
           "test_case_number": 17,
           "proteum_tcase_index": 17,
@@ -858,7 +858,7 @@
             "year": "2021",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -881,13 +881,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1328.276
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1402.681
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T21:54:41.978368724+01:00",
-          "end_time": "2026-10-20T21:54:43.441957777+01:00",
+          "start_time": "2026-10-21T11:27:56.575658723+01:00",
+          "end_time": "2026-10-21T11:27:58.175997524+01:00",
           "function_under_testing": "cal",
           "test_case_number": 18,
           "proteum_tcase_index": 18,
@@ -899,7 +899,7 @@
             "year": "2022",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -922,13 +922,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1463.589
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1600.339
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T21:54:43.804170321+01:00",
-          "end_time": "2026-10-20T21:54:45.058962394+01:00",
+          "start_time": "2026-10-21T11:27:58.604208201+01:00",
+          "end_time": "2026-10-21T11:28:00.225889908+01:00",
           "function_under_testing": "cal",
           "test_case_number": 19,
           "proteum_tcase_index": 19,
@@ -940,7 +940,7 @@
             "year": "2023",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -963,13 +963,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1254.792
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1621.681
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T21:54:45.433476022+01:00",
-          "end_time": "2026-10-20T21:54:46.876836442+01:00",
+          "start_time": "2026-10-21T11:28:00.708395366+01:00",
+          "end_time": "2026-10-21T11:28:02.320293366+01:00",
           "function_under_testing": "cal",
           "test_case_number": 20,
           "proteum_tcase_index": 20,
@@ -981,7 +981,7 @@
             "year": "2024",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1004,13 +1004,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1443.36
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1611.8980000000001
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T21:54:47.253193910+01:00",
-          "end_time": "2026-10-20T21:54:48.641396402+01:00",
+          "start_time": "2026-10-21T11:28:02.789189153+01:00",
+          "end_time": "2026-10-21T11:28:04.562143886+01:00",
           "function_under_testing": "cal",
           "test_case_number": 21,
           "proteum_tcase_index": 21,
@@ -1022,7 +1022,7 @@
             "year": "2025",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1045,13 +1045,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1388.203
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1772.954
         },
         {
           "iteration": 6,
-          "start_time": "2026-10-20T21:54:49.048859391+01:00",
-          "end_time": "2026-10-20T21:54:50.418400472+01:00",
+          "start_time": "2026-10-21T11:28:05.007526166+01:00",
+          "end_time": "2026-10-21T11:28:06.678540529+01:00",
           "function_under_testing": "cal",
           "test_case_number": 22,
           "proteum_tcase_index": 22,
@@ -1063,7 +1063,7 @@
             "year": "0",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1086,13 +1086,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1369.541
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1671.014
         },
         {
           "iteration": 7,
-          "start_time": "2026-10-20T21:54:50.816331862+01:00",
-          "end_time": "2026-10-20T21:54:52.148432889+01:00",
+          "start_time": "2026-10-21T11:28:07.120545330+01:00",
+          "end_time": "2026-10-21T11:28:08.740602991+01:00",
           "function_under_testing": "cal",
           "test_case_number": 23,
           "proteum_tcase_index": 23,
@@ -1104,7 +1104,7 @@
             "year": "1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1127,13 +1127,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1332.1009999999999
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1620.057
         },
         {
           "iteration": 8,
-          "start_time": "2026-10-20T21:54:52.561969254+01:00",
-          "end_time": "2026-10-20T21:54:54.075940487+01:00",
+          "start_time": "2026-10-21T11:28:09.141651052+01:00",
+          "end_time": "2026-10-21T11:28:10.894985581+01:00",
           "function_under_testing": "cal",
           "test_case_number": 24,
           "proteum_tcase_index": 24,
@@ -1145,7 +1145,7 @@
             "year": "-1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '4', 'day1': '-1', 'month2': '4', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '4', 'day1': '-1', 'month2': '4', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\n   daysIn[2] = 28;\n  else\n   days` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1168,8 +1168,8 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1513.971
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1753.334
         }
       ],
       "tokens_total": {
@@ -1307,16 +1307,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "cal",
       "test_case_number": 32,
-      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'numDays = daysIn[i] + numDays;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   @\\nnumD'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and invent budget.",
-      "initial_time": "2026-10-20T21:46:18.274302710+01:00",
-      "end_time": "2026-10-20T21:55:07.728713031+01:00",
-      "duration_ms": 529454.4110000001,
+      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'numDays = daysIn[i] + numDays;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  for (i = month1 + 1; i <= month2 - 1; i++)\\n   @\\nnumD'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T11:26:04.614070543+01:00",
+      "end_time": "2026-10-21T11:28:26.967534947+01:00",
+      "duration_ms": 142353.464,
       "number_of_iterations": 8,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T21:54:55.185947478+01:00",
-          "end_time": "2026-10-20T21:54:56.536570333+01:00",
+          "start_time": "2026-10-21T11:28:12.082767953+01:00",
+          "end_time": "2026-10-21T11:28:13.868959427+01:00",
           "function_under_testing": "cal",
           "test_case_number": 25,
           "proteum_tcase_index": 25,
@@ -1328,7 +1328,7 @@
             "year": "2021",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1351,13 +1351,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1350.6229999999998
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1786.192
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T21:54:56.876801953+01:00",
-          "end_time": "2026-10-20T21:54:58.105173526+01:00",
+          "start_time": "2026-10-21T11:28:14.238786709+01:00",
+          "end_time": "2026-10-21T11:28:15.723723030+01:00",
           "function_under_testing": "cal",
           "test_case_number": 26,
           "proteum_tcase_index": 26,
@@ -1369,7 +1369,7 @@
             "year": "2022",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1392,13 +1392,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1228.372
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1484.937
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T21:54:58.388006794+01:00",
-          "end_time": "2026-10-20T21:54:59.663928685+01:00",
+          "start_time": "2026-10-21T11:28:16.146964419+01:00",
+          "end_time": "2026-10-21T11:28:17.615552087+01:00",
           "function_under_testing": "cal",
           "test_case_number": 27,
           "proteum_tcase_index": 27,
@@ -1410,7 +1410,7 @@
             "year": "2023",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1433,13 +1433,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1275.922
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1468.588
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T21:55:00.048881497+01:00",
-          "end_time": "2026-10-20T21:55:01.261665658+01:00",
+          "start_time": "2026-10-21T11:28:17.983597721+01:00",
+          "end_time": "2026-10-21T11:28:19.422449918+01:00",
           "function_under_testing": "cal",
           "test_case_number": 28,
           "proteum_tcase_index": 28,
@@ -1451,7 +1451,7 @@
             "year": "2024",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1474,13 +1474,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1212.784
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1438.852
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T21:55:01.568022998+01:00",
-          "end_time": "2026-10-20T21:55:02.810973905+01:00",
+          "start_time": "2026-10-21T11:28:19.804274052+01:00",
+          "end_time": "2026-10-21T11:28:21.165186902+01:00",
           "function_under_testing": "cal",
           "test_case_number": 29,
           "proteum_tcase_index": 29,
@@ -1492,7 +1492,7 @@
             "year": "2025",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1515,13 +1515,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1242.951
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1360.9119999999998
         },
         {
           "iteration": 6,
-          "start_time": "2026-10-20T21:55:03.245602828+01:00",
-          "end_time": "2026-10-20T21:55:04.317245211+01:00",
+          "start_time": "2026-10-21T11:28:21.579482260+01:00",
+          "end_time": "2026-10-21T11:28:23.112902106+01:00",
           "function_under_testing": "cal",
           "test_case_number": 30,
           "proteum_tcase_index": 30,
@@ -1533,7 +1533,7 @@
             "year": "0",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1556,13 +1556,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1071.6429999999998
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1533.42
         },
         {
           "iteration": 7,
-          "start_time": "2026-10-20T21:55:04.627553406+01:00",
-          "end_time": "2026-10-20T21:55:05.788893322+01:00",
+          "start_time": "2026-10-21T11:28:23.504259360+01:00",
+          "end_time": "2026-10-21T11:28:24.835267138+01:00",
           "function_under_testing": "cal",
           "test_case_number": 31,
           "proteum_tcase_index": 31,
@@ -1574,7 +1574,7 @@
             "year": "1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1597,13 +1597,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1161.3400000000001
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1331.008
         },
         {
           "iteration": 8,
-          "start_time": "2026-10-20T21:55:06.132362951+01:00",
-          "end_time": "2026-10-20T21:55:07.309790738+01:00",
+          "start_time": "2026-10-21T11:28:25.221436507+01:00",
+          "end_time": "2026-10-21T11:28:26.484140935+01:00",
           "function_under_testing": "cal",
           "test_case_number": 32,
           "proteum_tcase_index": 32,
@@ -1615,7 +1615,7 @@
             "year": "-1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '-1', 'day1': '-1', 'month2': '-1', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '-1', 'day1': '-1', 'month2': '-1', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1638,8 +1638,8 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1177.4279999999999
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1262.704
         }
       ],
       "tokens_total": {
@@ -1660,16 +1660,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "cal",
       "test_case_number": 40,
-      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'for (i = month1 + 1; i <= month2 - 1; i++)\\n   numDays = daysIn[i] + numDays;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  @\\nfor (i = month1 + 1; i <= month2 - 1; i++)\\n   numD'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and invent budget.",
-      "initial_time": "2026-10-20T21:46:18.277773355+01:00",
-      "end_time": "2026-10-20T21:55:20.137636805+01:00",
-      "duration_ms": 541859.863,
+      "rationality_summary": "Get on: `;`. Operator `u-SSDL` in function `cal`. Semantic hypothesis: true SSDL equivalents are rare; Alive usually means the harness did not observe the deleted effect (e.g. return-only oracle missing pat[]/buffers) or the site was unreached — strengthen oracles before assuming equivalence. Deleted: 'for (i = month1 + 1; i <= month2 - 1; i++)\\n   numDays = daysIn[i] + numDays;'.. Build-view fragment (truncated): 'int cal(int month1, int day1, int month2, int day2, int year)\\n{\\n int numDays, i;\\n if (month2 == month1)\\n  numDays = day2 - day1;\\n else {\\n  int m4 = year % 4;\\n  int m100 = year % 100;\\n  int m400 = year % 400;\\n  if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))\\n   daysIn[2] = 28;\\n  else\\n   daysIn[2] = 29;\\n  numDays = day2 + (daysIn[month1] - day1);\\n  @\\nfor (i = month1 + 1; i <= month2 - 1; i++)\\n   numD'. After 8 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T11:26:04.615891162+01:00",
+      "end_time": "2026-10-21T11:28:41.988937851+01:00",
+      "duration_ms": 157373.046,
       "number_of_iterations": 8,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T21:55:08.105028164+01:00",
-          "end_time": "2026-10-20T21:55:09.304543749+01:00",
+          "start_time": "2026-10-21T11:28:27.467523837+01:00",
+          "end_time": "2026-10-21T11:28:28.804128808+01:00",
           "function_under_testing": "cal",
           "test_case_number": 33,
           "proteum_tcase_index": 33,
@@ -1681,7 +1681,7 @@
             "year": "2021",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 1: synthesized NEW inputs {'month1': '-1', 'day1': '8', 'month2': '-1', 'day2': '18', 'year': '2021'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1704,13 +1704,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1199.515
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1336.605
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T21:55:09.615664132+01:00",
-          "end_time": "2026-10-20T21:55:10.768782390+01:00",
+          "start_time": "2026-10-21T11:28:29.141268176+01:00",
+          "end_time": "2026-10-21T11:28:30.549689391+01:00",
           "function_under_testing": "cal",
           "test_case_number": 34,
           "proteum_tcase_index": 34,
@@ -1722,7 +1722,7 @@
             "year": "2022",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 2: synthesized NEW inputs {'month1': '0', 'day1': '9', 'month2': '0', 'day2': '19', 'year': '2022'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1745,13 +1745,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1153.1180000000002
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1408.4209999999998
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T21:55:11.132381421+01:00",
-          "end_time": "2026-10-20T21:55:12.388344217+01:00",
+          "start_time": "2026-10-21T11:28:30.965123354+01:00",
+          "end_time": "2026-10-21T11:28:32.547301258+01:00",
           "function_under_testing": "cal",
           "test_case_number": 35,
           "proteum_tcase_index": 35,
@@ -1763,7 +1763,7 @@
             "year": "2023",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 3: synthesized NEW inputs {'month1': '1', 'day1': '10', 'month2': '1', 'day2': '20', 'year': '2023'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1786,13 +1786,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1255.963
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1582.178
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T21:55:12.695690393+01:00",
-          "end_time": "2026-10-20T21:55:13.727845049+01:00",
+          "start_time": "2026-10-21T11:28:32.995765989+01:00",
+          "end_time": "2026-10-21T11:28:34.390899547+01:00",
           "function_under_testing": "cal",
           "test_case_number": 36,
           "proteum_tcase_index": 36,
@@ -1804,7 +1804,7 @@
             "year": "2024",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 4: synthesized NEW inputs {'month1': '2', 'day1': '11', 'month2': '2', 'day2': '21', 'year': '2024'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1827,13 +1827,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1032.155
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1395.134
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T21:55:14.090591615+01:00",
-          "end_time": "2026-10-20T21:55:15.346201611+01:00",
+          "start_time": "2026-10-21T11:28:34.776044344+01:00",
+          "end_time": "2026-10-21T11:28:36.099712750+01:00",
           "function_under_testing": "cal",
           "test_case_number": 37,
           "proteum_tcase_index": 37,
@@ -1845,7 +1845,7 @@
             "year": "2025",
             "expected_output": "10"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 5: synthesized NEW inputs {'month1': '3', 'day1': '12', 'month2': '3', 'day2': '22', 'year': '2025'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1868,13 +1868,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1255.61
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1323.6680000000001
         },
         {
           "iteration": 6,
-          "start_time": "2026-10-20T21:55:15.654857017+01:00",
-          "end_time": "2026-10-20T21:55:16.805865327+01:00",
+          "start_time": "2026-10-21T11:28:36.436671979+01:00",
+          "end_time": "2026-10-21T11:28:37.717623315+01:00",
           "function_under_testing": "cal",
           "test_case_number": 38,
           "proteum_tcase_index": 38,
@@ -1886,7 +1886,7 @@
             "year": "0",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 6: synthesized NEW inputs {'month1': '5', 'day1': '0', 'month2': '5', 'day2': '0', 'year': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1909,13 +1909,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1151.008
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1280.952
         },
         {
           "iteration": 7,
-          "start_time": "2026-10-20T21:55:17.191517318+01:00",
-          "end_time": "2026-10-20T21:55:18.308380673+01:00",
+          "start_time": "2026-10-21T11:28:38.122812182+01:00",
+          "end_time": "2026-10-21T11:28:39.569694404+01:00",
           "function_under_testing": "cal",
           "test_case_number": 39,
           "proteum_tcase_index": 39,
@@ -1927,7 +1927,7 @@
             "year": "1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 7: synthesized NEW inputs {'month1': '10', 'day1': '1', 'month2': '10', 'day2': '1', 'year': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1950,13 +1950,13 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1116.8629999999998
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1446.882
         },
         {
           "iteration": 8,
-          "start_time": "2026-10-20T21:55:18.602353533+01:00",
-          "end_time": "2026-10-20T21:55:19.734270061+01:00",
+          "start_time": "2026-10-21T11:28:40.025139066+01:00",
+          "end_time": "2026-10-21T11:28:41.512854454+01:00",
           "function_under_testing": "cal",
           "test_case_number": 40,
           "proteum_tcase_index": 40,
@@ -1968,7 +1968,7 @@
             "year": "-1",
             "expected_output": "0"
           },
-          "rationality": "Mutation-directed invent for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '-1', 'day1': '-1', 'month2': '-1', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
+          "rationality": "Mutation-oriented input generation for Get on: `;` (operator `u-SSDL`). Chose function `cal` from build-view. Iteration 8: synthesized NEW inputs {'month1': '-1', 'day1': '-1', 'month2': '-1', 'day2': '-1', 'year': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). SSDL target deleted `for (i = month1 + 1; i <= month2 - 1; i++)\n   numDays = daysIn[i] + numDays;` — inputs chosen to reach that statement.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -1991,8 +1991,8 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 1131.9170000000001
+          "llm_name": "composer-ssdl-oracle-v1",
+          "duration_ms": 1487.715
         }
       ],
       "tokens_total": {

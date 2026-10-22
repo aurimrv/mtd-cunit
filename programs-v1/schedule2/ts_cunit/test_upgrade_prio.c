@@ -23,22 +23,53 @@ extern int schedule(int command, int prio, float ratio);
 extern int put_end(int prio, struct process *process);
 extern int get_process(int prio, float ratio, struct process **job);
 
+/* Seed N jobs at a usable priority so queue side effects are observable via flush. */
+static void cunit_sched_seed_jobs(int n_jobs, int prio)
+{
+    int i;
+    int p = prio;
+    if (p < 1) p = 1;
+    if (p > 3) p = 3;
+    for (i = 0; i < n_jobs; i++) {
+        new_job(p);
+    }
+}
+
+static int cunit_sched_n_jobs_cell(void)
+{
+    const char *nj = cunit_csv_cell_by_name(active_row, "n_jobs");
+    if (nj == NULL || nj[0] == '\0') return 0;
+    return atoi(nj);
+}
+
+static void cunit_sched_oracle_ret_flush(int ret)
+{
+    char buf[512];
+    const char *cap;
+    cunit_capture_stdout_begin();
+    flush();
+    cunit_capture_stdout_end();
+    cap = cunit_capture_buf == NULL ? "" : cunit_capture_buf;
+    snprintf(buf, sizeof(buf), "%d#%s", ret, cap);
+    cunit_oracle_check_output(buf);
+    if (cunit_has_column("expected_stdout")) {
+        cunit_oracle_check_stdout();
+    }
+}
+
 static void run_upgrade_prio_test(void)
 {
     cunit_csv_load("test_cases_upgrade_prio.csv");
     /* LLM_BODY_BEGIN */
     for (active_row = 0; active_row < cunit_csv_row_count(); active_row++) {
-        int prio;
-        float ratio;
-        sscanf(cunit_csv_cell_by_name(active_row, "prio"), "%d", &prio);
-        sscanf(cunit_csv_cell_by_name(active_row, "ratio"), "%f", &ratio);
-        if (prio >= 1 && prio <= MAXLOPRIO && ratio >= 0.0 && ratio <= 1.0) {
-            new_job(prio);
-        }
-        int ret = upgrade_prio(prio, ratio);
-        char buf[32];
-        snprintf(buf, sizeof(buf), "%d", ret);
-        cunit_oracle_check_output(buf);
+        int prio = atoi(cunit_csv_cell_by_name(active_row, "prio"));
+        float ratio = (float)atof(cunit_csv_cell_by_name(active_row, "ratio"));
+        int n_jobs = cunit_sched_n_jobs_cell();
+        int ret;
+        if (n_jobs <= 0) n_jobs = 2;
+        cunit_sched_seed_jobs(n_jobs, prio > 0 ? prio : 1);
+        ret = upgrade_prio(prio, ratio);
+        cunit_sched_oracle_ret_flush(ret);
     }
     /* LLM_BODY_END */
 }

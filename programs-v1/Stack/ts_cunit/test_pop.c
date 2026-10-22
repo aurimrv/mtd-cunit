@@ -19,7 +19,7 @@ static void run_pop_test(void)
     extern stack_link bottom;
     extern int size;
     int ret;
-    char buf[64];
+    char buf[128];
     const char *tn_str;
     int tn;
 
@@ -38,7 +38,7 @@ static void run_pop_test(void)
         cunit_capture_stdout_begin();
         ret = pop();
         cunit_capture_stdout_end();
-        snprintf(buf, sizeof(buf), "%d", ret);
+        snprintf(buf, sizeof(buf), "%d#%d#%d", ret, size, top ? top->data : -999);
         cunit_oracle_check_output(buf);
         cunit_oracle_check_stdout();
     }

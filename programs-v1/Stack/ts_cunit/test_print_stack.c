@@ -35,7 +35,6 @@ static void run_print_stack_test(void)
         cunit_capture_stdout_begin();
         print_stack();
         cunit_capture_stdout_end();
-        cunit_oracle_check_output("");
         cunit_oracle_check_stdout();
     }
     /* LLM_BODY_END */

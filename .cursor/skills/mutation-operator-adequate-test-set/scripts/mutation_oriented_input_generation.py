@@ -41,13 +41,23 @@ def _encode_csv_oracle(value: str) -> str:
     """
     if value is None:
         return ""
-    s = str(value)
+    s = str(value).replace("\x00", "")
     return (
         s.replace("\\", "\\\\")
         .replace("\n", "\\n")
         .replace("\r", "\\r")
         .replace("\t", "\\t")
     )
+
+
+def _sanitize_fields(fields: dict[str, str]) -> dict[str, str]:
+    """Strip NULs so argv/env handoff to run_attempt never raises."""
+    out: dict[str, str] = {}
+    for k, v in fields.items():
+        out[str(k).replace("\x00", "")] = (
+            "" if v is None else str(v).replace("\x00", "")
+        )
+    return out
 
 
 def _nums(text: str) -> list[int]:
@@ -572,7 +582,8 @@ def _synthesize_inputs_for_mutant(
             fields = _stdin_token_ssdl_fields(headers, format_example, get_on, iteration)
         else:
             fields = _generic_ssdl_fields(headers, format_example, ctx, iteration)
-        return _boost_numeric_for_deleted(fields, ctx, iteration)
+        fields = _boost_numeric_for_deleted(fields, ctx, iteration)
+        return _boost_schema_reachability(fields, headers, ctx, iteration)
     return _synthesize_inputs(headers, format_example, get_on, iteration)
 
 
@@ -592,6 +603,184 @@ def _boost_numeric_for_deleted(
             # Only rewrite plain ints
             if str(v).lstrip("-").isdigit():
                 fields[h] = str(multi[(iteration - 1) % len(multi)])
+    return fields
+
+
+_ARRAYISH_HEADERS = frozenset(
+    {
+        "list",
+        "arr",
+        "a",
+        "pq",
+        "src",
+        "dest",
+        "temp",
+        "values",
+        "items",
+        "x",
+        "vec",
+        "nums",
+        "data",
+    }
+)
+_RANGE_LO_CANDS = ("low", "lo", "start", "begin", "from", "left")
+_RANGE_HI_CANDS = ("high", "hi", "end", "finish", "to", "right")
+
+
+def _parse_intish(raw: str) -> int | None:
+    s = str(raw or "").strip()
+    if s.lstrip("-").isdigit():
+        try:
+            return int(s)
+        except ValueError:
+            return None
+    return None
+
+
+def _unsorted_int_list(n: int, seed: int) -> str:
+    """Comma-separated ints of length n that are not already sorted ascending."""
+    n = max(2, n)
+    base = [((seed + 3) * (i + 3) + 7) % 97 for i in range(n)]
+    # Guarantee not sorted / not identity 0..n-1
+    if base == sorted(base):
+        base[-1], base[0] = base[0], base[-1]
+    if base == list(range(n)):
+        base[0], base[-1] = base[-1], base[0]
+    return ",".join(str(x) for x in base)
+
+
+def _unsorted_token_list(n: int, seed: int) -> str:
+    n = max(2, n)
+    alphabet = "zyxwvutsrqponmlkjihgfedcba"
+    toks = [alphabet[(seed + i * 3) % len(alphabet)] for i in range(n)]
+    if toks == sorted(toks):
+        toks[0], toks[-1] = toks[-1], toks[0]
+    return ",".join(toks)
+
+
+def _boost_schema_reachability(
+    fields: dict[str, str],
+    headers: list[str],
+    ctx: dict[str, Any],
+    iteration: int,
+) -> dict[str, str]:
+    """
+    Schema-driven reachability boosts (header names + deleted tokens only).
+
+    - Range pairs: force lo < hi with span >= 1 on most probes.
+    - Length/N with an array column: prefer length >= 2 and unsorted contents.
+    - Deleted stmt writes indexed containers: bias non-empty containers.
+    - Size-only / stdout-style drivers: prefer n >= 2.
+    """
+    deleted = ctx.get("deleted") or ""
+    seed = max(0, iteration - 1)
+
+    # 1) Range pairs (low/high, start/end, i/j)
+    lo_h = _header_named(headers, *_RANGE_LO_CANDS)
+    hi_h = _header_named(headers, *_RANGE_HI_CANDS)
+    if lo_h and hi_h and lo_h in fields and hi_h in fields:
+        lo = _parse_intish(fields[lo_h])
+        hi = _parse_intish(fields[hi_h])
+        if lo is None:
+            lo = 0
+        if hi is None or hi <= lo:
+            # Most probes: span at least 1; rare equal-bound probe for edges
+            if seed % 7 == 0:
+                fields[lo_h] = str(lo)
+                fields[hi_h] = str(lo)
+            else:
+                span = 1 + (seed % 4)
+                fields[lo_h] = str(lo)
+                fields[hi_h] = str(lo + span)
+    ij_i = _header_named(headers, "i")
+    ij_j = _header_named(headers, "j")
+    if (
+        ij_i
+        and ij_j
+        and ij_i in fields
+        and ij_j in fields
+        and not (lo_h == ij_i and hi_h == ij_j)
+    ):
+        i_v = _parse_intish(fields[ij_i])
+        j_v = _parse_intish(fields[ij_j])
+        if i_v is None:
+            i_v = 0
+        if j_v is None or j_v == i_v:
+            if seed % 7 != 0:
+                fields[ij_i] = str(i_v)
+                fields[ij_j] = str(i_v + 1 + (seed % 3))
+
+    # 2) Length / N paired with an array-ish column
+    arr_h = next(
+        (
+            h
+            for h in headers
+            if h.lower() in _ARRAYISH_HEADERS and h in fields
+        ),
+        None,
+    )
+    len_h = _header_named(
+        headers, "len", "length", "n", "N", "size", "count", "num"
+    )
+    if arr_h and len_h and len_h in fields:
+        n_v = _parse_intish(fields[len_h])
+        if n_v is None or n_v < 2:
+            n_v = 2 + (seed % 4)
+            fields[len_h] = str(n_v)
+        raw = str(fields.get(arr_h) or "")
+        parts = [p for p in raw.split(",") if p != ""]
+        if len(parts) < 2 or parts == sorted(parts) or (
+            all(p.lstrip("-").isdigit() for p in parts)
+            and [int(p) for p in parts] == list(range(len(parts)))
+        ):
+            if all(p.lstrip("-").isdigit() for p in parts) or not parts:
+                fields[arr_h] = _unsorted_int_list(n_v, seed)
+            else:
+                fields[arr_h] = _unsorted_token_list(n_v, seed)
+
+    # 3) Deleted stmt writes indexed containers → non-empty destination
+    if any(tok in deleted for tok in ("[", "->", "strcpy", "memcpy", "strncpy")):
+        for h in list(fields):
+            hl = h.lower()
+            if hl in ORACLE_COLS or h == "test_number":
+                continue
+            if hl in _ARRAYISH_HEADERS or hl in {
+                "outset",
+                "buf",
+                "buffer",
+                "dest",
+                "pat",
+            }:
+                if str(fields[h]).strip() in {"", "0", "NULL"}:
+                    if hl in _ARRAYISH_HEADERS:
+                        fields[h] = _unsorted_int_list(3, seed)
+                    else:
+                        fields[h] = f"ab{(seed % 9)}"
+
+    # 4) Size-only drivers (often stdout): prefer n >= 2
+    input_headers = [
+        h
+        for h in headers
+        if h not in ORACLE_COLS and h != "test_number" and h in fields
+    ]
+    size_only = input_headers and all(
+        h.lower() in _SIZEISH_FIELD_NAMES or h.lower() in {"n", "n"}
+        for h in input_headers
+    )
+    if size_only:
+        for h in input_headers:
+            v = _parse_intish(fields[h])
+            if v is not None and v < 2 and seed % 5 != 0:
+                fields[h] = str(2 + (seed % 5))
+
+    # 5) ADT scenario depth: prefer n_jobs >= 2 on most probes
+    nj_h = _header_named(headers, "n_jobs", "njobs", "num_jobs")
+    if nj_h and nj_h in fields:
+        nj = _parse_intish(fields[nj_h])
+        if nj is None or nj < 2:
+            if seed % 6 != 0:
+                fields[nj_h] = str(2 + (seed % 3))
+
     return fields
 
 
@@ -730,18 +919,22 @@ def generate_for_mutant(
     max_candidates: int = 5,
 ) -> dict[str, Any]:
     insp = inspect(program_dir, session, mutant_id)
+    if not insp.get("inspect_usable", True):
+        err = insp.get("inspect_error") or "missing_build_view"
+        raise RuntimeError(
+            f"insufficient mutation context for mutant {mutant_id} ({err}); "
+            f"refusing probes / EQUIVALENT (fail-closed)"
+        )
     fn = insp.get("detected_function")
     if not fn:
         raise RuntimeError(f"no detected function for mutant {mutant_id}")
     schema = (insp.get("csv_schemas") or {}).get(fn) or {}
     if not schema.get("exists"):
-        for name, sch in (insp.get("csv_schemas") or {}).items():
-            if sch.get("exists"):
-                fn = name
-                schema = sch
-                break
-    if not schema.get("exists"):
-        raise RuntimeError(f"no CSV schema for mutant {mutant_id}")
+        # Do not silently bind a different function's CSV (false probes).
+        raise RuntimeError(
+            f"no CSV schema for owning function {fn!r} (mutant {mutant_id}); "
+            f"refusing cross-function fallback"
+        )
 
     headers = list(schema.get("headers") or [])
     example = schema.get("format_example_row")
@@ -767,7 +960,8 @@ def generate_for_mutant(
         filled = _capture_oracles(program_dir, fn, headers, inputs)
         capture_ok = bool(filled.pop("_capture_ok", True))
         filled.pop("_runner_exit", None)
-        deleted = (ctx.get("deleted") or "")[:80]
+        filled = _sanitize_fields(filled)
+        deleted = (ctx.get("deleted") or "")[:80].replace("\x00", "")
         rationality = (
             f"Mutation-oriented input generation for Get on: `{get_on}` "
             f"(operator `{op}`). Chose function `{fn}` from build-view. "
@@ -778,7 +972,7 @@ def generate_for_mutant(
                 if is_ssdl
                 else "Targets the mutated expression via Get on: / nearby literals."
             )
-        )
+        ).replace("\x00", "")
         candidates.append(
             {
                 "mutant_id": mutant_id,

@@ -21,6 +21,7 @@ static void run_join_test(void)
     stack_list below_node;
     stack_link above;
     stack_link below;
+    char buf[128];
 
     for (active_row = 0; active_row < cunit_csv_row_count(); active_row++) {
         above_tok = cunit_csv_cell_by_name(active_row, "above");
@@ -29,18 +30,23 @@ static void run_join_test(void)
         below = NULL;
         if (above_tok && above_tok[0] == 'N' && above_tok[1] == 'O') {
             above_node.above = NULL;
-            above_node.data = 0;
+            above_node.data = 11;
             above_node.below = NULL;
             above = &above_node;
         }
         if (below_tok && below_tok[0] == 'N' && below_tok[1] == 'O') {
             below_node.above = NULL;
-            below_node.data = 0;
+            below_node.data = 22;
             below_node.below = NULL;
             below = &below_node;
         }
         join(above, below);
-        cunit_oracle_check_output("");
+        snprintf(buf, sizeof(buf), "%d#%d#%d#%d",
+                 above ? (above->below == below) : -1,
+                 below ? (below->above == above) : -1,
+                 above ? above->data : -1,
+                 below ? below->data : -1);
+        cunit_oracle_check_output(buf);
     }
     /* LLM_BODY_END */
 }

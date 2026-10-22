@@ -5,8 +5,8 @@
   "session": "S_schedule",
   "max_iterations": 5,
   "llm_name": "composer-mutation-directed-v1",
-  "created_at": "2026-10-20T00:21:26.091093877+01:00",
-  "updated_at": "2026-10-20T00:21:48.898840659+01:00",
+  "created_at": "2026-10-21T14:53:10.723582245+01:00",
+  "updated_at": "2026-10-21T14:53:33.401253348+01:00",
   "mutants": [
     {
       "mutant_number": 141,
@@ -14,25 +14,25 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "find_nth",
       "test_case_number": 5,
-      "rationality_summary": "Get on: `(f_ele || (i < n)) ;`. Operator `u-OLLN` in function `find_nth`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'Ele *find_nth(List *f_list, int n)\\n{\\n Ele *f_ele;\\n int i;\\n if (!f_list)\\n  return ((void *)0);\\n f_ele = f_list->first;\\n for (i = 1; @\\nf_ele && (i < n);@\\n i++)\\n  f_ele = f_ele->next;\\n return f_ele;\\n}'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
-      "initial_time": "2026-10-20T00:21:26.210429856+01:00",
-      "end_time": "2026-10-20T00:21:30.977409561+01:00",
-      "duration_ms": 4766.9800000000005,
+      "rationality_summary": "Get on: `(f_ele || (i < n)) ;`. Operator `u-OLLN` in function `find_nth`. Semantic hypothesis: relational/logical change may agree on the CSV-expressible input subset. Build-view fragment (truncated): 'Ele *find_nth(List *f_list, int n)\\n{\\n Ele *f_ele;\\n int i;\\n if (!f_list)\\n  return ((void *)0);\\n f_ele = f_list->first;\\n for (i = 1; @\\nf_ele && (i < n);@\\n i++)\\n  f_ele = f_ele->next;\\n return f_ele;\\n}'. After 5 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T14:53:10.837634457+01:00",
+      "end_time": "2026-10-21T14:53:15.320358414+01:00",
+      "duration_ms": 4482.724,
       "number_of_iterations": 5,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T00:21:26.333218025+01:00",
-          "end_time": "2026-10-20T00:21:26.993893189+01:00",
+          "start_time": "2026-10-21T14:53:10.963647176+01:00",
+          "end_time": "2026-10-21T14:53:11.550716409+01:00",
           "function_under_testing": "find_nth",
           "test_case_number": 1,
           "proteum_tcase_index": 1,
           "csv_values": {
             "f_list": "NULL",
-            "n": "-1",
+            "n": "1",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `(f_ele || (i < n)) ;`. Chose function `find_nth` from build-view. Iteration 1: synthesized NEW inputs {'f_list': 'NULL', 'n': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `(f_ele || (i < n)) ;` (operator `u-OLLN`). Chose function `find_nth` from build-view. Iteration 1: synthesized NEW inputs {'f_list': 'NULL', 'n': '1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -56,21 +56,21 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 660.6750000000001
+          "duration_ms": 587.069
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T00:21:27.288567863+01:00",
-          "end_time": "2026-10-20T00:21:27.911634904+01:00",
+          "start_time": "2026-10-21T14:53:11.815399424+01:00",
+          "end_time": "2026-10-21T14:53:12.399939839+01:00",
           "function_under_testing": "find_nth",
           "test_case_number": 2,
           "proteum_tcase_index": 2,
           "csv_values": {
             "f_list": "NULL",
-            "n": "0",
+            "n": "2",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `(f_ele || (i < n)) ;`. Chose function `find_nth` from build-view. Iteration 2: synthesized NEW inputs {'f_list': 'NULL', 'n': '0'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `(f_ele || (i < n)) ;` (operator `u-OLLN`). Chose function `find_nth` from build-view. Iteration 2: synthesized NEW inputs {'f_list': 'NULL', 'n': '2'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -94,21 +94,21 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 623.067
+          "duration_ms": 584.54
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T00:21:28.196811080+01:00",
-          "end_time": "2026-10-20T00:21:28.803315113+01:00",
+          "start_time": "2026-10-21T14:53:12.667220859+01:00",
+          "end_time": "2026-10-21T14:53:13.245928151+01:00",
           "function_under_testing": "find_nth",
           "test_case_number": 3,
           "proteum_tcase_index": 3,
           "csv_values": {
             "f_list": "NULL",
-            "n": "1",
+            "n": "3",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `(f_ele || (i < n)) ;`. Chose function `find_nth` from build-view. Iteration 3: synthesized NEW inputs {'f_list': 'NULL', 'n': '1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `(f_ele || (i < n)) ;` (operator `u-OLLN`). Chose function `find_nth` from build-view. Iteration 3: synthesized NEW inputs {'f_list': 'NULL', 'n': '3'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -132,21 +132,21 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 606.504
+          "duration_ms": 578.708
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T00:21:29.107556016+01:00",
-          "end_time": "2026-10-20T00:21:29.698288986+01:00",
+          "start_time": "2026-10-21T14:53:13.527912341+01:00",
+          "end_time": "2026-10-21T14:53:14.114891968+01:00",
           "function_under_testing": "find_nth",
           "test_case_number": 4,
           "proteum_tcase_index": 4,
           "csv_values": {
             "f_list": "NULL",
-            "n": "2",
+            "n": "0",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `(f_ele || (i < n)) ;`. Chose function `find_nth` from build-view. Iteration 4: synthesized NEW inputs {'f_list': 'NULL', 'n': '2'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `(f_ele || (i < n)) ;` (operator `u-OLLN`). Chose function `find_nth` from build-view. Iteration 4: synthesized NEW inputs {'f_list': 'NULL', 'n': '0'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -170,21 +170,21 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 590.7320000000001
+          "duration_ms": 586.979
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T00:21:29.994526997+01:00",
-          "end_time": "2026-10-20T00:21:30.622609038+01:00",
+          "start_time": "2026-10-21T14:53:14.396381437+01:00",
+          "end_time": "2026-10-21T14:53:14.983002709+01:00",
           "function_under_testing": "find_nth",
           "test_case_number": 5,
           "proteum_tcase_index": 5,
           "csv_values": {
             "f_list": "NULL",
-            "n": "3",
+            "n": "5",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `(f_ele || (i < n)) ;`. Chose function `find_nth` from build-view. Iteration 5: synthesized NEW inputs {'f_list': 'NULL', 'n': '3'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `(f_ele || (i < n)) ;` (operator `u-OLLN`). Chose function `find_nth` from build-view. Iteration 5: synthesized NEW inputs {'f_list': 'NULL', 'n': '5'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -208,7 +208,7 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 628.083
+          "duration_ms": 586.621
         }
       ],
       "tokens_total": {
@@ -229,16 +229,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "del_ele",
       "test_case_number": 1,
-      "rationality_summary": "Mutation-directed invent for Get on: `( ((! d_list) && (! d_ele)) )`. Chose function `del_ele` from build-view. Iteration 1: synthesized NEW inputs {'d_list': 'NULL', 'd_ele': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
-      "initial_time": "2026-10-20T00:21:31.209499627+01:00",
-      "end_time": "2026-10-20T00:21:35.877658479+01:00",
-      "duration_ms": 4668.159000000001,
+      "rationality_summary": "Mutation-oriented input generation for Get on: `( ((! d_list) && (! d_ele)) )` (operator `u-OLLN`). Chose function `del_ele` from build-view. Iteration 1: synthesized NEW inputs {'d_list': 'NULL', 'd_ele': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
+      "initial_time": "2026-10-21T14:53:15.527728199+01:00",
+      "end_time": "2026-10-21T14:53:20.380405994+01:00",
+      "duration_ms": 4852.677,
       "number_of_iterations": 1,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T00:21:31.334204070+01:00",
-          "end_time": "2026-10-20T00:21:35.594398637+01:00",
+          "start_time": "2026-10-21T14:53:15.660570069+01:00",
+          "end_time": "2026-10-21T14:53:20.120477407+01:00",
           "function_under_testing": "del_ele",
           "test_case_number": 1,
           "proteum_tcase_index": 6,
@@ -247,7 +247,7 @@
             "d_ele": "-1",
             "expected_output": "NULL"
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((! d_list) && (! d_ele)) )`. Chose function `del_ele` from build-view. Iteration 1: synthesized NEW inputs {'d_list': 'NULL', 'd_ele': '-1'} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((! d_list) && (! d_ele)) )` (operator `u-OLLN`). Chose function `del_ele` from build-view. Iteration 1: synthesized NEW inputs {'d_list': 'NULL', 'd_ele': '-1'} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -271,7 +271,7 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 4260.194
+          "duration_ms": 4459.907
         }
       ],
       "tokens_total": {
@@ -292,16 +292,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "dispatch",
       "test_case_number": 1,
-      "rationality_summary": "Mutation-directed invent for Get on: `((status != (- 1)) || status) ;`. Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
-      "initial_time": "2026-10-20T00:21:36.086536505+01:00",
-      "end_time": "2026-10-20T00:21:40.460880257+01:00",
-      "duration_ms": 4374.344,
+      "rationality_summary": "Mutation-oriented input generation for Get on: `((status != (- 1)) || status) ;` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
+      "initial_time": "2026-10-21T14:53:20.575036289+01:00",
+      "end_time": "2026-10-21T14:53:25.526802714+01:00",
+      "duration_ms": 4951.7660000000005,
       "number_of_iterations": 1,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T00:21:36.220586674+01:00",
-          "end_time": "2026-10-20T00:21:40.146478448+01:00",
+          "start_time": "2026-10-21T14:53:20.697556844+01:00",
+          "end_time": "2026-10-21T14:53:25.258483666+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 1,
           "proteum_tcase_index": 7,
@@ -309,7 +309,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `((status != (- 1)) || status) ;`. Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `((status != (- 1)) || status) ;` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -333,7 +333,7 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 3925.8920000000003
+          "duration_ms": 4560.927000000001
         }
       ],
       "tokens_total": {
@@ -354,16 +354,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "dispatch",
       "test_case_number": 6,
-      "rationality_summary": "Get on: `( ((prio > 3) && (prio <= 0)) )`. Operator `u-OLLN` in function `dispatch`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void dispatch(void)\\n{\\n int command;\\n int prio;\\n float ratio;\\n int status;\\n for (status = fscanf(mystdin, \"%d\", &command);\\n      ((status != (-1)) && status);\\n      status = fscanf(mystdin, \"%d\", &command)) {\\n  switch (command) {\\n  case 6:\\n   finish_process();\\n   break;\\n  case 3:\\n   block_process();\\n   break;\\n  case 5:\\n   quantum_expire();\\n   break;\\n  case 4:\\n   fscanf(mystdin, \"%f\", &ratio);\\n   un'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
-      "initial_time": "2026-10-20T00:21:40.662465720+01:00",
-      "end_time": "2026-10-20T00:21:43.868877021+01:00",
-      "duration_ms": 3206.412,
+      "rationality_summary": "Get on: `( ((prio > 3) && (prio <= 0)) )`. Operator `u-OLLN` in function `dispatch`. Semantic hypothesis: relational/logical change may agree on the CSV-expressible input subset. Build-view fragment (truncated): 'void dispatch(void)\\n{\\n int command;\\n int prio;\\n float ratio;\\n int status;\\n for (status = fscanf(mystdin, \"%d\", &command);\\n      ((status != (-1)) && status);\\n      status = fscanf(mystdin, \"%d\", &command)) {\\n  switch (command) {\\n  case 6:\\n   finish_process();\\n   break;\\n  case 3:\\n   block_process();\\n   break;\\n  case 5:\\n   quantum_expire();\\n   break;\\n  case 4:\\n   fscanf(mystdin, \"%f\", &ratio);\\n   un'. After 5 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T14:53:25.723969852+01:00",
+      "end_time": "2026-10-21T14:53:28.776877112+01:00",
+      "duration_ms": 3052.908,
       "number_of_iterations": 5,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T00:21:40.811468085+01:00",
-          "end_time": "2026-10-20T00:21:41.243770950+01:00",
+          "start_time": "2026-10-21T14:53:25.844615074+01:00",
+          "end_time": "2026-10-21T14:53:26.282203248+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 2,
           "proteum_tcase_index": null,
@@ -371,7 +371,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": -11,
             "original_runner_ok": false,
@@ -395,12 +395,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 432.302
+          "duration_ms": 437.58799999999997
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T00:21:41.513696143+01:00",
-          "end_time": "2026-10-20T00:21:41.991804357+01:00",
+          "start_time": "2026-10-21T14:53:26.558155674+01:00",
+          "end_time": "2026-10-21T14:53:27.027198804+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 3,
           "proteum_tcase_index": null,
@@ -408,7 +408,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 2: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 2: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": -11,
             "original_runner_ok": false,
@@ -432,12 +432,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 478.108
+          "duration_ms": 469.043
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T00:21:42.297238519+01:00",
-          "end_time": "2026-10-20T00:21:42.301910912+01:00",
+          "start_time": "2026-10-21T14:53:27.295147770+01:00",
+          "end_time": "2026-10-21T14:53:27.299065811+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 4,
           "proteum_tcase_index": null,
@@ -445,7 +445,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 3: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 3: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 1,
             "original_runner_ok": false,
@@ -469,12 +469,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 4.672
+          "duration_ms": 3.9179999999999997
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T00:21:42.584570457+01:00",
-          "end_time": "2026-10-20T00:21:42.588726350+01:00",
+          "start_time": "2026-10-21T14:53:27.568224376+01:00",
+          "end_time": "2026-10-21T14:53:27.572129862+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 5,
           "proteum_tcase_index": null,
@@ -482,7 +482,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 4: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 4: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 1,
             "original_runner_ok": false,
@@ -506,12 +506,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 4.156
+          "duration_ms": 3.9050000000000002
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T00:21:42.877408714+01:00",
-          "end_time": "2026-10-20T00:21:43.499481010+01:00",
+          "start_time": "2026-10-21T14:53:27.838936570+01:00",
+          "end_time": "2026-10-21T14:53:28.435025464+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 6,
           "proteum_tcase_index": 8,
@@ -519,7 +519,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 5: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 5: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -543,7 +543,7 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 622.073
+          "duration_ms": 596.0889999999999
         }
       ],
       "tokens_total": {
@@ -564,16 +564,16 @@
       "killed_by_mutant_target": null,
       "function_under_testing": "dispatch",
       "test_case_number": 11,
-      "rationality_summary": "Get on: `( ((prio > 3) && (prio <= 0)) )`. Operator `u-OLLN` in function `dispatch`. Semantic hypothesis: a relational/logical operator change may be observationally identical on the subset of inputs this CSV interface can build (boundaries not fully covered, or dead branch for reachable states). Build-view fragment (truncated): 'void dispatch(void)\\n{\\n int command;\\n int prio;\\n float ratio;\\n int status;\\n for (status = fscanf(mystdin, \"%d\", &command);\\n      ((status != (-1)) && status);\\n      status = fscanf(mystdin, \"%d\", &command)) {\\n  switch (command) {\\n  case 6:\\n   finish_process();\\n   break;\\n  case 3:\\n   block_process();\\n   break;\\n  case 5:\\n   quantum_expire();\\n   break;\\n  case 4:\\n   fscanf(mystdin, \"%f\", &ratio);\\n   un'. After 5 mutation-directed probes that varied inputs around literals/boundaries from Get on: while keeping oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: multi-function scenarios or encodings outside this CSV schema might still distinguish the mutant; treating as possible equivalent for this operator-adequate suite under the current interface.",
-      "initial_time": "2026-10-20T00:21:44.080010469+01:00",
-      "end_time": "2026-10-20T00:21:48.896892821+01:00",
-      "duration_ms": 4816.882,
+      "rationality_summary": "Get on: `( ((prio > 3) && (prio <= 0)) )`. Operator `u-OLLN` in function `dispatch`. Semantic hypothesis: relational/logical change may agree on the CSV-expressible input subset. Build-view fragment (truncated): 'void dispatch(void)\\n{\\n int command;\\n int prio;\\n float ratio;\\n int status;\\n for (status = fscanf(mystdin, \"%d\", &command);\\n      ((status != (-1)) && status);\\n      status = fscanf(mystdin, \"%d\", &command)) {\\n  switch (command) {\\n  case 6:\\n   finish_process();\\n   break;\\n  case 3:\\n   block_process();\\n   break;\\n  case 5:\\n   quantum_expire();\\n   break;\\n  case 4:\\n   fscanf(mystdin, \"%f\", &ratio);\\n   un'. After 5 mutation-directed probes (SSDL-aware when applicable) with oracle = original runner (CUNIT_CAPTURE), the mutant remained Alive. Residual doubt: stronger multi-call scenarios or encodings outside this CSV schema might still kill it; mark as possible equivalent only under the current interface and generation budget.",
+      "initial_time": "2026-10-21T14:53:28.964482086+01:00",
+      "end_time": "2026-10-21T14:53:33.399375790+01:00",
+      "duration_ms": 4434.893,
       "number_of_iterations": 5,
       "attempts": [
         {
           "iteration": 1,
-          "start_time": "2026-10-20T00:21:44.226984789+01:00",
-          "end_time": "2026-10-20T00:21:44.850040893+01:00",
+          "start_time": "2026-10-21T14:53:29.082222364+01:00",
+          "end_time": "2026-10-21T14:53:29.672946250+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 7,
           "proteum_tcase_index": 9,
@@ -581,7 +581,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 1: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -605,12 +605,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 623.056
+          "duration_ms": 590.724
         },
         {
           "iteration": 2,
-          "start_time": "2026-10-20T00:21:45.133950112+01:00",
-          "end_time": "2026-10-20T00:21:45.827278824+01:00",
+          "start_time": "2026-10-21T14:53:29.944665281+01:00",
+          "end_time": "2026-10-21T14:53:30.517867416+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 8,
           "proteum_tcase_index": 10,
@@ -618,7 +618,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 2: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 2: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -642,12 +642,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 693.3280000000001
+          "duration_ms": 573.202
         },
         {
           "iteration": 3,
-          "start_time": "2026-10-20T00:21:46.136871597+01:00",
-          "end_time": "2026-10-20T00:21:46.748943200+01:00",
+          "start_time": "2026-10-21T14:53:30.789263931+01:00",
+          "end_time": "2026-10-21T14:53:31.358858392+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 9,
           "proteum_tcase_index": 11,
@@ -655,7 +655,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 3: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 3: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -679,12 +679,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 612.072
+          "duration_ms": 569.5949999999999
         },
         {
           "iteration": 4,
-          "start_time": "2026-10-20T00:21:47.065067138+01:00",
-          "end_time": "2026-10-20T00:21:47.661125298+01:00",
+          "start_time": "2026-10-21T14:53:31.632423504+01:00",
+          "end_time": "2026-10-21T14:53:32.203427743+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 10,
           "proteum_tcase_index": 12,
@@ -692,7 +692,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 4: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 4: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -716,12 +716,12 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 596.058
+          "duration_ms": 571.0039999999999
         },
         {
           "iteration": 5,
-          "start_time": "2026-10-20T00:21:47.939995245+01:00",
-          "end_time": "2026-10-20T00:21:48.523612921+01:00",
+          "start_time": "2026-10-21T14:53:32.473320745+01:00",
+          "end_time": "2026-10-21T14:53:33.052025667+01:00",
           "function_under_testing": "dispatch",
           "test_case_number": 11,
           "proteum_tcase_index": 13,
@@ -729,7 +729,7 @@
             "expected_output": "",
             "expected_stdout": ""
           },
-          "rationality": "Mutation-directed invent for Get on: `( ((prio > 3) && (prio <= 0)) )`. Chose function `dispatch` from build-view. Iteration 5: synthesized NEW inputs {} (not a ts_data row); oracles filled from original via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression by varying nearby literals/boundaries drawn from Get on:.",
+          "rationality": "Mutation-oriented input generation for Get on: `( ((prio > 3) && (prio <= 0)) )` (operator `u-OLLN`). Chose function `dispatch` from build-view. Iteration 5: synthesized NEW inputs {} (not a ts_data row); oracles via CUNIT_CAPTURE (capture_ok=True). Targets the mutated expression via Get on: / nearby literals.",
           "validation": {
             "original_runner_exit_code": 0,
             "original_runner_ok": true,
@@ -753,7 +753,7 @@
             "source": "unavailable"
           },
           "llm_name": "composer-mutation-directed-v1",
-          "duration_ms": 583.6170000000001
+          "duration_ms": 578.705
         }
       ],
       "tokens_total": {

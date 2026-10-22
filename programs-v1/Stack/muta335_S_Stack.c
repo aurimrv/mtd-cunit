@@ -1,5 +1,0 @@
-int isEmpty(void)
-{@
-@
-
-}

@@ -23,6 +23,40 @@ extern int schedule(int command, int prio, float ratio);
 extern int put_end(int prio, struct process *process);
 extern int get_process(int prio, float ratio, struct process **job);
 
+/* Seed N jobs at a usable priority so queue side effects are observable via flush. */
+static void cunit_sched_seed_jobs(int n_jobs, int prio)
+{
+    int i;
+    int p = prio;
+    if (p < 1) p = 1;
+    if (p > 3) p = 3;
+    for (i = 0; i < n_jobs; i++) {
+        new_job(p);
+    }
+}
+
+static int cunit_sched_n_jobs_cell(void)
+{
+    const char *nj = cunit_csv_cell_by_name(active_row, "n_jobs");
+    if (nj == NULL || nj[0] == '\0') return 0;
+    return atoi(nj);
+}
+
+static void cunit_sched_oracle_ret_flush(int ret)
+{
+    char buf[512];
+    const char *cap;
+    cunit_capture_stdout_begin();
+    flush();
+    cunit_capture_stdout_end();
+    cap = cunit_capture_buf == NULL ? "" : cunit_capture_buf;
+    snprintf(buf, sizeof(buf), "%d#%s", ret, cap);
+    cunit_oracle_check_output(buf);
+    if (cunit_has_column("expected_stdout")) {
+        cunit_oracle_check_stdout();
+    }
+}
+
 static void run_new_job_test(void)
 {
     cunit_csv_load("test_cases_new_job.csv");
@@ -30,10 +64,11 @@ static void run_new_job_test(void)
     for (active_row = 0; active_row < cunit_csv_row_count(); active_row++) {
         const char *prio_str = cunit_csv_cell_by_name(active_row, "prio");
         int prio = atoi(prio_str);
-        int status = new_job(prio);
-        char buf[32];
-        snprintf(buf, sizeof(buf), "%d", status);
-        cunit_oracle_check_output(buf);
+        int n_jobs = cunit_sched_n_jobs_cell();
+        int status;
+        cunit_sched_seed_jobs(n_jobs, prio);
+        status = new_job(prio);
+        cunit_sched_oracle_ret_flush(status);
     }
     /* LLM_BODY_END */
 }

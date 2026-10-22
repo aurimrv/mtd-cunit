@@ -53,8 +53,8 @@ static void run_get_command_test(void)
             rewind(fp);
             mystdin = fp;
             int ret = get_command(&command, &prio, &ratio);
-            char out[32];
-            snprintf(out, sizeof(out), "%d", ret);
+            char out[96];
+            snprintf(out, sizeof(out), "%d#%d#%d#%.4f", ret, command, prio, (double)ratio);
             cunit_oracle_check_output(out);
             fclose(fp);
         }

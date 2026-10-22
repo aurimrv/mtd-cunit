@@ -107,8 +107,13 @@ export -f run_one
 export PROGRAMS_DIR SKILL LLM_NAME MAX_ITER LOG_ROOT
 
 echo "=== launching up to ${JOBS} parallel SSDL reruns ==="
-# xargs -P: one program per worker
-xargs -a "$LIST" -P "$JOBS" -n 1 -I{} bash -c 'run_one "$@"' _ {}
+# Portable parallel: one program per worker (avoid xargs -I/-n clash on GNU xargs)
+while IFS= read -r prog || [ -n "$prog" ]; do
+  [ -z "$prog" ] && continue
+  while [ "$(jobs -rp | wc -l)" -ge "$JOBS" ]; do sleep 2; done
+  run_one "$prog" &
+done < "$LIST"
+wait
 
 echo "=== all workers finished ==="
 python3 - <<PY

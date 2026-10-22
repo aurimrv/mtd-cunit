@@ -20,7 +20,7 @@ static void run_push_test(void)
     extern int size;
     int value;
     int ret;
-    char buf[64];
+    char buf[128];
     const char *tn_str;
     int tn;
 
@@ -35,7 +35,7 @@ static void run_push_test(void)
             size = 1;
         }
         ret = push(value);
-        snprintf(buf, sizeof(buf), "%d", ret);
+        snprintf(buf, sizeof(buf), "%d#%d#%d", ret, size, top ? top->data : -999);
         cunit_oracle_check_output(buf);
     }
     /* LLM_BODY_END */

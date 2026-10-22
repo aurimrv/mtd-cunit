@@ -28,6 +28,10 @@ static void run_exit_here_test(void)
     cunit_csv_load("test_cases_exit_here.csv");
     /* LLM_BODY_BEGIN */
     int status = atoi(cunit_csv_cell_by_name(active_row, "status"));
+    char buf[32];
+    /* Observe requested status; process exit code is abs(status) via exit_here. */
+    snprintf(buf, sizeof(buf), "%d", status);
+    cunit_oracle_check_output(buf);
     cunit_expect_exit();
     exit_here(status);
     /* LLM_BODY_END */

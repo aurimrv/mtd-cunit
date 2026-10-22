@@ -289,10 +289,11 @@ def main() -> int:
         killed = False
         for cand in rows:
             i = int(cand.get("iteration") or 1)
-            fields_json = json.dumps(cand["fields"])
-            rationality = cand.get("rationality") or (
-                f"Mutation-oriented case for Get on: {insp.get('get_on')}"
-            )
+            fields_json = json.dumps(cand["fields"]).replace("\x00", "")
+            rationality = (
+                cand.get("rationality")
+                or f"Mutation-oriented case for Get on: {insp.get('get_on')}"
+            ).replace("\x00", "")
             cp = run(
                 [
                     sys.executable,

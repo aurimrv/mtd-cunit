@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "schedule2.h"
-/* Project function prototypes (verified at seed time). */
 extern int enqueue(int prio, struct process *new_process);
 extern void dispatch(void);
 extern int get_command(int *command, int *prio, float *ratio);
@@ -23,6 +22,34 @@ extern int schedule(int command, int prio, float ratio);
 extern int put_end(int prio, struct process *process);
 extern int get_process(int prio, float ratio, struct process **job);
 
+static void cunit_sched_seed_jobs(int n_jobs, int prio)
+{
+    int i;
+    int p = prio;
+    if (p < 1) p = 1;
+    if (p > 3) p = 3;
+    for (i = 0; i < n_jobs; i++) new_job(p);
+}
+
+static int cunit_sched_n_jobs_cell(void)
+{
+    const char *nj = cunit_csv_cell_by_name(active_row, "n_jobs");
+    if (nj == NULL || nj[0] == '\0') return 0;
+    return atoi(nj);
+}
+
+static void cunit_sched_oracle_ret_flush(int ret)
+{
+    char buf[512];
+    const char *cap;
+    cunit_capture_stdout_begin();
+    flush();
+    cunit_capture_stdout_end();
+    cap = cunit_capture_buf == NULL ? "" : cunit_capture_buf;
+    snprintf(buf, sizeof(buf), "%d#%s", ret, cap);
+    cunit_oracle_check_output(buf);
+}
+
 static void run_enqueue_test(void)
 {
     cunit_csv_load("test_cases_enqueue.csv");
@@ -31,6 +58,10 @@ static void run_enqueue_test(void)
         const char *ps = cunit_csv_cell_by_name(active_row, "prio");
         int prio = 0;
         int sign = 1;
+        int n_jobs = cunit_sched_n_jobs_cell();
+        const char *np;
+        struct process *proc;
+        int ret;
         if (ps) {
             if (*ps == '-') { sign = -1; ps++; }
             while (*ps >= '0' && *ps <= '9') {
@@ -39,16 +70,25 @@ static void run_enqueue_test(void)
             }
             prio *= sign;
         }
-        const char *np = cunit_csv_cell_by_name(active_row, "new_process");
-        struct process proc;
-        proc.pid = 1;
-        if (np && np[0] >= '0' && np[0] <= '9') proc.pid = (unsigned int)(np[0] - '0');
-        proc.priority = prio;
-        proc.next = NULL;
-        int ret = enqueue(prio, &proc);
-        char buf[64];
-        snprintf(buf, sizeof buf, "%d", ret);
-        cunit_oracle_check_output(buf);
+        cunit_sched_seed_jobs(n_jobs, prio);
+        proc = (struct process *)malloc(sizeof(struct process));
+        if (proc == NULL) {
+            cunit_oracle_check_output("malloc_fail");
+            continue;
+        }
+        proc->pid = 1;
+        np = cunit_csv_cell_by_name(active_row, "new_process");
+        if (np && np[0] >= '0' && np[0] <= '9')
+            proc->pid = (unsigned int)(np[0] - '0');
+        proc->priority = prio;
+        proc->next = NULL;
+        ret = enqueue(prio, proc);
+        if (ret != 0) {
+            free(proc);
+            cunit_sched_oracle_ret_flush(ret);
+        } else {
+            cunit_sched_oracle_ret_flush(ret);
+        }
     }
     /* LLM_BODY_END */
 }
