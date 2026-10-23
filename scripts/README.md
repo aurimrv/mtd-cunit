@@ -113,18 +113,35 @@ Codes and acronyms match Proteum/IM `g_tab_operador[]` in `globais.c`.
 ## `02-run-adequate-suites.sh`
 
 Batch driver: for each program, runs the skill helpers for every unit operator
-with alive mutants (automated candidate proposer + `run_attempt.py`).
+with alive mutants.
+
+**Baseline (current code, tag `no-llm-support`):** heuristic
+`--mutation-oriented-input-generation` and `MAX_ITERATIONS` (default 5).
+
+**Target (see skill `PROPOSAL-llm-gen-models.md`):** read repo `.env`
+`LLM_GEN_MODELS` (attempt schedule / models), keep CSV+Proteum tests only when
+they kill the target, otherwise `tcase -d -x` + **`exemuta -exec`**.
 
 ```bash
-# optional: MAX_ITERATIONS=5 LLM_NAME=composer-automated-proposer
+# Baseline heuristic run
+MAX_ITERATIONS=5 \
 scripts/02-run-adequate-suites.sh \
   --programs-dir programs-v1 \
-  --programs-file scripts/pilot-cal-UnixCal.txt
+  --programs-file scripts/pilot-llm-high-equiv.txt
+
+# After LLM path is implemented: configure models then run the same driver
+cp .env.example .env   # set LLM_GEN_MODELS=...
+scripts/02-run-adequate-suites.sh \
+  --programs-dir programs-v1 \
+  --programs-file scripts/pilot-llm-high-equiv.txt
 ```
 
 Requires sessions from `00` first. Per operator it clears Proteum test cases,
 seeds `ts_<OP>/`, and writes `mutants/<OP>_execution_status.json`.
 Progress logs: `<prog>/mutants/adequate-run-logs/`.
+
+**Pilot list (high EQ rate, moderate size):** `scripts/pilot-llm-high-equiv.txt`
+(CheckPalindrome, DigitReverser, twoPred, RecursiveSelectionSort, Stack).
 
 `02-run-adequate-suites-boundedQueue.sh` is a thin wrapper for boundedQueue only.
 
@@ -132,7 +149,7 @@ Aggregate after (also refreshed during the run):
 
 ```bash
 python3 .cursor/skills/mutation-operator-adequate-test-set/scripts/summarize_status.py \
-  --program-dir programs-v1/cal
+  --program-dir programs-v1/CheckPalindrome
 ```
 
 Outputs: `mutants/adequate-suite-summary.json` and `.csv`.
@@ -148,16 +165,9 @@ python3 .cursor/skills/mutation-operator-adequate-test-set/scripts/verify_equiva
   --write-merged programs-v1/boundedQueue/equivalents_ALL.txt
 ```
 
-Backfill an already-finished program:
-
-```bash
-python3 .cursor/skills/mutation-operator-adequate-test-set/scripts/backfill_equivalents.py \
-  --program-dir programs-v1/boundedQueue
-```
-
 **Do not reuse `ts_data` rows as killing tests** in new runs. That directory is
-only a CSV format reference; the skill must invent mutation-specific cases
-(`inspect_mutant.py` → LLM → `run_attempt.py`).
+only a CSV format reference; invent mutation-specific cases
+(`inspect_mutant.py` → LLM or heuristic → `run_attempt.py`).
 
 ---
 
@@ -176,39 +186,44 @@ Outputs: `mutant_records.csv`, `rq_results.json`, `rq_report.tex` (+ PDF if late
 
 ## Skill: mutation-operator-adequate-test-set
 
-After `00` and `01`, build one adequate CUnit suite **per operator** using the project skill:
+After `00` and `01`, build one adequate CUnit suite **per operator** using:
 
 `.cursor/skills/mutation-operator-adequate-test-set/`
 
-Ask the agent to apply that skill with the same style of flags:
+Design proposal (LLM schedule, keep-only-if-kills, Proteum rollback+re-exec):
+
+`PROPOSAL-llm-gen-models.md` in that skill directory.
+
+Ask the agent to apply the skill, e.g.:
 
 ```text
---programs-dir <path>
---programs-file <path>
---operators-list <path>     # optional; default scripts/unit-operators-list.txt
---max-iterations <int>      # optional; default 5
---llm-name <str>            # recorded into status JSON
+Apply mutation-operator-adequate-test-set on programs-v1 with
+scripts/pilot-llm-high-equiv.txt. Use .env LLM_GEN_MODELS. Keep tests only
+when original OK and target killed; on failure tcase -d -x then exemuta -exec.
 ```
 
-**Changing `max_iterations`:** pass `--max-iterations N`, or say e.g. “use max_iterations=10”.
-If omitted, the skill uses **5**. The effective value is stored in
-`mutants/<OP>_execution_status.json` as `max_iterations`.
+| Config | Role |
+|--------|------|
+| `.env` → `LLM_GEN_MODELS` | **Target:** models for successive kill attempts (length = budget) |
+| `.env` → `API_KEYS` / `API_URLS` | **Target:** length 1 (shared) or match `LLM_GEN_MODELS` |
+| `.env` → `LLM_EQUIV_MODEL` | **Target:** equivalence rationality after failures |
+| `--max-iterations` | **Legacy:** heuristic-only budget (tag `no-llm-support`) |
 
 Per-operator outputs under each program:
 
 | Path | Role |
 |------|------|
-| `ts_<OP>/test_cases_*.csv` | Operator suite (same schema as `ts_data`) |
+| `ts_<OP>/test_cases_*.csv` | Operator suite (target: **only killing** rows) |
 | `testset_<OP>.txt` | `<function> <test_number>` lines |
 | `mutants/<OP>.txt` | Remaining alive IDs |
 | `mutants/<OP>_execution_status.json` | Per-mutant / **per-attempt** metrics |
 
-Helpers used by the skill live under
-`.cursor/skills/mutation-operator-adequate-test-set/scripts/`. Details and JSON
-schema: that skill’s `SKILL.md` and `reference.md`.
+Helpers: `.cursor/skills/mutation-operator-adequate-test-set/scripts/`.  
+Schema: `SKILL.md`, `reference.md`.
 
-**Metrics note:** unknown token/cost values are stored as `null` with
-`"source": "unavailable"` — never as `0`.
+**Metrics note:** unknown token/cost → `null` + `"source": "unavailable"` — never `0`.
+
+**Git baseline:** `git tag no-llm-support` marks the last heuristic-only complete run.
 
 ---
 

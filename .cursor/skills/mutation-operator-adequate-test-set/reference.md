@@ -13,6 +13,8 @@
   "operator": "u-CCDL",
   "session": "S_boundedQueue",
   "max_iterations": 5,
+  "llm_gen_models": ["composer-2", "composer-2"],
+  "llm_equiv_model": "composer-2",
   "llm_name": "composer",
   "created_at": "2026-10-17T21:00:00.000000000+01:00",
   "updated_at": "2026-10-17T21:10:00.000000000+01:00",
@@ -81,7 +83,7 @@
 | `status` | Meaning |
 |----------|---------|
 | `KILLED` | Proteum life is Dead (or treated as killed) |
-| `EQUIVALENT` | Possible equivalent after `max_iterations` failed kills. Stored in `equivalents_<OP>.txt` and registered with `muta -equiv -x <id> S_<PROG>`. **`rationality_summary` must explain the semantic reason** (see SKILL.md “Equivalence rationality”), not merely that the mutant survived N attempts. |
+| `EQUIVALENT` | Possible equivalent after the attempt schedule is exhausted (`LLM_GEN_MODELS` length, or legacy `max_iterations`). Stored in `equivalents_<OP>.txt` and registered with `muta -equiv -x <id> S_<PROG>`. **`rationality_summary` must explain the semantic reason** (see SKILL.md), not merely that the mutant survived N attempts. |
 
 ### Equivalence `rationality_summary` checklist
 
@@ -171,12 +173,47 @@ exemuta -exec -trace S_boundedQueue
 muta -l -f 823 -t 823 S_boundedQueue
 ```
 
-## Changing `max_iterations`
+## Attempt budget: `LLM_GEN_MODELS` (target) vs `max_iterations` (legacy)
 
-Default **5**. Override per run:
+**Target (see PROPOSAL-llm-gen-models.md):** configure attempts in repo-root `.env`:
 
-1. CLI-style in the user message: `--max-iterations 10`
-2. Natural language: “use max_iterations=10”
+```bash
+LLM_GEN_MODELS=model_a,model_b,model_a
+API_KEYS=key_for_all
+API_URLS=https://api.example.com/v1
+LLM_EQUIV_MODEL=model_a
+HEURISTIC_FIRST=0
+```
 
-Store the effective value in the status JSON header field `max_iterations`.
-Do not change the default in code without an explicit user request.
+- `LLM_GEN_MODELS` **length** = number of kill attempts per mutant.
+- Each model entry = which model runs that attempt (duplicates allowed).
+- `API_KEYS` / `API_URLS`: length **1** (broadcast to all models) or **same
+  length** as `LLM_GEN_MODELS` (per-attempt provider). Mismatch ⇒ error.
+- Store resolved models in status JSON as `llm_gen_models`; record the model
+  id used on **each attempt** as `llm_name`. Do **not** store raw API keys in
+  status JSON (optional: store URL host only).
+
+**Legacy baseline (`no-llm-support`):** `--max-iterations` (default 5) for
+heuristic-only runs. Store as `max_iterations` in the status JSON header.
+
+## Keep / rollback rules (target)
+
+A case stays in `ts_<OP>/` and in the Proteum session only if:
+
+1. Original `./runner` exits 0, and  
+2. `muta -l` shows the **target** mutant Dead after `exemuta -exec`.
+
+Otherwise:
+
+1. Remove the CSV row and `testset_<OP>.txt` line.  
+2. `tcase -d -x <proteum_tcase_index> S_<PROG>`  
+3. **`exemuta -exec -f <id> -t <id> S_<PROG>`** — required so kill marks match the suite after deletion.  
+4. Re-check `muta -l` (expect Alive before the next attempt).
+
+## Proteum delete + re-exec
+
+```bash
+tcase -d -x <proteum_index> S_<PROG>
+exemuta -exec -trace -f <mutant_id> -t <mutant_id> S_<PROG>
+muta -l -f <mutant_id> -t <mutant_id> S_<PROG>
+```
