@@ -35,8 +35,10 @@ def load_records(programs_dir: Path, programs: list[str] | None) -> list[dict]:
         data = json.loads(path.read_text(encoding="utf-8"))
         op = data.get("operator") or path.name.replace("_execution_status.json", "")
         cat = operator_category(op)
-        llm = data.get("llm_name")
-        max_iter = data.get("max_iterations")
+        models = data.get("llm_gen_models")
+        max_attempts = data.get("max_attempts")
+        if max_attempts is None and isinstance(models, list):
+            max_attempts = len(models)
         for m in data.get("mutants") or []:
             status = m.get("status")
             if status not in ("KILLED", "EQUIVALENT"):
@@ -67,8 +69,12 @@ def load_records(programs_dir: Path, programs: list[str] | None) -> list[dict]:
                         else None
                     ),
                     "sum_attempt_duration_ms": sum(attempt_durs) if attempt_durs else None,
-                    "llm_name": llm,
-                    "max_iterations": max_iter,
+                    "llm_gen_models": models,
+                    "max_attempts": max_attempts,
+                    # per-attempt model if present on last attempt
+                    "llm_name": (m.get("attempts") or [{}])[-1].get("llm_name")
+                    if m.get("attempts")
+                    else None,
                     "function_under_testing": m.get("function_under_testing"),
                     "test_case_number": m.get("test_case_number"),
                     "status_file": str(path),

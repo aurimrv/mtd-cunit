@@ -218,7 +218,7 @@ def analyze_scope(df: pd.DataFrame, scope_name: str) -> dict:
     out["RQ4"] = {
         "question": (
             "How long does it take to detect possible equivalence "
-            "(until EQUIVALENT after max_iterations)?"
+            "(until EQUIVALENT after LLM_GEN_MODELS is exhausted)?"
         ),
         "metric": "duration_s (mutant end_time − initial_time)",
         "by_operator": summarise_duration(equiv, "operator", "duration_s"),

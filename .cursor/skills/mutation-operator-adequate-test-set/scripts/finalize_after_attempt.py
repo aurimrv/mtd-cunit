@@ -87,14 +87,13 @@ def main() -> int:
         if not er:
             print(
                 "error: --rationality-summary is required when marking EQUIVALENT; "
-                "explain WHY the mutation may be equivalent (not only that it survived "
-                "max_iterations).",
+                "explain WHY the mutation may be equivalent (not only that attempts failed).",
                 file=sys.stderr,
             )
             return 1
         er_l = er.lower()
         if len(er) < 80 or (
-            ("alive after" in er_l or "still alive" in er_l or "max_iterations" in er_l)
+            ("alive after" in er_l or "still alive" in er_l or "survived" in er_l)
             and "get on" not in er_l
             and "mutat" not in er_l
             and "semantic" not in er_l
@@ -106,7 +105,7 @@ def main() -> int:
             print(
                 "error: equivalence rationality_summary is too weak or missing semantic "
                 "content. Discuss the mutation (Get on: / behaviour), not only the "
-                "iteration budget. See skill section 'Equivalence rationality'.",
+                "attempt budget. See skill section 'Equivalence rationality'.",
                 file=sys.stderr,
             )
             return 1

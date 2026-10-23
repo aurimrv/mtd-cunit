@@ -32,14 +32,21 @@ def cmd_init(args: argparse.Namespace) -> int:
     program_dir = Path(args.program_dir).resolve()
     path = status_path(program_dir, args.operator)
     created = now_iso()
+    models = [m.strip() for m in (args.llm_gen_models or "").split(",") if m.strip()]
     if path.exists() and not args.force:
         data = load_status(path)
-        data["max_iterations"] = int(args.max_iterations)
-        data["llm_name"] = args.llm_name
+        if models:
+            data["llm_gen_models"] = models
+            data["max_attempts"] = len(models)
+        if args.llm_equiv_model:
+            data["llm_equiv_model"] = args.llm_equiv_model
         data["session"] = args.session
         data["program"] = args.program or program_dir.name
         data["operator"] = args.operator
         data["schema_version"] = SCHEMA_VERSION
+        # drop obsolete fields if present
+        data.pop("max_iterations", None)
+        data.pop("llm_name", None)
         save_status(path, data)
         print(path)
         return 0
@@ -49,8 +56,9 @@ def cmd_init(args: argparse.Namespace) -> int:
         "program": args.program or program_dir.name,
         "operator": args.operator,
         "session": args.session,
-        "max_iterations": int(args.max_iterations),
-        "llm_name": args.llm_name,
+        "llm_gen_models": models,
+        "max_attempts": len(models),
+        "llm_equiv_model": args.llm_equiv_model or (models[-1] if models else None),
         "created_at": created,
         "updated_at": created,
         "mutants": [],
@@ -213,8 +221,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_init.add_argument("--program-dir", required=True)
     p_init.add_argument("--operator", required=True)
     p_init.add_argument("--session", required=True)
-    p_init.add_argument("--max-iterations", type=int, default=5)
-    p_init.add_argument("--llm-name", required=True)
+    p_init.add_argument(
+        "--llm-gen-models",
+        required=True,
+        help="Comma-separated model ids (same as LLM_GEN_MODELS)",
+    )
+    p_init.add_argument("--llm-equiv-model", default=None)
     p_init.add_argument("--program", default=None)
     p_init.add_argument("--force", action="store_true", help="Replace mutants[] with []")
     p_init.set_defaults(func=cmd_init)

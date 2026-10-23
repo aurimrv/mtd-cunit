@@ -32,8 +32,14 @@ def load_all(mutants_dir: Path) -> list[dict]:
             {
                 "operator": op,
                 "program": data.get("program"),
-                "max_iterations": data.get("max_iterations"),
-                "llm_name": data.get("llm_name"),
+                "llm_gen_models": data.get("llm_gen_models"),
+                "max_attempts": data.get("max_attempts")
+                or (
+                    len(data["llm_gen_models"])
+                    if isinstance(data.get("llm_gen_models"), list)
+                    else None
+                ),
+                "llm_equiv_model": data.get("llm_equiv_model"),
                 "mutants_recorded": len(mutants),
                 "killed": counts.get("KILLED", 0),
                 "equivalent": counts.get("EQUIVALENT", 0),

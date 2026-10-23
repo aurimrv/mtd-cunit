@@ -12,10 +12,9 @@
   "program": "boundedQueue",
   "operator": "u-CCDL",
   "session": "S_boundedQueue",
-  "max_iterations": 5,
-  "llm_gen_models": ["composer-2", "composer-2"],
-  "llm_equiv_model": "composer-2",
-  "llm_name": "composer",
+  "llm_gen_models": ["gpt-4o-mini", "gpt-4o-mini"],
+  "max_attempts": 2,
+  "llm_equiv_model": "gpt-4o-mini",
   "created_at": "2026-10-17T21:00:00.000000000+01:00",
   "updated_at": "2026-10-17T21:10:00.000000000+01:00",
   "mutants": [
@@ -63,7 +62,7 @@
             "total": null,
             "source": "unavailable"
           },
-          "llm_name": "composer"
+          "llm_name": "gpt-4o-mini"
         }
       ],
       "tokens_total": { "input": null, "output": null, "source": "unavailable" },
@@ -83,16 +82,15 @@
 | `status` | Meaning |
 |----------|---------|
 | `KILLED` | Proteum life is Dead (or treated as killed) |
-| `EQUIVALENT` | Possible equivalent after the attempt schedule is exhausted (`LLM_GEN_MODELS` length, or legacy `max_iterations`). Stored in `equivalents_<OP>.txt` and registered with `muta -equiv -x <id> S_<PROG>`. **`rationality_summary` must explain the semantic reason** (see SKILL.md), not merely that the mutant survived N attempts. |
+| `EQUIVALENT` | Possible equivalent after `LLM_GEN_MODELS` is exhausted. Stored in `equivalents_<OP>.txt` and registered with `muta -equiv`. **`rationality_summary` must be semantic** (see SKILL.md), not merely “survived N attempts”. |
+| `ALIVE` | Work in progress |
+| `UNKNOWN` | Could not determine |
 
 ### Equivalence `rationality_summary` checklist
 
 Must include: (1) what the mutation changes, (2) why behaviour may match the
 original on reachable / expressible behaviours, (3) how prior attempts relate
-to that theory, (4) residual doubt. Must **not** be only “still alive after
-max_iterations”.
-| `ALIVE` | Work in progress |
-| `UNKNOWN` | Could not determine |
+to that theory, (4) residual doubt. Must **not** be only “still alive after N attempts”.
 
 ### Collateral
 
@@ -173,30 +171,23 @@ exemuta -exec -trace S_boundedQueue
 muta -l -f 823 -t 823 S_boundedQueue
 ```
 
-## Attempt budget: `LLM_GEN_MODELS` (target) vs `max_iterations` (legacy)
+## Attempt budget: `LLM_GEN_MODELS`
 
-**Target (see PROPOSAL-llm-gen-models.md):** configure attempts in repo-root `.env`:
+Configure in repo-root `.env` (see PROPOSAL-llm-gen-models.md):
 
 ```bash
 LLM_GEN_MODELS=model_a,model_b,model_a
 API_KEYS=key_for_all
 API_URLS=https://api.example.com/v1
 LLM_EQUIV_MODEL=model_a
-HEURISTIC_FIRST=0
 ```
 
 - `LLM_GEN_MODELS` **length** = number of kill attempts per mutant.
-- Each model entry = which model runs that attempt (duplicates allowed).
-- `API_KEYS` / `API_URLS`: length **1** (broadcast to all models) or **same
-  length** as `LLM_GEN_MODELS` (per-attempt provider). Mismatch ⇒ error.
-- Store resolved models in status JSON as `llm_gen_models`; record the model
-  id used on **each attempt** as `llm_name`. Do **not** store raw API keys in
-  status JSON (optional: store URL host only).
+- `API_KEYS` / `API_URLS`: length **1** (broadcast) or **same length** as models.
+- Status JSON stores `llm_gen_models` / `max_attempts`; each attempt records `llm_name`.
+  Never store raw API keys.
 
-**Legacy baseline (`no-llm-support`):** `--max-iterations` (default 5) for
-heuristic-only runs. Store as `max_iterations` in the status JSON header.
-
-## Keep / rollback rules (target)
+## Keep / rollback rules
 
 A case stays in `ts_<OP>/` and in the Proteum session only if:
 

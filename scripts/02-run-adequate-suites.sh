@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # Run operator-adequate suites for each program listed in --programs-file.
 #
-# IMPORTANT: automated reuse of ts_data killing tests is DISABLED.
-# Default: --mutation-oriented-input-generation (heuristic NEW inputs from
-# Get on: + schema; oracles via CUNIT_CAPTURE; no LLM). Or supply LLM rows
-# via candidates JSONL.
+# Requires repo-root .env with LLM_GEN_MODELS, API_KEYS, API_URLS
+# (see .env.example). Each model entry is one kill attempt per mutant.
+# Tests are kept only when they kill the target; otherwise rolled back.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -12,8 +11,6 @@ PROGRAMS_DIR=""
 PROGRAMS_FILE=""
 OPS_LIST="${ROOT}/scripts/unit-operators-list.txt"
 SKILL="${ROOT}/.cursor/skills/mutation-operator-adequate-test-set/scripts"
-MAX_ITER="${MAX_ITERATIONS:-5}"
-LLM_NAME="${LLM_NAME:-composer-mutation-directed-v1}"
 
 usage() {
   cat <<EOF
@@ -22,9 +19,8 @@ Usage: 02-run-adequate-suites.sh \\
          --programs-file <path> \\
          [--operators-list <path>]
 
-Environment:
-  MAX_ITERATIONS   default 5
-  LLM_NAME         default composer-mutation-directed-v1
+Requires .env (or DOTENV_PATH) with:
+  LLM_GEN_MODELS, API_KEYS, API_URLS [, LLM_EQUIV_MODEL]
 EOF
 }
 
@@ -52,7 +48,13 @@ if [ -z "$PROGRAMS_DIR" ] || [ -z "$PROGRAMS_FILE" ]; then
   exit 1
 fi
 
+if [ ! -f "${ROOT}/.env" ] && [ -z "${DOTENV_PATH:-}" ]; then
+  echo "error: missing ${ROOT}/.env (copy from .env.example)" >&2
+  exit 1
+fi
+
 export PATH="${PROTEUMIMHOME:-/home/auri/Documentos/testingtools/ProteumIM64/bin}:${PATH}"
+export DOTENV_PATH="${DOTENV_PATH:-${ROOT}/.env}"
 
 mapfile -t PROG_LINES <"$PROGRAMS_FILE"
 for raw in "${PROG_LINES[@]}"; do
@@ -109,9 +111,7 @@ for raw in "${PROG_LINES[@]}"; do
       --program-dir "$PROG_DIR" \
       --operator "$op" \
       --session "$SESSION" \
-      --max-iterations "$MAX_ITER" \
-      --llm-name "$LLM_NAME" \
-      --mutation-oriented-input-generation \
+      --dotenv-dir "$ROOT" \
       --skip-if-done \
       </dev/null \
       2>&1 | tee "${LOG_DIR}/${op}.log"

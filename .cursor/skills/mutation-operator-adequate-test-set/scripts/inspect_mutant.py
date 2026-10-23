@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Inspect a mutant for mutation-oriented test generation.
+Inspect a mutant for LLM kill-case generation.
 
 Returns build-view context, Get on:, detected function, and CSV *schema*
 from ts_data (headers + one format example). Does NOT propose executable
-test cases — callers (mutation_oriented_input_generation or an LLM) use
-this context to synthesize new cases aimed at the mutation.
+test cases — callers (propose_kill_case / run_operator) use this context.
 """
 
 from __future__ import annotations
@@ -153,7 +152,7 @@ def inspect(program_dir: Path, session: str, mutant_id: int) -> dict:
             "Match csv_schemas[function].headers. Use format_example_row only as encoding "
             "reference. Do not reuse it as a killing test. Aim at Get on: / build_view. "
             "Oracle = original ./runner. "
-            "If still alive after max_iterations, write an elaborated equivalence "
+            "If still alive after LLM_GEN_MODELS is exhausted, write an elaborated equivalence "
             "rationality_summary explaining WHY the mutation may be equivalent "
             "(semantics / dead code / unreachable difference), referencing Get on: "
             "and build_view — do NOT only say it survived N attempts."

@@ -14,8 +14,6 @@ MIN_RATE="${MIN_EQUIV_RATE:-0.25}"
 JOBS="${JOBS:-4}"
 EXCLUDE="${EXCLUDE:-replace}"
 ONLY="${ONLY:-}"
-LLM_NAME="${LLM_NAME:-composer-ssdl-rerun-v1}"
-MAX_ITER="${MAX_ITERATIONS:-5}"
 SKILL="${ROOT}/.cursor/skills/mutation-operator-adequate-test-set/scripts"
 DRY_RUN=0
 
@@ -46,6 +44,11 @@ if [ -z "$PROGRAMS_DIR" ]; then
 fi
 PROGRAMS_DIR="$(cd "$PROGRAMS_DIR" && pwd)"
 export PATH="${PROTEUMIMHOME:-/home/auri/Documentos/testingtools/ProteumIM64/bin}:${PATH}"
+export DOTENV_PATH="${DOTENV_PATH:-${ROOT}/.env}"
+if [ ! -f "$DOTENV_PATH" ]; then
+  echo "error: missing $DOTENV_PATH (copy from .env.example)" >&2
+  exit 1
+fi
 # Prefer real GNU timeout (PATH may shadow with a broken local timeout)
 TIMEOUT_BIN="$(command -v /usr/bin/timeout || command -v timeout)"
 
@@ -92,9 +95,7 @@ run_one() {
       --program-dir "$PROG_DIR" \
       --operator u-SSDL \
       --session "$SESSION" \
-      --max-iterations "$MAX_ITER" \
-      --llm-name "$LLM_NAME" \
-      --mutation-oriented-input-generation \
+      --dotenv-dir "$ROOT" \
       --resume \
       --skip-if-done
     python3 "${SKILL}/summarize_status.py" --program-dir "$PROG_DIR" || true
@@ -104,7 +105,7 @@ run_one() {
 }
 
 export -f run_one
-export PROGRAMS_DIR SKILL LLM_NAME MAX_ITER LOG_ROOT
+export PROGRAMS_DIR SKILL LOG_ROOT ROOT DOTENV_PATH
 
 echo "=== launching up to ${JOBS} parallel SSDL reruns ==="
 # Portable parallel: one program per worker (avoid xargs -I/-n clash on GNU xargs)

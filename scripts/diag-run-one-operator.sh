@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run a single program/operator in isolation with a wall-clock timeout.
 # Usage:
-#   diag-run-one-operator.sh --program replace --operator u-Ccsr [--limit 3] [--timeout 180]
+#   diag-run-one-operator.sh --program CheckPalindrome --operator u-CRCR [--limit 3] [--timeout 180]
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -9,8 +9,6 @@ PROG=""
 OP=""
 LIMIT="${LIMIT_MUTANTS:-3}"
 TIMEOUT_SEC="${TIMEOUT_SEC:-180}"
-MAX_ITER="${MAX_ITERATIONS:-5}"
-LLM_NAME="${LLM_NAME:-composer-mutation-directed-v1}"
 SKILL="$ROOT/.cursor/skills/mutation-operator-adequate-test-set/scripts"
 PROGRAMS_DIR="$ROOT/programs-v1"
 
@@ -30,7 +28,13 @@ if [ -z "$PROG" ] || [ -z "$OP" ]; then
   exit 1
 fi
 
+if [ ! -f "${ROOT}/.env" ] && [ -z "${DOTENV_PATH:-}" ]; then
+  echo "error: missing ${ROOT}/.env (copy from .env.example)" >&2
+  exit 1
+fi
+
 export PATH="${PROTEUMIMHOME:-/home/auri/Documentos/testingtools/ProteumIM64/bin}:${PATH}"
+export DOTENV_PATH="${DOTENV_PATH:-${ROOT}/.env}"
 PROG_DIR="$PROGRAMS_DIR/$PROG"
 LOG_DIR="$PROG_DIR/mutants/adequate-run-logs"
 mkdir -p "$LOG_DIR"
@@ -47,9 +51,7 @@ set +e
     --program-dir "$PROG_DIR" \
     --operator "$OP" \
     --session "S_${PROG}" \
-    --max-iterations "$MAX_ITER" \
-    --llm-name "$LLM_NAME" \
-    --mutation-oriented-input-generation \
+    --dotenv-dir "$ROOT" \
     --skip-if-done \
     --limit-mutants "$LIMIT" \
     </dev/null >>"$LOG" 2>&1
